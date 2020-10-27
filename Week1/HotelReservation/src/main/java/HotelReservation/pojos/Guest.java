@@ -30,6 +30,8 @@ public class Guest {
 	}
 
 	public static int getGuestCount() {
+		//Guest.getGuestCount();
+		//return name; <-- what would name be equal to?
 		return guestCount;
 	}
 
@@ -38,6 +40,7 @@ public class Guest {
 	}
 
 	public String getName() {
+		//ksenia.getName(); <-- should return "Ksenia"
 		return name;
 	}
 
