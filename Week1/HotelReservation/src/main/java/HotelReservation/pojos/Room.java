@@ -1,5 +1,13 @@
 package HotelReservation.pojos;
-
+/*
+ * Object o;
+ * if(Math.random() > .5)
+ *   o = new Room(); <-- we know exactly which constructor is being run, it is the no args constructor
+ * else
+ *   o = new Hotel();
+ * o.toString(); <-- runtime polymorphism, JVM does not no which impl. of toString() will be run
+ * until the program is executed, OVERRIDING
+ */
 public class Room {
 	
 	public enum RoomType {
@@ -15,7 +23,7 @@ public class Room {
 	
 	private RoomType roomType;
 	
-	private String roomService;
+	private boolean roomService;
 	
 	private int roomNumber;
 
@@ -23,7 +31,7 @@ public class Room {
 		//super(); called implicitly
 	}
 
-	public Room(int beds, boolean smoking, RoomType roomType, String roomService, int roomNumber) {
+	public Room(int beds, boolean smoking, RoomType roomType, boolean roomService, int roomNumber) {
 		//super(); calls super() implicitly
 		this.beds = beds;
 		this.smoking = smoking;
@@ -56,11 +64,11 @@ public class Room {
 		this.roomType = roomType;
 	}
 
-	public String getRoomService() {
+	public boolean getRoomService() {
 		return roomService;
 	}
 
-	public void setRoomService(String roomService) {
+	public void setRoomService(boolean roomService) {
 		this.roomService = roomService;
 	}
 
@@ -84,7 +92,7 @@ public class Room {
 		int result = 1;
 		result = prime * result + beds;
 		result = prime * result + roomNumber;
-		result = prime * result + ((roomService == null) ? 0 : roomService.hashCode());
+		result = prime * result + (roomService ? 1231 : 1237);
 		result = prime * result + ((roomType == null) ? 0 : roomType.hashCode());
 		result = prime * result + (smoking ? 1231 : 1237);
 		return result;
@@ -103,10 +111,7 @@ public class Room {
 			return false;
 		if (roomNumber != other.roomNumber)
 			return false;
-		if (roomService == null) {
-			if (other.roomService != null)
-				return false;
-		} else if (!roomService.equals(other.roomService))
+		if (roomService != other.roomService)
 			return false;
 		if (roomType != other.roomType)
 			return false;
