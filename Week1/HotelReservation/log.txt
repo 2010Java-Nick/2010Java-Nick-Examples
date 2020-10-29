@@ -1,0 +1,31 @@
+2020-10-29 16:54:05 INFO  root:33 - Program has started
+2020-10-29 16:54:17 INFO  root:87 - Created guest: Guest [guestId=1, name=jasodg, room=null, phoneNumber=59764, payment=498.0]
+2020-10-29 16:54:32 WARN  root:147 - DateTimeParseException caught
+java.time.format.DateTimeParseException: Text '84' could not be parsed at index 0
+	at java.time.format.DateTimeFormatter.parseResolved0(Unknown Source)
+	at java.time.format.DateTimeFormatter.parse(Unknown Source)
+	at java.time.LocalDate.parse(Unknown Source)
+	at java.time.LocalDate.parse(Unknown Source)
+	at HotelReservation.main.HotelReservationDriver.guestCheckIn(HotelReservationDriver.java:143)
+	at HotelReservation.main.HotelReservationDriver.main(HotelReservationDriver.java:49)
+2020-10-29 16:55:23 INFO  root:33 - Program has started
+2020-10-29 16:55:30 INFO  root:87 - Created guest: Guest [guestId=1, name=other, room=null, phoneNumber=987, payment=9864.0]
+2020-10-29 16:57:05 INFO  root:33 - Program has started
+2020-10-29 16:58:14 WARN  root:147 - DateTimeParseException caught
+java.time.format.DateTimeParseException: Text '78978' could not be parsed at index 0
+	at java.time.format.DateTimeFormatter.parseResolved0(Unknown Source)
+	at java.time.format.DateTimeFormatter.parse(Unknown Source)
+	at java.time.LocalDate.parse(Unknown Source)
+	at java.time.LocalDate.parse(Unknown Source)
+	at HotelReservation.main.HotelReservationDriver.guestCheckIn(HotelReservationDriver.java:143)
+	at HotelReservation.main.HotelReservationDriver.main(HotelReservationDriver.java:49)
+2020-10-29 16:58:39 INFO  root:33 - Program has started
+2020-10-29 16:59:02 INFO  root:87 - Created guest: Guest [guestId=1, name=jsadogi, room=null, phoneNumber=198, payment=5489.0]
+2020-10-29 16:59:19 WARN  root:147 - DateTimeParseException caught
+java.time.format.DateTimeParseException: Text '4' could not be parsed at index 0
+	at java.time.format.DateTimeFormatter.parseResolved0(Unknown Source)
+	at java.time.format.DateTimeFormatter.parse(Unknown Source)
+	at java.time.LocalDate.parse(Unknown Source)
+	at java.time.LocalDate.parse(Unknown Source)
+	at HotelReservation.main.HotelReservationDriver.guestCheckIn(HotelReservationDriver.java:143)
+	at HotelReservation.main.HotelReservationDriver.main(HotelReservationDriver.java:49)

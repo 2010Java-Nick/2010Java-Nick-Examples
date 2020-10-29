@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import HotelReservation.pojos.Booking;
 import HotelReservation.pojos.Guest;
 import HotelReservation.pojos.Hotel;
@@ -13,6 +15,8 @@ import HotelReservation.pojos.Room;
 import HotelReservation.pojos.Room.RoomType;
 
 public class HotelReservationDriver {
+	
+	private static Logger log = Logger.getRootLogger();
 
 	private static Scanner scan = new Scanner(System.in);
 
@@ -23,6 +27,10 @@ public class HotelReservationDriver {
 	private static List<Booking> bookings = new ArrayList<Booking>();
 
 	public static void main(String args[]) {
+		
+		//new HotelReservationDriver().testCatchError();
+		
+		log.info("Program has started");
 
 		String userInput;
 
@@ -75,6 +83,8 @@ public class HotelReservationDriver {
 		scan.nextLine();
 
 		Guest guest = new Guest(name, null, phoneNumber, payment);
+		
+		log.info("Created guest: " + guest);
 
 		System.out.println(guest);
 
@@ -134,6 +144,7 @@ public class HotelReservationDriver {
 			checkoutDate = LocalDate.parse(checkout);
 		} catch (DateTimeParseException e) {
 			System.out.println("Could not parse dates. Use format yyyy-mm-dd");
+			log.warn("DateTimeParseException caught", e);
 		}
 		} while(checkinDate == null || checkoutDate == null);
 
@@ -161,6 +172,15 @@ public class HotelReservationDriver {
 
 		// System.out.println(x); <-- out of scope
 
+	}
+	
+	public void testCatchError() {
+		try {
+			testCatchError();
+			throw new StackOverflowError();
+		} catch(Throwable t) {
+			System.out.println("hahaha I caught an error");
+		}
 	}
 
 }
