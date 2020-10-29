@@ -1,5 +1,7 @@
 package HotelReservation.service;
 
+import java.util.List;
+
 import HotelReservation.pojos.Guest;
 import HotelReservation.pojos.Room;
 
@@ -10,5 +12,7 @@ public interface GuestService {
 	public void checkInGuest(Guest guest);
 	
 	public void checkOutGuest(Guest guest);
+	
+	public List<Guest> getAllGuests();
 
 }

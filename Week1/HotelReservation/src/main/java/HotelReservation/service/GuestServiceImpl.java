@@ -1,5 +1,7 @@
 package HotelReservation.service;
 
+import java.util.List;
+
 import HotelReservation.pojos.Guest;
 import HotelReservation.pojos.Room;
 
@@ -23,8 +25,9 @@ public class GuestServiceImpl implements GuestService {
 
 	@Override
 	public Guest createGuest(String name, String phoneNumber, double payment, Room room) {
-		// TODO Auto-generated method stub
-		return null;
+		Guest newGuest = new Guest(name, room, phoneNumber, payment);
+		guestCache.addToCache(newGuest);
+		return newGuest;
 	}
 
 	@Override
@@ -37,6 +40,11 @@ public class GuestServiceImpl implements GuestService {
 	public void checkOutGuest(Guest guest) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Guest> getAllGuests() {
+		return guestCache.retrieveAllItems();
 	}
 
 }
