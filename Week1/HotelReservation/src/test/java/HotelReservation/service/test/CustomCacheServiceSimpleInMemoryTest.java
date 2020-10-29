@@ -1,12 +1,13 @@
 package HotelReservation.service.test;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -65,8 +66,14 @@ public class CustomCacheServiceSimpleInMemoryTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void addToCacheSimpleGuestTest() {
+		
+		Guest guestToAdd = new Guest("Sally Skelton", new Room(4, true, RoomType.LUXURY_SUITE, true, 666), "00000000000", 666.00);
+		
+		cacheService.addToCache(guestToAdd);
+		
+		assertEquals("Guest " + guestToAdd + " should be in the cache", true, testCache.contains(guestToAdd));
+		
 	}
 
 }

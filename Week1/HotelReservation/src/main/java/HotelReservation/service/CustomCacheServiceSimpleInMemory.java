@@ -25,8 +25,7 @@ public class CustomCacheServiceSimpleInMemory <T> implements CustomCacheService<
 
 	@Override
 	public void addToCache(T obj) {
-		// TODO Auto-generated method stub
-		
+		cache.add(obj);
 	}
 
 	@Override
