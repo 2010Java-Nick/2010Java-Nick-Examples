@@ -1,9 +1,13 @@
 package HotelReservation.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import HotelReservation.pojos.Guest;
 
 public class CustomCacheServiceSimpleInMemory <T> implements CustomCacheService<T> {
 	
@@ -66,8 +70,7 @@ public class CustomCacheServiceSimpleInMemory <T> implements CustomCacheService<
 
 	@Override
 	public List<T> retrieveMatching(Predicate<T> p) {
-		// TODO Auto-generated method stub
-		return null;
+		return cache.stream().filter(p).collect(Collectors.toList());
 	}
 	
 }

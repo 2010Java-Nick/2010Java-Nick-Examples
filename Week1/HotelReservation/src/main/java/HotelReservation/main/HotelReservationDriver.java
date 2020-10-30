@@ -84,7 +84,7 @@ public class HotelReservationDriver {
 
 		Guest guest = new Guest(name, null, phoneNumber, payment);
 		
-		log.info("Created guest: " + guest);
+		new Thread(() -> {log.info("Created guest: " + guest);}).start();
 
 		System.out.println(guest);
 
