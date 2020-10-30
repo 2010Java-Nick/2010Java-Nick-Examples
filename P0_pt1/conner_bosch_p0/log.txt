@@ -1,0 +1,15 @@
+2020-10-30 10:33:34 INFO  root:42 - 
+2020-10-30 10:34:16 INFO  root:42 - This is a test of the logging system!
+2020-10-30 10:35:04 INFO  root:42 - This is a test of the logging system!
+2020-10-30 10:38:38 INFO  root:42 - This is a test of the logging system!
+2020-10-30 10:38:38 INFO  controllerLog:41 - This is a test of the logging system!
+2020-10-30 10:48:03 INFO  root:42 - This is a test of the logging system!
+2020-10-30 10:48:03 INFO  spellServiceLog:41 - This is a test of the logging system!
+2020-10-30 10:48:03 INFO  casterServiceLog:41 - This is a test of the logging system!
+2020-10-30 10:48:03 INFO  playerServiceLog:41 - This is a test of the logging system!
+2020-10-30 10:48:03 INFO  controllerLog:41 - This is a test of the logging system!
+2020-10-30 10:48:51 INFO  consoleUILog:42 - This is a test of the logging system!
+2020-10-30 10:48:51 INFO  spellServiceLog:41 - This is a test of the logging system!
+2020-10-30 10:48:51 INFO  casterServiceLog:41 - This is a test of the logging system!
+2020-10-30 10:48:52 INFO  playerServiceLog:41 - This is a test of the logging system!
+2020-10-30 10:48:52 INFO  controllerLog:41 - This is a test of the logging system!
