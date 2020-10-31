@@ -41,6 +41,10 @@ public class SpellPointsController {
         return false;
     }
 
+    public void setCurrentPlayer(Player player){
+        this.currentPlayer = player;
+    }
+
     /**
      * Passes params to the Player Service for creation and storing.
      * @param username
@@ -48,8 +52,8 @@ public class SpellPointsController {
      * @param level
      * @param casterType 0=Bard 1=Cleric 2=Druid 3=Paladin 4=Sorcerer 5=Warlock 6=Wizard
      */
-    public void createNewPlayer(String username, String password, int level, int casterType){
-
+    public boolean createNewPlayer(String username, String password, int level, int casterType){
+        return false;
     }
 
     /**
