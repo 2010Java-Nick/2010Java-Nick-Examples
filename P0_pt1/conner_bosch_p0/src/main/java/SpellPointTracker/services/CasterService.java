@@ -1,5 +1,7 @@
 package SpellPointTracker.services;
 
+import java.util.List;
+
 import SpellPointTracker.pojos.Caster;
 import SpellPointTracker.pojos.Spell;
 
@@ -7,6 +9,10 @@ import SpellPointTracker.pojos.Spell;
  * Handles passing Caster objects between storage and the controller
  */
 public interface CasterService {
+    
+    public List<Caster> getAllCasters();
+
+    public void setAllCasters(List<Caster> casters);
 
     public Caster getCaster(int casterId);
 
