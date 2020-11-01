@@ -1,11 +1,27 @@
 package SpellPointTracker.services;
 
 import SpellPointTracker.pojos.Player;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 public class PlayerServiceImpl implements PlayerService {
 
     private static Logger Log = Logger.getLogger("playerServiceLog");
+
+    List<Player> playerCollection = new ArrayList<Player>();
+
+    public List<Player> getPlayers(){
+
+        return this.playerCollection;
+
+    }
+
+    public void setPlayers(List<Player> players){
+        this.playerCollection = players;
+    }
 
     /**
      * 
@@ -21,9 +37,9 @@ public class PlayerServiceImpl implements PlayerService {
      * 
      */
     @Override
-    public Player getPlayer(String username, String password) {
+    public Player getPlayer(String username, String password){
         // TODO Auto-generated method stub
-        // raises "PlayerNotFoundException"
+
         return null;
     }    
 }
