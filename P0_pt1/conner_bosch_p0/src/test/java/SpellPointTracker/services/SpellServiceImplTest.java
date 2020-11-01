@@ -70,6 +70,7 @@ public class SpellServiceImplTest {
 		assertTrue("Retrieve spell even though no spells stored", spellService.getSpell(spellOne.getName()).equals(null));
 	}
 
+	@Test
 	public void getSpellsTest() {
 		List<Spell> retrievedSpells = spellService.getSpells(spellIds);
 		assertFalse("Retrieved all spells, not specific ones", spells.size() == retrievedSpells.size());

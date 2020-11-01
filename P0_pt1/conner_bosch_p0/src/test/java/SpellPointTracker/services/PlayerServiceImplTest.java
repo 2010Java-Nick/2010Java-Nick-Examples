@@ -68,6 +68,7 @@ public class PlayerServiceImplTest {
 		assertTrue("false Player was added to collection", playerService.getPlayers().size() == 0);
 	}
 
+	@Test
 	public void getPlayerTest() {
 		playerService.setPlayers(players);
 		assertTrue("Player was not retrieved", playerService.getPlayer(username, password).equals(player));
