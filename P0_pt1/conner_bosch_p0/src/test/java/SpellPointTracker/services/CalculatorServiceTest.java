@@ -58,7 +58,7 @@ public class CalculatorServiceTest {
 		spells.add(spellOne);
         spells.add(spellTwo);
         
-        
+        calcService = new CalculatorService();
         calcService.setCurrentPlayer(player);
         calcService.setCastersSpells(spells);
 	}
