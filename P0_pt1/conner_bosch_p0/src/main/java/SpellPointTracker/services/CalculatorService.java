@@ -54,7 +54,7 @@ public class CalculatorService {
     /**
      * Resets currentPlayer's spell points to max based on level.
      */
-    public void rest(){
+    public void rest(int maxPoints){
 
     }
 }

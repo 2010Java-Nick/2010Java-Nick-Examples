@@ -60,6 +60,7 @@ public class ConsoleUI implements UserInterface {
         //      Send to controller.setCurrentPlayer
         //      if success call prompt action
         //      else recurse
+        return false;
     }
 
     /**
@@ -71,6 +72,7 @@ public class ConsoleUI implements UserInterface {
         //      Sent to controller.createNewPlayer
         //      if success call promptLogin
         //      else recurse
+        return false;
     }
 
     /**
@@ -80,6 +82,7 @@ public class ConsoleUI implements UserInterface {
     private boolean castSpell(){
         // TODO calls controller.getAvailableSpellNames and prints them
         // asks which spell to cast and sends it to controller.castSpell
+        return false;
     }
 
     /**

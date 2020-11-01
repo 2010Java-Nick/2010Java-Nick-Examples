@@ -11,7 +11,7 @@ public class SpellServiceImpl implements SpellService {
     private static Logger Log = Logger.getLogger("spellServiceLog");
 
     @Override
-    public Spell getSpell(int spellId) {
+    public Spell getSpell(String spellName) {
         // TODO Auto-generated method stub
         return null;
     }

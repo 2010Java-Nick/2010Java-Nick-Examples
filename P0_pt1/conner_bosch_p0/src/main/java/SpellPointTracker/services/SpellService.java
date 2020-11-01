@@ -6,7 +6,7 @@ import SpellPointTracker.pojos.Spell;
 
 public interface SpellService {
 
-    public Spell getSpell(int spellId);
+    public Spell getSpell(String spellName);
 
     public List<Spell> getSpells(int[] spellIds);
     

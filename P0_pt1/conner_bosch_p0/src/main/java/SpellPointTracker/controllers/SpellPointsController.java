@@ -31,16 +31,6 @@ public class SpellPointsController {
     }
 
     /**
-     * Askes the Calculator Service for a player with these params,
-     * Is not concerned about validation.
-     * @param username
-     * @param password
-     */
-    public Player getPlayer(String username, String password){
-        return null;
-    }
-
-    /**
      * Passes username and password for validation, takes the resulting
      * Player object and sets it as the current player.
      * @param username
@@ -72,7 +62,7 @@ public class SpellPointsController {
     /**
      * Get a list of available spells for currentPlayer's ability to cast
      */
-    private List<String> getAvailableSpellNames() {
+    public List<String> getAvailableSpellNames() {
         //TODO calls calcService.getAvailableSpells
         return null;
 
@@ -97,7 +87,8 @@ public class SpellPointsController {
      * Set's currentPlayer's points back to max
      */
     public void rest(){
-        //calls casterSer
-        //calls calcService.rest();
+        //calls calcService for currentPlayer
+        //calls casterService.getMaxPoints(casterID, level)
+        //calls calcService.rest(maxPoints);
     }    
 }
