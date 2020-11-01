@@ -3,6 +3,9 @@ package SpellPointTracker.controllers;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -28,6 +31,8 @@ public class SpellPointsControllerTest {
 	private PlayerService playerService;
 	@Mock
 	private SpellService spellService;
+	@Mock
+	private CalculatorService calcService;
 
 	private SpellPointsController control;
 	private String username;
@@ -37,7 +42,8 @@ public class SpellPointsControllerTest {
 	private Player player;
 	private Spell spellOne;
 	private Spell spellTwo;
-	private Spell[] spells;
+	private List<Spell> spells;
+	private List<String> spellNames;
 	private int[] spellIds;
 
 	@BeforeClass
@@ -53,19 +59,33 @@ public class SpellPointsControllerTest {
 
 		username = "daveTheGamer";
 		password = "password1!";
-		level = 0;
+		level = 2;
 		casterType = 0;
 		
 		spellOne = new Spell(0, "cantrip", 0, 0);
 		spellTwo = new Spell(1, "magic missle", 1, 4);
 		spellIds = new int[]{0, 1};
-		spells = new Spell[]{spellOne, spellTwo};
+		spellNames.add("cantrip");
+		spellNames.add("magic missle");
+		spells = new ArrayList<Spell>();
+		spells.add(spellOne);
+		spells.add(spellTwo);
 
 		player = new Player(1, username, password, 0, 0, 0);
 
 		when(playerService.getPlayer(username, password)).thenReturn(player);
+
+		when(calcService.getCurrentPlayer()).thenReturn(player);
+		when(calcService.setCurrentPlayer(player)).thenReturn(true);
+		when(calcService.castSpell(spellOne)).thenReturn(true);
+
+		when(casterService.getCastersSpells(player.getCasterType())).thenReturn(spellIds);
+		when(casterService.getMaxPoints(0, level)).thenReturn(20);
+
 		when(spellService.getSpells(spellIds)).thenReturn(spells);
-		control = new SpellPointsController(casterService, playerService, spellService);
+		when(spellService.getSpell("cantrip")).thenReturn(spellOne);
+
+		control = new SpellPointsController(casterService, playerService, spellService, calcService);
 	}
 
 	@After
@@ -75,8 +95,10 @@ public class SpellPointsControllerTest {
 	@Test
 	public void setCurrentPlayerTest() {
 		assertTrue("setCurrentPlayer returned False", control.setCurrentPlayer(username, password));
-		assertTrue("setCurrentPlayer did not change currentPlayer", (control.getCurrentPlayer().getUsername().equals(username)));
 		verify(playerService).getPlayer(username, password);
+		verify(calcService).setCurrentPlayer(player);
+		verify(casterService).getCastersSpells(player.getCasterType());
+		verify(spellService).getSpells(spellIds);
 	}
 
 	@Test
@@ -86,8 +108,23 @@ public class SpellPointsControllerTest {
 	}
 
 	@Test
-	public void getAvailableSpellsTest() {
-		assertTrue("Spells not returned properly", control.getAvailableSpells().equals(spells));
-		verify(spellService).getSpells(spellIds);
+	public void getAvailableSpellsNamesTest() {
+		assertTrue("Spells not returned properly", control.getAvailableSpellNames().equals(spellNames));
+		verify(calcService).getAvailableSpells();
+	}
+
+	@Test
+	public void castSpellTest() {
+		assertTrue("Spell was not properly cast", control.castSpell("cantrip"));
+		verify(spellService).getSpell("cantrip");
+		verify(calcService).castSpell(spellOne);
+	}
+
+	@Test
+	public void restTest(){
+		control.rest();
+		verify(calcService).getCurrentPlayer();
+		verify(casterService).getMaxPoints(0, level);
+		verify(calcService).rest(20);
 	}
 }
