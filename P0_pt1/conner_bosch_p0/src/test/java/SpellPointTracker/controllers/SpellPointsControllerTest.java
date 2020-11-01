@@ -59,6 +59,8 @@ public class SpellPointsControllerTest {
 		password = "password1!";
 		level = 2;
 		casterType = 0;
+		player = new Player(1, username, password, 0, 0, 0);
+
 		
 		spellOne = new Spell(0, "cantrip", 0, 0);
 		spellTwo = new Spell(1, "magic missle", 1, 4);
@@ -69,7 +71,6 @@ public class SpellPointsControllerTest {
 		spells.add(spellOne);
 		spells.add(spellTwo);
 
-		player = new Player(1, username, password, 0, 0, 0);
 
 		when(playerService.getPlayer(username, password)).thenReturn(player);
 
