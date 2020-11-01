@@ -72,7 +72,7 @@ public class Player {
         return casterType;
     }
 
-    public void setCasterType(int casterId) {
-        this.casterType = casterId;
+    public void setCasterType(int caster) {
+        this.casterType = caster;
     }    
 }

@@ -2,6 +2,9 @@ package SpellPointTracker.services;
 
 import SpellPointTracker.pojos.Caster;
 import SpellPointTracker.pojos.Spell;
+
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 public class CasterServiceImpl implements CasterService {
@@ -15,7 +18,7 @@ public class CasterServiceImpl implements CasterService {
     }
 
     @Override
-    public Spell[] getCastersSpells(int casterId) {
+    public int[] getCastersSpells(int casterId) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -1,11 +1,13 @@
 package SpellPointTracker.services;
 
+import java.util.List;
+
 import SpellPointTracker.pojos.Spell;
 
 public interface SpellService {
 
     public Spell getSpell(int spellId);
 
-    public Spell[] getSpells(int[] spellIds);
+    public List<Spell> getSpells(int[] spellIds);
     
 }

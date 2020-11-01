@@ -1,8 +1,11 @@
 package SpellPointTracker.controllers;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import SpellPointTracker.pojos.*;
+import SpellPointTracker.services.CalculatorService;
 import SpellPointTracker.services.CasterService;
 import SpellPointTracker.services.PlayerService;
 import SpellPointTracker.services.SpellService;
@@ -18,31 +21,40 @@ public class SpellPointsController {
     private CasterService casterService;
     private PlayerService playerService;
     private SpellService spellService;
-    private Player currentPlayer;
-    private Spell[] availableSpells;
+    private CalculatorService calcService;
 
-    public SpellPointsController(CasterService casterService, PlayerService playerService, SpellService spellService){
+    public SpellPointsController(CasterService casterService, PlayerService playerService, SpellService spellService, CalculatorService calcService){
         this.casterService = casterService;
         this.playerService = playerService;
         this.spellService = spellService;
-    }
-
-    public Player getCurrentPlayer() {
-        return currentPlayer;
+        this.calcService = calcService;
     }
 
     /**
-     * Askes the User Service for a player with these params,
+     * Askes the Calculator Service for a player with these params,
      * Is not concerned about validation.
      * @param username
      * @param password
      */
-    public boolean setCurrentPlayer(String username, String password) {
-        return false;
+    public Player getPlayer(String username, String password){
+        return null;
     }
 
-    public void setCurrentPlayer(Player player){
-        this.currentPlayer = player;
+    /**
+     * Passes username and password for validation, takes the resulting
+     * Player object and sets it as the current player.
+     * @param username
+     * @param password
+     * @return
+     */
+    public boolean setCurrentPlayer(String username, String password){
+        // Calls playerService.getPlayer, catches exception
+        // if success, calls calcService.setCurrentPlayer
+        // calls Caster service for caster's spell ids
+        // calls Spell service for Spell objects
+        // then calls calcService.setCastersSpells
+        // returns success or failure
+        return false;
     }
 
     /**
@@ -53,23 +65,16 @@ public class SpellPointsController {
      * @param casterType 0=Bard 1=Cleric 2=Druid 3=Paladin 4=Sorcerer 5=Warlock 6=Wizard
      */
     public boolean createNewPlayer(String username, String password, int level, int casterType){
+        // Calls playerService.createPlayer, ends on failure
         return false;
     }
 
     /**
-     * returns a list of Spell objects able to be casted.
-     * This is determined by the currentPlayer's casterType, currentLevel, and currentPoints
-     * @return Spell[] of spells available to cast.
+     * Get a list of available spells for currentPlayer's ability to cast
      */
-    public Spell[] getAvailableSpells() {
-        this.refreshAvailableSpells();
-        return availableSpells;
-    }
-
-    /**
-     * Executed by the controlled to verify current spell list is up to date
-     */
-    private void refreshAvailableSpells() {
+    private List<String> getAvailableSpellNames() {
+        //TODO calls calcService.getAvailableSpells
+        return null;
 
     }
 
@@ -82,6 +87,9 @@ public class SpellPointsController {
      * @return success?
      */
     public boolean castSpell(String spellName) {
+        // retreves spell from spellService
+        // passes to calcService to cast
+        // returns success or failure
         return false;
     }
 
@@ -89,6 +97,7 @@ public class SpellPointsController {
      * Set's currentPlayer's points back to max
      */
     public void rest(){
-        
+        //calls casterSer
+        //calls calcService.rest();
     }    
 }

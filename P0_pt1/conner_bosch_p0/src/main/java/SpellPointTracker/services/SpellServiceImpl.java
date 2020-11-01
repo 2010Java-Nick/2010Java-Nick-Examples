@@ -1,6 +1,9 @@
 package SpellPointTracker.services;
 
 import SpellPointTracker.pojos.Spell;
+
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 public class SpellServiceImpl implements SpellService {
@@ -14,7 +17,7 @@ public class SpellServiceImpl implements SpellService {
     }
 
     @Override
-    public Spell[] getSpells(int[] spellIds) {
+    public List<Spell> getSpells(int[] spellIds) {
         // TODO Auto-generated method stub
         return null;
     }
