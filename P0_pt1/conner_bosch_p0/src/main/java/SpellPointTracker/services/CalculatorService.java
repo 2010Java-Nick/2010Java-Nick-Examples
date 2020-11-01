@@ -27,7 +27,7 @@ public class CalculatorService {
      * This is determined by the currentPlayer's casterType, currentLevel, and currentPoints
      * @return List<String> of spells available to cast.
      */
-    public List<String> getAvailableSpells() {
+    public List<String> getCastersSpells() {
         return null;
     }
 

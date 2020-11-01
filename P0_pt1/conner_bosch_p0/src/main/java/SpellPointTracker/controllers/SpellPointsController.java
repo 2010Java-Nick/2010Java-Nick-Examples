@@ -63,7 +63,7 @@ public class SpellPointsController {
      * Get a list of available spells for currentPlayer's ability to cast
      */
     public List<String> getAvailableSpellNames() {
-        //TODO calls calcService.getAvailableSpells
+        //TODO calls calcService.getCastersSpells
         return null;
 
     }
