@@ -110,7 +110,7 @@ public class SpellPointsControllerTest {
 	@Test
 	public void getAvailableSpellsNamesTest() {
 		assertTrue("Spells not returned properly", control.getAvailableSpellNames().equals(spellNames));
-		verify(calcService).getAvailableSpells();
+		verify(calcService).getCastersSpells();
 	}
 
 	@Test
