@@ -1,7 +1,6 @@
 package SpellPointTracker.services;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +11,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 //import org.apache.log4j.Logger;
 
 import SpellPointTracker.pojos.*;
-import SpellPointTracker.services.CalculatorService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CalculatorServiceTest {
@@ -35,7 +32,6 @@ public class CalculatorServiceTest {
     private Spell falseSpell;
 	private List<Spell> spells;
 	private List<String> spellNames;
-	private int[] spellIds;
 
     @BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -55,7 +51,6 @@ public class CalculatorServiceTest {
 		spellOne = new Spell(0, "cantrip", 0, 0);
         spellTwo = new Spell(1, "magic missle", 1, 4);
         falseSpell = new Spell(2, "should not be found", 2, 4);
-		spellIds = new int[]{0, 1};
 		spellNames.add("cantrip");
 		spellNames.add("magic missle");
 		spells = new ArrayList<Spell>();
@@ -93,7 +88,7 @@ public class CalculatorServiceTest {
         int expected = 40;
         calcService.rest(expected);
         int postRest = calcService.getCurrentPlayer().getCurrentPoints();
-        
+
 		assertTrue("Rest not reset properly", expected == postRest);
 	}
 }
