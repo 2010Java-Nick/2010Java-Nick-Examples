@@ -15,7 +15,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 //import org.apache.log4j.Logger;
 
 import SpellPointTracker.pojos.Caster;
-import SpellPointTracker.pojos.Player;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -24,11 +23,7 @@ public class CasterServiceImplTest {
 	//private static Logger Log = Logger.getLogger("casterServiceLog");
 	
 	private CasterService casterService;
-	private String username;
-	private String password;
 	private int level;
-	private int casterType;
-	private Player player;
 	private Caster bard;
 	private Caster cleric;
 	private int[] maxPoints;
@@ -48,11 +43,7 @@ public class CasterServiceImplTest {
 	@Before
 	public void setUp() throws Exception {
 
-	username = "daveTheGamer";
-	password = "password1!";
 	level = 2;
-	casterType = 0;
-	player = new Player(1, username, password, 20, level, casterType);
 
 	maxPoints = new int[]{4, 12, 20};
 	spellIds = new int[]{0, 1};
