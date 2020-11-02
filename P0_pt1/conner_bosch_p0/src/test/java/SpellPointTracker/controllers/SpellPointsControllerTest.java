@@ -125,7 +125,7 @@ public class SpellPointsControllerTest {
 		control.rest();
 		verify(calcService).getCurrentPlayer();
 		verify(casterService).getMaxPoints(0, level);
-		verify(calcService).rest(20);
+		verify(calcService).rest(6);
 	}
 
 	@Test

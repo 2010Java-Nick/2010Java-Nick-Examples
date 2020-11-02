@@ -51,6 +51,7 @@ public class PlayerServiceImplTest {
 		noPlayers = new ArrayList<>();
 
 		playerService = new PlayerServiceImpl();
+		playerService.setPlayers(noPlayers);
 	}
 
 	@After
