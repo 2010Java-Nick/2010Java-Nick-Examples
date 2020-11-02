@@ -92,7 +92,7 @@ public class CalculatorServiceTest {
     
     @Test
 	public void getStatusTest() {
-        String expected = "Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20";
+        String expected = "Player 1: daveTheGamer Level 2 Bard -- Available Spell Points: 20";
 		assertTrue("Status|" + calcService.getStatus() + "|does not match expected:" + expected, calcService.getStatus().equals(expected));
     }
     

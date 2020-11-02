@@ -69,7 +69,7 @@ public class CalculatorService {
         String[] casterNames = new String[]{"Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"};
         int type = currentPlayer.getCasterType();
         return "Player " + currentPlayer.getId() + ": " + currentPlayer.getUsername() + 
-                " Level " + currentPlayer.getCurrentLevel() +" "+ casterNames[type] + "%n" + 
+                " Level " + currentPlayer.getCurrentLevel() +" "+ casterNames[type] + " -- " + 
                 "Available Spell Points: " + currentPlayer.getCurrentPoints();
     }
 

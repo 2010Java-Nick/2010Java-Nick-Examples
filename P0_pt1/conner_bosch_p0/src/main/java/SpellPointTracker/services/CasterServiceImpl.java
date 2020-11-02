@@ -1,7 +1,6 @@
 package SpellPointTracker.services;
 
 import SpellPointTracker.pojos.Caster;
-import SpellPointTracker.pojos.Spell;
 
 import java.util.ArrayList;
 import java.util.List;
