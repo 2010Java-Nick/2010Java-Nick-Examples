@@ -36,6 +36,7 @@ public class SpellPointsControllerTest {
 	private String username;
 	private String password;
 	private int level;
+	private int points;
 	private int casterType;
 	private Player player;
 	private String status;
@@ -60,6 +61,7 @@ public class SpellPointsControllerTest {
 		password = "password1!";
 		level = 2;
 		casterType = 0;
+		points = 6;
 		player = new Player(1, username, password, 0, level, casterType);
 		status = "Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20 ";
 
@@ -76,7 +78,7 @@ public class SpellPointsControllerTest {
 
 
 		when(playerService.getPlayer(username, password)).thenReturn(player);
-		when(playerService.createPlayer(username, password, level, casterType)).thenReturn(true);
+		when(playerService.createPlayer(username, password, points ,level, casterType)).thenReturn(true);
 
 		when(calcService.getCurrentPlayer()).thenReturn(player);
 		when(calcService.setCurrentPlayer(player)).thenReturn(true);
@@ -84,7 +86,7 @@ public class SpellPointsControllerTest {
 		when(calcService.getStatus()).thenReturn("Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20 ");
 
 		when(casterService.getCastersSpells(player.getCasterType())).thenReturn(spellIds);
-		when(casterService.getMaxPoints(0, level)).thenReturn(20);
+		when(casterService.getMaxPoints(0, level)).thenReturn(6);
 
 		when(spellService.getSpells(spellIds)).thenReturn(spells);
 		when(spellService.getSpell("cantrip")).thenReturn(spellOne);
@@ -108,7 +110,7 @@ public class SpellPointsControllerTest {
 	@Test
 	public void createNewPlayerTest() {
 		assertTrue("createNewPlayer returned False", control.createNewPlayer(username, password, level, casterType));
-		verify(playerService).createPlayer(username, password, level, casterType);
+		verify(playerService).createPlayer(username, password, points, level, casterType);
 	}
 
 	@Test
