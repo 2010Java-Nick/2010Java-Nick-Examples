@@ -29,14 +29,19 @@ public class CalculatorService {
      * @return List<String> of spells available to cast.
      */
     public List<String> getCastersSpells(int maxLevel) {
-        List<String> spells = new ArrayList<>();
-        int points = currentPlayer.getCurrentPoints();
-        for (Spell spell : castersSpells){
-            if (!(spell.getCost() > points) && !(spell.getLevel() > maxLevel)){
-                spells.add(spell.getName());
+        try {
+            List<String> spells = new ArrayList<>();
+            int points = currentPlayer.getCurrentPoints();
+            for (Spell spell : castersSpells){
+                if (!(spell.getCost() > points) && !(spell.getLevel() > maxLevel)){
+                    spells.add(spell.getName());
+                }
             }
+            return spells;
+        } catch (Exception e) {
+            Log.error("Exception in getCastersSpells: " + e);
+            return null;
         }
-        return spells;
     }
 
     public void setCastersSpells(List<Spell> spells){
@@ -58,6 +63,7 @@ public class CalculatorService {
             }
             return false;
         } catch (Exception e){
+            Log.error("Exception in castSpell: " + e);
             return false;
         }
     }
@@ -66,17 +72,26 @@ public class CalculatorService {
      * @return a string of information pertaining to the currentPlayer
      */
     public String getStatus(){
-        String[] casterNames = new String[]{"Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"};
-        int type = currentPlayer.getCasterType();
-        return "Player " + currentPlayer.getId() + ": " + currentPlayer.getUsername() + 
-                " Level " + currentPlayer.getCurrentLevel() +" "+ casterNames[type] + " -- " + 
-                "Available Spell Points: " + currentPlayer.getCurrentPoints();
+        try {
+            String[] casterNames = new String[]{"Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"};
+            int type = currentPlayer.getCasterType();
+            return "Player " + currentPlayer.getId() + ": " + currentPlayer.getUsername() + 
+                    " Level " + currentPlayer.getCurrentLevel() +" "+ casterNames[type] + " -- " + 
+                    "Available Spell Points: " + currentPlayer.getCurrentPoints();
+        } catch (Exception e) {
+            Log.error("Exception in getStatus: " + e);
+            return "";
+        }
     }
 
     /**
      * Resets currentPlayer's spell points to max based on level.
      */
     public void rest(int maxPoints){
-        currentPlayer.setCurrentPoints(maxPoints);
+        try {
+            currentPlayer.setCurrentPoints(maxPoints);
+        } catch (Exception e) {
+            Log.error("Exception in rest: " + e);
+        }
     }
 }
