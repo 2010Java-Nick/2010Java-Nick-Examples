@@ -66,7 +66,9 @@ public class SpellPointsController {
      * Get a list of available spells for currentPlayer's ability to cast
      */
     public List<String> getAvailableSpellNames() {
-        return calcService.getCastersSpells();
+        Player player = calcService.getCurrentPlayer();
+        int max = casterService.getMaxSpellLevel(player.getCasterType(), player.getCurrentLevel());
+        return calcService.getCastersSpells(max);
     }
 
     /**
