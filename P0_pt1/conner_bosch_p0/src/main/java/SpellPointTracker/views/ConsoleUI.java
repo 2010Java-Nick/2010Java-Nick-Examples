@@ -30,12 +30,14 @@ public class ConsoleUI implements UserInterface {
         // Starts user interface, prints welcome statment
         System.out.println("Welcome to the Spell Points Tracker");
         System.out.println("Would you like to Login? or Create an account?");
+        Log.info("Interface booted up");
 
         //Handles user input
         String input = "";
         try {
             input = console.readLine();
         } catch (IOException e){
+            Log.error("IOException thrown in startInterface: " + e);
             System.out.println("IOException thrown:" + e);
         }
 
@@ -61,6 +63,7 @@ public class ConsoleUI implements UserInterface {
      */
     @Override
     public void endInterface() {
+        Log.info("User Ended session, last user:" + control.getStatus());
         System.exit(0);
     }
 
@@ -79,6 +82,7 @@ public class ConsoleUI implements UserInterface {
         try {
             input = console.readLine();
         } catch (IOException e){
+            Log.error("IOException thrown in promptAction: " + e);
             System.out.println("IOException thrown:" + e);
         }
 
@@ -110,25 +114,33 @@ public class ConsoleUI implements UserInterface {
         System.out.println("Please enter a username and password...");
         System.out.println("Username: ");
 
+        //User input for username
         String username = "";
         try {
             username = console.readLine();
-        } catch (IOException e){
+        } 
+        catch (IOException e){
+            Log.error("IOException thrown in username read of promptLogin: " + e);
             System.out.println("IOException thrown:" + e);
         }
 
+        //User input for password
         System.out.println("Password: ");
         String password = "";
         try {
             password = console.readLine();
-        } catch (IOException e){
+        } 
+        catch (IOException e){
+            Log.error("IOException thrown in password read of promptLogin: " + e);
             System.out.println("IOException thrown:" + e);
         }
         if (!control.setCurrentPlayer(username, password)){
             System.out.println("Login error, please try again");
+            Log.warn("Error logging user with name" + username);
             return false;
         }
         else {
+            Log.info(username + " Logged in");
             return true;
         }
     }
@@ -142,45 +154,64 @@ public class ConsoleUI implements UserInterface {
         System.out.println("Please enter a username, password, your current level, and Caster type...");
         System.out.println("Username: ");
 
+        //User input for username
         String username = "";
         try {
             username = console.readLine();
-        } catch (IOException e){
+        } 
+        catch (IOException e){
+            Log.error("IOException thrown in username read of promptUserCreate: " + e);
             System.out.println("IOException thrown:" + e);
         }
 
+        //User input for password
         System.out.println("Password: ");
         String password = "";
         try {
             password = console.readLine();
-        } catch (IOException e){
+        } 
+        catch (IOException e){
+            Log.error("IOException thrown in password read of promptUserCreate: " + e);
             System.out.println("IOException thrown:" + e);
         }
 
+        //User input for level
         System.out.println("Level: ");
         int level = 0;
+
         try {
             level = Integer.parseInt(console.readLine());
-        } catch (IOException e){
+        } 
+        catch (IOException e){
+            Log.error("IOException thrown in level read of promptUserCreate: " + e);
             System.out.println("IOException thrown:" + e);
-        } catch (NumberFormatException e){
+        } 
+        catch (NumberFormatException e){
+            Log.error("NumberFormatException thrown in level read of promptUserCreate: " + e);
             System.out.println("Level input needs to be a number");
             return false;
         }
 
+        //User input for Caster Type
         System.out.println("Caster Type: (0=Bard 1=Cleric 2=Druid 3=Paladin 4=Sorcerer 5=Warlock 6=Wizard)");
         int casterType = 0;
+
         try {
             casterType = Integer.parseInt(console.readLine());
-        } catch (IOException e){
+        } 
+        catch (IOException e){
+            Log.error("IOException thrown in caster read of promptUserCreate: " + e);
             System.out.println("IOException thrown:" + e);
-        } catch (NumberFormatException e){
+        } 
+        catch (NumberFormatException e){
+            Log.error("NumberFormatException thrown in caster read of promptUserCreate: " + e);
             System.out.println("Caster input needs to be a number");
             return false;
         }
 
         if (!control.createNewPlayer(username, password, level, casterType)){
             System.out.println("Error in creating account, please try again");
+            Log.warn("Error in creating account with username:" + username);
             return false;
         }
         else {
@@ -204,7 +235,7 @@ public class ConsoleUI implements UserInterface {
             }
             else {
                 i = 0;
-                System.out.println(name + ", ");
+                System.out.printf(name + System.lineSeparator());
             }
         }
 
@@ -213,6 +244,7 @@ public class ConsoleUI implements UserInterface {
         try {
             spell = console.readLine();
         } catch (IOException e){
+            Log.error("IOException thrown in spell read of castSpell: " + e);
             System.out.println("IOException thrown:" + e);
         }
 
