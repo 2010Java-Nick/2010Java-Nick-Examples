@@ -17,6 +17,18 @@ public class PlayerServiceImpl implements PlayerService {
 
     List<Player> playerCollection = new ArrayList<Player>();
 
+    public PlayerServiceImpl(){
+        super();
+        int id = 0;
+        String username = "Conner";
+        String password = "Bosch";
+        int currentPoints = 14;
+        int currentLevel = 3;
+        int casterId = 0;
+        Player player = new Player(id, username, password, currentPoints, currentLevel, casterId);
+        playerCollection.add(player);
+    }
+
     public List<Player> getPlayers(){
         return this.playerCollection;
     }
