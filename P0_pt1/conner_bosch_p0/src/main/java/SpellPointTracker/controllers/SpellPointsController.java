@@ -76,9 +76,14 @@ public class SpellPointsController {
      * Get a list of available spells for currentPlayer's ability to cast
      */
     public List<String> getAvailableSpellNames() {
+        try {
         Player player = calcService.getCurrentPlayer();
         int max = casterService.getMaxSpellLevel(player.getCasterType(), player.getCurrentLevel());
         return calcService.getCastersSpells(max);
+        } catch (Exception e) {
+            Log.error("Error in getAvailableSpellNames: " + e);
+            return null;
+        }
     }
 
     /**
@@ -90,20 +95,35 @@ public class SpellPointsController {
      * @return success?
      */
     public boolean castSpell(String spellName) {
-        Spell spell = spellService.getSpell(spellName);
-        return calcService.castSpell(spell);
+        try {
+            Spell spell = spellService.getSpell(spellName);
+            return calcService.castSpell(spell);
+        } catch (Exception e) {
+            Log.error("Exception in castSpell: " + e);
+            return false;
+        }
     }
 
     /**
      * Set's currentPlayer's points back to max
      */
     public void rest(){
-        Player player = calcService.getCurrentPlayer();
-        int points = casterService.getMaxPoints(player.getCasterType(), player.getCurrentLevel());
-        calcService.rest(points);
+        try {
+            Player player = calcService.getCurrentPlayer();
+            int points = casterService.getMaxPoints(player.getCasterType(), player.getCurrentLevel());
+            calcService.rest(points);
+        } catch (Exception e){
+            Log.error("Exception in rest: " + e);
+        }
     }    
 
     public String getStatus(){
-        return calcService.getStatus();
+        try {
+            return calcService.getStatus();
+        }
+        catch (Exception e){
+            Log.error("Exception in getStatus: " + e);
+            return "";
+        }
     }
 }
