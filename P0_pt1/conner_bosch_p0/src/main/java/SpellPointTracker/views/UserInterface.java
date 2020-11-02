@@ -2,9 +2,9 @@ package SpellPointTracker.views;
 
 public interface UserInterface {
     
-    public void startInterface();
+    public boolean startInterface();
 
-    public void promptAction();
+    public boolean promptAction();
 
     public void endInterface();
 
