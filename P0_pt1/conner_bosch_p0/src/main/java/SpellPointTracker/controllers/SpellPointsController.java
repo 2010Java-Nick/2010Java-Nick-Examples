@@ -59,7 +59,14 @@ public class SpellPointsController {
      * @param casterType 0=Bard 1=Cleric 2=Druid 3=Paladin 4=Sorcerer 5=Warlock 6=Wizard
      */
     public boolean createNewPlayer(String username, String password, int level, int casterType){
-        return playerService.createPlayer(username, password, level, casterType);
+        try {
+            playerService.createPlayer(username, password, level, casterType);
+            this.setCurrentPlayer(username, password);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
     /**
