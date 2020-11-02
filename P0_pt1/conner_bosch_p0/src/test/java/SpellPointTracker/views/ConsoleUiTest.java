@@ -4,9 +4,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -25,11 +23,6 @@ import SpellPointTracker.controllers.SpellPointsController;
 public class ConsoleUiTest {
 
 	//private static Logger Log = Logger.getLogger("consoleUILog");
-	
-	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	private final PrintStream originalOut = System.out;
-	private final PrintStream originalErr = System.err;
 
 	@Mock
 	private SpellPointsController control;
@@ -39,7 +32,6 @@ public class ConsoleUiTest {
 
     @BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-
 	}
 
 	@AfterClass
@@ -48,8 +40,6 @@ public class ConsoleUiTest {
 
 	@Before
 	public void setUp() throws Exception {
-		System.setOut(new PrintStream(outContent));
-		System.setErr(new PrintStream(errContent));
 		when(input.ready()).thenReturn(true);
 		when(input.markSupported()).thenReturn(true);
 		userInterface = Mockito.spy(new ConsoleUI(control, input));
@@ -57,8 +47,6 @@ public class ConsoleUiTest {
 
 	@After
 	public void tearDown() throws Exception {
-		System.setOut(originalOut);
-		System.setErr(originalErr);
 	}
 
 	@Test
