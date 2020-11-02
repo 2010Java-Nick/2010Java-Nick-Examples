@@ -1,5 +1,9 @@
 package SpellPointTracker.pojos;
 
+/**
+ * An object representing the playable casting classes available in
+ * Dungeons and Dragons 5th edition
+ */
 public class Caster {
     private int id;
     private String name;

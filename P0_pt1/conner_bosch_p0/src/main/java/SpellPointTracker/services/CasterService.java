@@ -6,6 +6,7 @@ import SpellPointTracker.pojos.Caster;
 
 /**
  * Handles passing Caster objects between storage and the controller
+ * and related methods
  */
 public interface CasterService {
     

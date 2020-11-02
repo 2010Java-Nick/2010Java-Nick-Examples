@@ -1,5 +1,8 @@
 package SpellPointTracker.pojos;
 
+/**
+ * An object representing a spell from Dungeons and Dragons 5th edition
+ */
 public class Spell {
     private int id;
     private String name;

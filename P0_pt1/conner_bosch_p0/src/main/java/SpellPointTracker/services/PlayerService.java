@@ -4,6 +4,10 @@ import java.util.List;
 
 import SpellPointTracker.pojos.Player;
 
+/**
+ * Handles passing Player objects between storage and the controller
+ * and related methods
+ */
 public interface PlayerService {
 
     public List<Player> getPlayers();

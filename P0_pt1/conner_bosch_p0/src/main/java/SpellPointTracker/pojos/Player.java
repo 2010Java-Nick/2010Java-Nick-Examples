@@ -1,5 +1,8 @@
 package SpellPointTracker.pojos;
 
+/**
+ * An object representing the user and their current class and level
+ */
 public class Player {
     private int id;
     private String username;

@@ -7,6 +7,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+/**
+ * A class that holds the different spells as well as the information for retrieval.
+ */
 public class SpellServiceImpl implements SpellService {
 
     private static Logger Log = Logger.getLogger("spellServiceLog");
@@ -39,6 +42,11 @@ public class SpellServiceImpl implements SpellService {
         this.spellCollection = spells;
     }
 
+    /**
+     * Looks for a spell with a matching spell name and returns it
+     * @param spellName to be retrieved
+     * @return spell object
+     */
     @Override
     public Spell getSpell(String spellName) {
         for (Spell s : spellCollection){
@@ -50,6 +58,12 @@ public class SpellServiceImpl implements SpellService {
         return null;
     }
 
+    /**
+     * Looks for spells whos id matches the inputed ids and
+     * returns a list of those spells
+     * @param spellIds to retrieve
+     * @return spells that match
+     */
     @Override
     public List<Spell> getSpells(int[] spellIds) {
         try {

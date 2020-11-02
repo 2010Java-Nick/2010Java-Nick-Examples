@@ -8,6 +8,10 @@ import org.apache.log4j.Logger;
 
 import SpellPointTracker.controllers.SpellPointsController;
 
+/**
+ * Runs console commands and retrieves user input for the program
+ * All logic passes to a SpellPointsController for evaluation.
+ */
 public class ConsoleUI implements UserInterface {
 
     private SpellPointsController control;
@@ -220,8 +224,9 @@ public class ConsoleUI implements UserInterface {
     }
 
     /**
-     * 
-     * @return
+     * Lists spells player can currently cast, asks for input on
+     * which spell user wants to cast and attempts to cast it.
+     * @return True on success
      */
     public boolean castSpell(){
         // Calls controller.getAvailableSpellNames and prints them
@@ -256,12 +261,17 @@ public class ConsoleUI implements UserInterface {
     }
 
     /**
-     * 
-     * @return
+     * Tells the controller to rest and reset the current spell points to max
+     * @return True on success
      */
     public boolean rest(){
-        System.out.println("Resting...");
-        control.rest();
-        return true;
+        try {
+            System.out.println("Resting...");
+            control.rest();
+            return true;
+        }catch (Exception e) {
+            Log.error("Exception while resting: " + e);
+            return false;
+        }
     }
 }

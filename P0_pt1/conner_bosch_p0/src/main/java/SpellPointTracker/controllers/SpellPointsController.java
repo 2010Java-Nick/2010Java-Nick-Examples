@@ -32,10 +32,11 @@ public class SpellPointsController {
 
     /**
      * Passes username and password for validation, takes the resulting
-     * Player object and sets it as the current player.
+     * Player object and sets it as the current player. Also initializes
+     * player's available spells.
      * @param username
      * @param password
-     * @return
+     * @return True on success
      */
     public boolean setCurrentPlayer(String username, String password){
         Player player = playerService.getPlayer(username, password);
@@ -53,7 +54,8 @@ public class SpellPointsController {
     }
 
     /**
-     * Passes params to the Player Service for creation and storing.
+     * Passes params to the Player Service for creation and storing. 
+     * Then sets that player as the current player.
      * @param username
      * @param password
      * @param level
@@ -87,12 +89,10 @@ public class SpellPointsController {
     }
 
     /**
-     * Checks if currentPlayer has enough points to cast inputed spell
-     * and if currentLevel is high enough for the spell
-     * If those are met, decrements points and returns true
-     * else returns false 
+     * Gets spell object matching spellName from spellService
+     * passes that object to calcService to be cast
      * @param spellToCast
-     * @return success?
+     * @return True on success
      */
     public boolean castSpell(String spellName) {
         try {
@@ -117,6 +117,10 @@ public class SpellPointsController {
         }
     }    
 
+    /**
+     * Gets the string representation of the current player's status
+     * @return String of composed status
+     */
     public String getStatus(){
         try {
             return calcService.getStatus();

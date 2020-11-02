@@ -7,6 +7,10 @@ import org.apache.log4j.Logger;
 
 import SpellPointTracker.pojos.*;
 
+/**
+ * A service that handles calculations requiring more than one object type
+ * Holds the currentPlayer as well as a list of spells that player is able to be cast.
+ */
 public class CalculatorService {
 
     private static Logger Log = Logger.getLogger("calculatorServiceLog");
@@ -24,7 +28,7 @@ public class CalculatorService {
     }
 
     /**
-     * returns a list of strings containing the name of the spell objects able to be casted.
+     * returns a list of strings containing the name of the spell objects currently able to be casted.
      * This is determined by the currentPlayer's casterType, currentLevel, and currentPoints
      * @return List<String> of spells available to cast.
      */
@@ -51,7 +55,7 @@ public class CalculatorService {
     /**
      * Deducts the appropriate amount of points from the currentPlayer
      * @param spell the spell to be cast
-     * @return
+     * @return True on success
      */
     public boolean castSpell(Spell spell){
         try {
@@ -70,6 +74,7 @@ public class CalculatorService {
     
     /**
      * @return a string of information pertaining to the currentPlayer
+     * Formated like: Player 1: daveTheGamer Level 2 Bard -- Available Spell Points: 20
      */
     public String getStatus(){
         try {

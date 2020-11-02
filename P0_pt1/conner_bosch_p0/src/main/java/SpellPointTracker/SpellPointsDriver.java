@@ -7,6 +7,9 @@ import SpellPointTracker.controllers.SpellPointsController;
 import SpellPointTracker.services.*;
 import SpellPointTracker.views.ConsoleUI;
 
+/**
+ * Main driving class of the program. Loops user until ended.
+ */
 public class SpellPointsDriver {
 
     static BufferedReader console = new BufferedReader(new InputStreamReader(System.in));

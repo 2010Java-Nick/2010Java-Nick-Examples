@@ -7,6 +7,10 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+/**
+ * A class that holds the different types of casters as well as the information
+ * about those casters spell casting ability. Methods are those pertaining to the casters.
+ */
 public class CasterServiceImpl implements CasterService {
 
     private static Logger Log = Logger.getLogger("casterServiceLog");
@@ -45,6 +49,10 @@ public class CasterServiceImpl implements CasterService {
         }
     }
 
+    /**
+     * Gets an array of ints representing the spellId's of the inputed caster
+     * @return int[] spellIds
+     */
     @Override
     public int[] getCastersSpells(int casterId) {
         try {
@@ -55,6 +63,12 @@ public class CasterServiceImpl implements CasterService {
         }
     }
 
+    /**
+     * Determines the max spell points of a given caster at a given level
+     * @param casterID
+     * @param level
+     * @return int maxPoints
+     */
     @Override
     public int getMaxPoints(int casterId, int level) {
         switch (casterId){
@@ -70,6 +84,12 @@ public class CasterServiceImpl implements CasterService {
         }
     }
 
+    /**
+     * Gets the max spell level able to be cast by a certain caster at a certain level
+     * @param casterId caster type
+     * @param level level of caster
+     * @return int of max spell level
+     */
     @Override
     public int getMaxSpellLevel(int casterId, int level) {
         switch (casterId){
