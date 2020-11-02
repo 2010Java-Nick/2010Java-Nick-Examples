@@ -38,6 +38,7 @@ public class SpellPointsControllerTest {
 	private int level;
 	private int casterType;
 	private Player player;
+	private String status;
 	private Spell spellOne;
 	private Spell spellTwo;
 	private List<Spell> spells;
@@ -59,12 +60,14 @@ public class SpellPointsControllerTest {
 		password = "password1!";
 		level = 2;
 		casterType = 0;
-		player = new Player(1, username, password, 0, 0, 0);
+		player = new Player(1, username, password, 0, level, casterType);
+		status = "Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20 ";
 
 		
 		spellOne = new Spell(0, "cantrip", 0, 0);
 		spellTwo = new Spell(1, "magic missle", 1, 4);
 		spellIds = new int[]{0, 1};
+		spellNames = new ArrayList<>();
 		spellNames.add("cantrip");
 		spellNames.add("magic missle");
 		spells = new ArrayList<Spell>();
@@ -73,10 +76,12 @@ public class SpellPointsControllerTest {
 
 
 		when(playerService.getPlayer(username, password)).thenReturn(player);
+		when(playerService.createPlayer(username, password, level, casterType)).thenReturn(true);
 
 		when(calcService.getCurrentPlayer()).thenReturn(player);
 		when(calcService.setCurrentPlayer(player)).thenReturn(true);
 		when(calcService.castSpell(spellOne)).thenReturn(true);
+		when(calcService.getStatus()).thenReturn("Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20 ");
 
 		when(casterService.getCastersSpells(player.getCasterType())).thenReturn(spellIds);
 		when(casterService.getMaxPoints(0, level)).thenReturn(20);
@@ -107,12 +112,6 @@ public class SpellPointsControllerTest {
 	}
 
 	@Test
-	public void getAvailableSpellsNamesTest() {
-		assertTrue("Spells not returned properly", control.getAvailableSpellNames().equals(spellNames));
-		verify(calcService).getCastersSpells();
-	}
-
-	@Test
 	public void castSpellTest() {
 		assertTrue("Spell was not properly cast", control.castSpell("cantrip"));
 		verify(spellService).getSpell("cantrip");
@@ -125,5 +124,12 @@ public class SpellPointsControllerTest {
 		verify(calcService).getCurrentPlayer();
 		verify(casterService).getMaxPoints(0, level);
 		verify(calcService).rest(20);
+	}
+
+	@Test
+	public void getStatusTest(){
+		String testStatus = control.getStatus();
+		assertTrue("Status returned does not match expected", status.equals(testStatus));
+		verify(calcService).getStatus();
 	}
 }
