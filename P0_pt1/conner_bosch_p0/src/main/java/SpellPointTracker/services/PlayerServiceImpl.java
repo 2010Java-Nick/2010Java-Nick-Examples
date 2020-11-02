@@ -19,14 +19,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     public PlayerServiceImpl(){
         super();
-        int id = 0;
-        String username = "Conner";
-        String password = "Bosch";
-        int currentPoints = 14;
-        int currentLevel = 3;
-        int casterId = 0;
-        Player player = new Player(id, username, password, currentPoints, currentLevel, casterId);
-        playerCollection.add(player);
+        this.initData();
     }
 
     public List<Player> getPlayers(){
@@ -74,4 +67,19 @@ public class PlayerServiceImpl implements PlayerService {
         Log.info("User " + username + "was not found/logged in.");
         return null;
     }    
+
+    /**
+     * Initializes hard coded data for use
+     * Written at bottom for code cleanliness
+     */
+    private void initData(){
+        int id = 0;
+        String username = "Conner";
+        String password = "Bosch";
+        int currentPoints = 14;
+        int currentLevel = 3;
+        int casterId = 0;
+        Player player = new Player(id, username, password, currentPoints, currentLevel, casterId);
+        playerCollection.add(player);
+    } 
 }

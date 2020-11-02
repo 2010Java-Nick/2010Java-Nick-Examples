@@ -18,20 +18,7 @@ public class SpellServiceImpl implements SpellService {
 
     public SpellServiceImpl(){
         super();
-        this.spellCollection = new ArrayList<Spell>();
-        
-        Spell cureWounds = new Spell(0, "Cure Wounds", 1, 2);
-        Spell suggestion = new Spell(1, "Suggestion", 2, 3);
-        Spell truePolymorph = new Spell(2, "True Polymorph", 9, 13);
-        Spell bless = new Spell(3, "Bless", 1, 2);
-        Spell animateDead = new Spell(4, "Animate Dead", 3, 5);
-        Spell trueResurrection = new Spell(5, "True Resurrection", 9, 13);
-        spellCollection.add(cureWounds);
-        spellCollection.add(suggestion);
-        spellCollection.add(truePolymorph);
-        spellCollection.add(bless);
-        spellCollection.add(animateDead);
-        spellCollection.add(trueResurrection);
+        this.initData();
     }
 
     public List<Spell> getAllSpells(){
@@ -82,5 +69,24 @@ public class SpellServiceImpl implements SpellService {
             return null;
         }
     }
-    
+
+    /**
+     * Initializes hard coded data for use
+     */
+    private void initData(){
+        this.spellCollection = new ArrayList<Spell>();
+        
+        Spell cureWounds = new Spell(0, "Cure Wounds", 1, 2);
+        Spell suggestion = new Spell(1, "Suggestion", 2, 3);
+        Spell truePolymorph = new Spell(2, "True Polymorph", 9, 13);
+        Spell bless = new Spell(3, "Bless", 1, 2);
+        Spell animateDead = new Spell(4, "Animate Dead", 3, 5);
+        Spell trueResurrection = new Spell(5, "True Resurrection", 9, 13);
+        spellCollection.add(cureWounds);
+        spellCollection.add(suggestion);
+        spellCollection.add(truePolymorph);
+        spellCollection.add(bless);
+        spellCollection.add(animateDead);
+        spellCollection.add(trueResurrection);
+    } 
 }

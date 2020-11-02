@@ -21,12 +21,7 @@ public class CasterServiceImpl implements CasterService {
 
     public CasterServiceImpl(){
         super();
-        this.levelToPoints = new int[] {0, 4, 6, 14, 17, 27, 32, 38, 44, 57, 64, 73, 73, 73, 83, 83, 94, 94, 10, 114, 123, 133};
-        this.levelToSpell = new int[] {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 9, 9};
-        Caster bard = new Caster(0, "Bard", new int[]{0, 1});
-        Caster cleric = new Caster(1, "Cleric", new int[]{0, 1});
-        this.casterCollection.add(bard);
-        this.casterCollection.add(cleric);
+        this.initData();
     }
 
     public List<Caster> getAllCasters(){
@@ -104,5 +99,16 @@ public class CasterServiceImpl implements CasterService {
                 return 0;
         }
     }
-    
+
+    /**
+     * Initializes hard coded data for use
+     */
+    private void initData(){
+        this.levelToPoints = new int[] {0, 4, 6, 14, 17, 27, 32, 38, 44, 57, 64, 73, 73, 73, 83, 83, 94, 94, 10, 114, 123, 133};
+        this.levelToSpell = new int[] {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 9, 9};
+        Caster bard = new Caster(0, "Bard", new int[]{0, 1});
+        Caster cleric = new Caster(1, "Cleric", new int[]{0, 1});
+        this.casterCollection.add(bard);
+        this.casterCollection.add(cleric);
+    } 
 }
