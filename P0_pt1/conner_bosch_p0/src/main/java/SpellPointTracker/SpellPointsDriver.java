@@ -31,6 +31,5 @@ public class SpellPointsDriver {
         while(!pass){
             pass = program.promptAction();
         }
-    }
-    
+    }    
 }
