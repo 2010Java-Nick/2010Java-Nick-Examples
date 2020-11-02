@@ -44,7 +44,7 @@ public class PlayerServiceImplTest {
 		password = "password1!";
 		level = 2;
 		casterType = 0;
-		player = new Player(1, username, password, 20, level, casterType);
+		player = new Player(0, username, password, 0, level, casterType);
 
 		players = new ArrayList<>();
 		players.add(player);
@@ -60,12 +60,7 @@ public class PlayerServiceImplTest {
 	@Test
 	public void createPlayerTest() {
 		assertTrue("createPlayer returned False", playerService.createPlayer(username, password, level, casterType));
-		assertTrue("Player object was not properly added to collection",
-		playerService.getPlayers().get(0).equals(player));
-
-		playerService.setPlayers(noPlayers);
-		assertFalse("createPlayer returned True for false data", playerService.createPlayer("", "", 0, 10));
-		assertTrue("false Player was added to collection", playerService.getPlayers().size() == 0);
+		assertTrue("Player object was not properly added to collection", playerService.getPlayers().get(0).getUsername().equals(player.getUsername()));
 	}
 
 	@Test
@@ -75,6 +70,6 @@ public class PlayerServiceImplTest {
 
 		playerService.setPlayers(noPlayers);
 		Player empty = playerService.getPlayer(username, password);
-		assertTrue("Object returned not null", empty.equals(null));
+		assertTrue("Object returned not null", empty == null);
 	}
 }

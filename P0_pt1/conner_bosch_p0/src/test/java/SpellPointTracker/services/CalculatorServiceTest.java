@@ -29,7 +29,8 @@ public class CalculatorServiceTest {
 	private Player player;
 	private Spell spellOne;
     private Spell spellTwo;
-    private Spell falseSpell;
+    private Spell falseSpell1;
+    private Spell falseSpell2;
 	private List<Spell> spells;
 	private List<String> spellNames;
 
@@ -51,7 +52,9 @@ public class CalculatorServiceTest {
 		
 		spellOne = new Spell(0, "cantrip", 0, 0);
         spellTwo = new Spell(1, "magic missle", 1, 4);
-        falseSpell = new Spell(2, "should not be found", 2, 4);
+		falseSpell1 = new Spell(2, "should not be found", 3, 4);
+		falseSpell2 = new Spell(2, "should not be found", 1, 22);
+		spellNames = new ArrayList<>();
 		spellNames.add("cantrip");
 		spellNames.add("magic missle");
 		spells = new ArrayList<Spell>();
@@ -66,20 +69,30 @@ public class CalculatorServiceTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-    
+	@Test
+	public void getCasterSpellsTest(){
+		spells.add(falseSpell1);
+		spells.add(falseSpell2);
+		calcService.setCastersSpells(spells);
+		List<String> newSpells = calcService.getCastersSpells(1);
+		
+		assertTrue("Incorrect number of spells returned", newSpells.size() == 2);
+		assertTrue("First spell doesn't match", newSpells.get(0).equals(spellOne.getName()));
+		assertTrue("Second spell doesn't match", newSpells.get(1).equals(spellTwo.getName()));
+	}
     @Test
 	public void castSpellTest() {
         assertTrue("Spell one wasn't cast", calcService.castSpell(spellOne));
         assertTrue("Spell one's points weren't properly deducted", calcService.getCurrentPlayer().getCurrentPoints() == player.getCurrentPoints());
         assertTrue("Spell two wasn't cast", calcService.castSpell(spellTwo));
-        assertTrue("Spell two's points weren't properly deducted", calcService.getCurrentPlayer().getCurrentPoints() == player.getCurrentPoints()-4);
-        assertFalse("False spell did not fail", calcService.castSpell(falseSpell));
+        assertTrue("Spell two's points weren't properly deducted", calcService.getCurrentPlayer().getCurrentPoints() == 16);
+        assertFalse("False spell did not fail", calcService.castSpell(falseSpell2));
 
 	}
     
     @Test
 	public void getStatusTest() {
-        String expected = "Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20 ";
+        String expected = "Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20";
 		assertTrue("Status|" + calcService.getStatus() + "|does not match expected:" + expected, calcService.getStatus().equals(expected));
     }
     

@@ -44,6 +44,7 @@ public class SpellServiceImplTest {
 		spellTwo = new Spell(1, "magic missle", 1, 4);
 		spellThree = new Spell(2, "fireball", 3, 12);
 		spellIds = new int[]{0, 1};
+		spellNames = new ArrayList<>();
 		spellNames.add("cantrip");
 		spellNames.add("magic missle");
 		spells = new ArrayList<Spell>();
@@ -67,7 +68,7 @@ public class SpellServiceImplTest {
 		assertTrue("Retrieved spell does not match expected", s1.equals(spellOne));
 
 		spellService.setAllSpells(noSpells);
-		assertTrue("Retrieve spell even though no spells stored", spellService.getSpell(spellOne.getName()).equals(null));
+		assertTrue("Retrieve spell even though no spells stored", spellService.getSpell(spellOne.getName()) == null);
 	}
 
 	@Test
