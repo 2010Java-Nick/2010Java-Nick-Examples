@@ -31,6 +31,7 @@ public class PlayerServiceImpl implements PlayerService {
             playerCollection.add(player);
             return true;
         } catch (Exception e) {
+            Log.error("Error in createPlayer. Username: " + username + "Exception: " + e);
             return false;
         }
     }
@@ -45,6 +46,7 @@ public class PlayerServiceImpl implements PlayerService {
                 return player;
             }
         }
+        Log.info("User " + username + "was not found/logged in.");
         return null;
     }    
 }

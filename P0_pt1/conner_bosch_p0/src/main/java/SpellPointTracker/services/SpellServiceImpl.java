@@ -32,9 +32,7 @@ public class SpellServiceImpl implements SpellService {
     }
 
     public List<Spell> getAllSpells(){
-
         return this.spellCollection;
-
     }
 
     public void setAllSpells(List<Spell> spells){
@@ -48,21 +46,27 @@ public class SpellServiceImpl implements SpellService {
                 return s;
             }
         }
+        Log.info("Spell " + spellName + "was not found.");
         return null;
     }
 
     @Override
     public List<Spell> getSpells(int[] spellIds) {
-        List<Spell> returnSpells = new ArrayList<>();
-        for (int id : spellIds){
-            for (Spell s : spellCollection){
-                if (s.getId() == id) {
-                    returnSpells.add(s);
-                    break;
+        try {
+            List<Spell> returnSpells = new ArrayList<>();
+            for (int id : spellIds){
+                for (Spell s : spellCollection){
+                    if (s.getId() == id) {
+                        returnSpells.add(s);
+                        break;
+                    }
                 }
             }
+            return returnSpells;
+        } catch (Exception e) {
+            Log.error("Exception thrown in getSpells. Exception: " + e);
+            return null;
         }
-        return returnSpells;
     }
     
 }

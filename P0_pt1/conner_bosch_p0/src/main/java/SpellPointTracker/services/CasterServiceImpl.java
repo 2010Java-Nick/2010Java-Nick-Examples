@@ -40,6 +40,7 @@ public class CasterServiceImpl implements CasterService {
         try {
             return casterCollection.get(casterId);
         } catch (IndexOutOfBoundsException e) {
+            Log.error("IndexOutOfBoundException in getCaster. Caster ID:" + casterId + "Exception: " + e);
             return null;
         }
     }
@@ -49,6 +50,7 @@ public class CasterServiceImpl implements CasterService {
         try {
             return casterCollection.get(casterId).getSpellIds();
         } catch (IndexOutOfBoundsException e) {
+            Log.error("IndexOutOfBoundException in getCastersSpells. Caster ID:" + casterId + "Exception: " + e);
             return null;
         }
     }
@@ -63,6 +65,7 @@ public class CasterServiceImpl implements CasterService {
                 return levelToPoints[level/2];
 
             default:
+                Log.error("Error in getMaxPoints. CasterID:" + casterId + "Level: " + level);
                 return 0;
         }
     }
@@ -77,6 +80,7 @@ public class CasterServiceImpl implements CasterService {
                 return levelToSpell[level/2];
 
             default:
+                Log.error("Error in getMaxSpellLevel. CasterID:" + casterId + "Level: " + level);
                 return 0;
         }
     }
