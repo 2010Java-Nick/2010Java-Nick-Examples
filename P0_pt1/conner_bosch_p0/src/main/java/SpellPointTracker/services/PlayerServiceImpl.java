@@ -64,7 +64,7 @@ public class PlayerServiceImpl implements PlayerService {
                 return player;
             }
         }
-        Log.info("User " + username + "was not found/logged in.");
+        Log.info("User " + username + " was not found/logged in.");
         return null;
     }    
 

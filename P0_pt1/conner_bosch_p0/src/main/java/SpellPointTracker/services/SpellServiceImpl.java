@@ -41,7 +41,7 @@ public class SpellServiceImpl implements SpellService {
                 return s;
             }
         }
-        Log.info("Spell " + spellName + "was not found.");
+        Log.info("Spell " + spellName + " was not found.");
         return null;
     }
 

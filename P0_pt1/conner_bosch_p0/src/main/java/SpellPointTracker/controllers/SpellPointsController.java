@@ -68,7 +68,7 @@ public class SpellPointsController {
             this.setCurrentPlayer(username, password);
             return true;
         } catch (Exception e) {
-            Log.error("Exception thrown in createNewPlayer" + e);
+            Log.error("Exception thrown in createNewPlayer " + e);
             return false;
         }
 
