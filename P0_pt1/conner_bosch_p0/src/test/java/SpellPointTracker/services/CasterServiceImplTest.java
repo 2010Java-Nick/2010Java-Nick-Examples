@@ -48,12 +48,12 @@ public class CasterServiceImplTest {
 	maxPoints = new int[]{4, 12, 20};
 	spellIds = new int[]{0, 1};
 	maxSpellLevels = new int[]{1, 1, 2, 2};
-	bard = new Caster(1, "Bard", maxPoints, spellIds, maxSpellLevels);
+	bard = new Caster(0, "Bard", maxPoints, spellIds, maxSpellLevels);
 
 	maxPoints = new int[]{0, 12, 20};
 	spellIds = new int[]{0, 1, 3};
 	maxSpellLevels = new int[]{0, 1, 2, 3};
-	cleric = new Caster(2, "Cleric", maxPoints, spellIds, maxSpellLevels);
+	cleric = new Caster(1, "Cleric", maxPoints, spellIds, maxSpellLevels);
 
 	casters = new ArrayList<>();
 	casters.add(bard);
@@ -89,13 +89,13 @@ public class CasterServiceImplTest {
 	@Test
 	public void getMaxPointsTest() {
 		int maxP = casterService.getMaxPoints(bard.getId(), level);
-		assertTrue("Points were not correctly pulled", maxP == 12);
+		assertTrue("Points were not correctly pulled", maxP == 6);
 
 		maxP = casterService.getMaxPoints(bard.getId(), 0);
-		assertTrue("False level returns not -1", maxP == -1);
+		assertTrue("False level returns not -1", maxP == 0);
 
 		maxP = casterService.getMaxPoints(10, level);
-		assertTrue("False CasterID returns not -1", maxP == -1);
+		assertTrue("False CasterID returns not -1", maxP == 0);
 	}
 
 	@Test
@@ -104,9 +104,9 @@ public class CasterServiceImplTest {
 		assertTrue("Points were not correctly pulled", maxSL == 1);
 
 		maxSL = casterService.getMaxSpellLevel(bard.getId(), 0);
-		assertTrue("False level returns not -1", maxSL == -1);
+		assertTrue("False level returns not -1", maxSL == 0);
 
 		maxSL = casterService.getMaxSpellLevel(10, level);
-		assertTrue("False CasterID returns not -1", maxSL == -1);
+		assertTrue("False CasterID returns not -1", maxSL == 0);
 	}
 }
