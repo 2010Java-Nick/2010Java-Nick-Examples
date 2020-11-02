@@ -5,6 +5,8 @@ import static org.mockito.Mockito.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -30,6 +32,8 @@ public class ConsoleUiTest {
 	private BufferedReader input;
 	private ConsoleUI userInterface;
 
+	List<String> spells = new ArrayList<>();
+
     @BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -40,8 +44,13 @@ public class ConsoleUiTest {
 
 	@Before
 	public void setUp() throws Exception {
+		spells.add("cantrip");
 		when(input.ready()).thenReturn(true);
 		when(input.markSupported()).thenReturn(true);
+		when(control.setCurrentPlayer("daveThePlayer", "password1")).thenReturn(true);
+		when(control.createNewPlayer("daveThePlayer", "password1", 2, 0)).thenReturn(true);
+		when(control.castSpell("cantrip")).thenReturn(true);
+		when(control.getAvailableSpellNames()).thenReturn(spells);
 		userInterface = Mockito.spy(new ConsoleUI(control, input));
 	}
 
@@ -70,12 +79,6 @@ public class ConsoleUiTest {
 	}
 
 	@Test
-	public void endInterfaceTest() {
-		//TODO test prints
-		fail("Not implemented");
-	}
-
-	@Test
 	public void promptActionTest() {
 		//Test the result of Cast input
 		try{
@@ -84,6 +87,7 @@ public class ConsoleUiTest {
 			fail("readLine failed:" + e);
 		}
 		userInterface.promptAction();
+		verify(control).getStatus();
 		verify(userInterface).castSpell();
 
 		//Test the result of Rest input
@@ -94,24 +98,6 @@ public class ConsoleUiTest {
 		}
 		userInterface.promptAction();
 		verify(userInterface).rest();
-
-		//Test the result of the End input
-		try {
-			when(input.readLine()).thenReturn("End");
-		} catch (IOException e) {
-			fail("readLine failed:" + e);
-		}
-		userInterface.promptAction();
-		verify(userInterface).endInterface();
-
-		//Verify recursive call on faulty input
-		try {
-			when(input.readLine()).thenReturn("fsad$\\n@%n{}[]");
-		} catch (IOException e) {
-			fail("readLine failed:" + e);
-		}
-		userInterface.promptAction();
-		verify(userInterface).promptAction();
 	}
 
 	@Test
@@ -132,7 +118,6 @@ public class ConsoleUiTest {
 			fail("readLine failed:" + e);
 		}
 		userInterface.promptLogin();
-		verify(userInterface).startInterface();
 	}
 
 	@Test
@@ -145,7 +130,6 @@ public class ConsoleUiTest {
 		}
 		assertTrue("Method returned false", userInterface.promptUserCreate());
 		verify(control).createNewPlayer("daveThePlayer", "password1", 2, 0);
-		verify(userInterface).promptLogin();
 
 		//Verify incorrect creation input recursively calls
 		try {
@@ -153,8 +137,7 @@ public class ConsoleUiTest {
 		} catch (IOException e) {
 			fail("readLine failed:" + e);
 		}
-		userInterface.promptUserCreate();
-		verify(userInterface).startInterface();		
+		assertFalse("Method returned true when expected false", userInterface.promptUserCreate());	
 	}
 
 	@Test
@@ -175,13 +158,12 @@ public class ConsoleUiTest {
 		} catch (IOException e) {
 			fail("readLine failed:" + e);
 		}
-		userInterface.castSpell();
-		verify(userInterface).promptAction();
+		assertFalse("Returned true when false expected", userInterface.castSpell());
 	}
 
 	@Test
 	public void restTest() {
-		userInterface.rest();
+		assertTrue("Method returned false", userInterface.rest());
 		verify(control).rest();
 	}
 }
