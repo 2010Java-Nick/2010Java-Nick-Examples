@@ -46,6 +46,7 @@ public class SpellPointsController {
             List<Spell> spells = spellService.getSpells(spellIds);
             calcService.setCastersSpells(spells);
         } catch (NullPointerException e) {
+            Log.error("NullPointer thrown in setCurrentPlayer: " + e);
             return false;
         }
         return true;
@@ -60,10 +61,12 @@ public class SpellPointsController {
      */
     public boolean createNewPlayer(String username, String password, int level, int casterType){
         try {
-            playerService.createPlayer(username, password, level, casterType);
+            int points = casterService.getMaxPoints(casterType, level);
+            playerService.createPlayer(username, password, points, level, casterType);
             this.setCurrentPlayer(username, password);
             return true;
         } catch (Exception e) {
+            Log.error("Exception thrown in createNewPlayer" + e);
             return false;
         }
 
