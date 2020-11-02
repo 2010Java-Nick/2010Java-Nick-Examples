@@ -14,9 +14,7 @@ public class PlayerServiceImpl implements PlayerService {
     List<Player> playerCollection = new ArrayList<Player>();
 
     public List<Player> getPlayers(){
-
         return this.playerCollection;
-
     }
 
     public void setPlayers(List<Player> players){
