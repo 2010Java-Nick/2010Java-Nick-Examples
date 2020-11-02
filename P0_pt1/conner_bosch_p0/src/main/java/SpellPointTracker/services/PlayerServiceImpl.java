@@ -26,9 +26,13 @@ public class PlayerServiceImpl implements PlayerService {
      */
     @Override
     public boolean createPlayer(String username, String password, int level, int casterType) {
-        // TODO Auto-generated method stub
-        return false;
-
+        try {
+            Player player = new Player(playerCollection.size(), username, password, 0, level, casterType);
+            playerCollection.add(player);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -36,8 +40,11 @@ public class PlayerServiceImpl implements PlayerService {
      */
     @Override
     public Player getPlayer(String username, String password){
-        // TODO Auto-generated method stub
-
+        for (Player player : playerCollection) {
+            if (player.getUsername().equals(username) && player.getPassword().equals(password)){
+                return player;
+            }
+        }
         return null;
     }    
 }

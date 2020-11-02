@@ -25,14 +25,26 @@ public class SpellServiceImpl implements SpellService {
 
     @Override
     public Spell getSpell(String spellName) {
-        // TODO Auto-generated method stub
+        for (Spell s : spellCollection){
+            if (s.getName().equals(spellName)){
+                return s;
+            }
+        }
         return null;
     }
 
     @Override
     public List<Spell> getSpells(int[] spellIds) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Spell> returnSpells = new ArrayList<>();
+        for (int id : spellIds){
+            for (Spell s : spellCollection){
+                if (s.getId() == id) {
+                    returnSpells.add(s);
+                    break;
+                }
+            }
+        }
+        return returnSpells;
     }
     
 }
