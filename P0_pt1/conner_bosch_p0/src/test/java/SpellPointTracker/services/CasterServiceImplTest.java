@@ -26,9 +26,7 @@ public class CasterServiceImplTest {
 	private int level;
 	private Caster bard;
 	private Caster cleric;
-	private int[] maxPoints;
 	private int[] spellIds;
-	private int[] maxSpellLevels;
 	private List<Caster> casters;
 
 
@@ -45,15 +43,11 @@ public class CasterServiceImplTest {
 
 	level = 2;
 
-	maxPoints = new int[]{4, 12, 20};
-	spellIds = new int[]{0, 1};
-	maxSpellLevels = new int[]{1, 1, 2, 2};
-	bard = new Caster(0, "Bard", maxPoints, spellIds, maxSpellLevels);
+	spellIds = new int[]{0, 1, 2};
+	bard = new Caster(0, "Bard", spellIds);
 
-	maxPoints = new int[]{0, 12, 20};
-	spellIds = new int[]{0, 1, 3};
-	maxSpellLevels = new int[]{0, 1, 2, 3};
-	cleric = new Caster(1, "Cleric", maxPoints, spellIds, maxSpellLevels);
+	spellIds = new int[]{0, 3, 4, 5};
+	cleric = new Caster(1, "Cleric", spellIds);
 
 	casters = new ArrayList<>();
 	casters.add(bard);

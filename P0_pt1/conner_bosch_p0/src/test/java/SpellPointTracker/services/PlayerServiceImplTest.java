@@ -59,7 +59,7 @@ public class PlayerServiceImplTest {
 
 	@Test
 	public void createPlayerTest() {
-		assertTrue("createPlayer returned False", playerService.createPlayer(username, password, level, casterType));
+		assertTrue("createPlayer returned False", playerService.createPlayer(username, password, 0, level, casterType));
 		assertTrue("Player object was not properly added to collection", playerService.getPlayers().get(0).getUsername().equals(player.getUsername()));
 	}
 

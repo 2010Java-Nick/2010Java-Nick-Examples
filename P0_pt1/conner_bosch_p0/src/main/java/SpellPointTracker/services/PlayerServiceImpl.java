@@ -25,9 +25,9 @@ public class PlayerServiceImpl implements PlayerService {
      * 
      */
     @Override
-    public boolean createPlayer(String username, String password, int level, int casterType) {
+    public boolean createPlayer(String username, String password, int currentPoints, int level, int casterType) {
         try {
-            Player player = new Player(playerCollection.size(), username, password, 0, level, casterType);
+            Player player = new Player(playerCollection.size(), username, password, currentPoints, level, casterType);
             playerCollection.add(player);
             return true;
         } catch (Exception e) {
