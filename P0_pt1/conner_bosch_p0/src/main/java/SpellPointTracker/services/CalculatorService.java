@@ -51,7 +51,7 @@ public class CalculatorService {
     public boolean castSpell(Spell spell){
         try {
             int newPoints = currentPlayer.getCurrentPoints();
-            if (spell.getCost() < newPoints) {
+            if (spell.getCost() <= newPoints) {
                 newPoints -= spell.getCost();
                 currentPlayer.setCurrentPoints(newPoints);
                 return true;
