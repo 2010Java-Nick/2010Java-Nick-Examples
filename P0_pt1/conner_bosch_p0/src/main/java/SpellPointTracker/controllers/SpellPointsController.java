@@ -38,13 +38,17 @@ public class SpellPointsController {
      * @return
      */
     public boolean setCurrentPlayer(String username, String password){
-        // Calls playerService.getPlayer, catches exception
-        // if success, calls calcService.setCurrentPlayer
-        // calls Caster service for caster's spell ids
-        // calls Spell service for Spell objects
-        // then calls calcService.setCastersSpells
-        // returns success or failure
-        return false;
+        Player player = playerService.getPlayer(username, password);
+
+        try {
+            calcService.setCurrentPlayer(player);
+            int[] spellIds = casterService.getCastersSpells(player.getCasterType());
+            List<Spell> spells = spellService.getSpells(spellIds);
+            calcService.setCastersSpells(spells);
+        } catch (NullPointerException e) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -55,17 +59,14 @@ public class SpellPointsController {
      * @param casterType 0=Bard 1=Cleric 2=Druid 3=Paladin 4=Sorcerer 5=Warlock 6=Wizard
      */
     public boolean createNewPlayer(String username, String password, int level, int casterType){
-        // Calls playerService.createPlayer, ends on failure
-        return false;
+        return playerService.createPlayer(username, password, level, casterType);
     }
 
     /**
      * Get a list of available spells for currentPlayer's ability to cast
      */
     public List<String> getAvailableSpellNames() {
-        //TODO calls calcService.getCastersSpells
-        return null;
-
+        return calcService.getCastersSpells();
     }
 
     /**
@@ -77,18 +78,20 @@ public class SpellPointsController {
      * @return success?
      */
     public boolean castSpell(String spellName) {
-        // retreves spell from spellService
-        // passes to calcService to cast
-        // returns success or failure
-        return false;
+        Spell spell = spellService.getSpell(spellName);
+        return calcService.castSpell(spell);
     }
 
     /**
      * Set's currentPlayer's points back to max
      */
     public void rest(){
-        //calls calcService for currentPlayer
-        //calls casterService.getMaxPoints(casterID, level)
-        //calls calcService.rest(maxPoints);
+        Player player = calcService.getCurrentPlayer();
+        int points = casterService.getMaxPoints(player.getCasterType(), player.getCurrentLevel());
+        calcService.rest(points);
     }    
+
+    public String getStatus(){
+        return calcService.getStatus();
+    }
 }
