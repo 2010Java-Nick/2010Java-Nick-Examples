@@ -3,7 +3,6 @@ package SpellPointTracker.services;
 import java.util.List;
 
 import SpellPointTracker.pojos.Caster;
-import SpellPointTracker.pojos.Spell;
 
 /**
  * Handles passing Caster objects between storage and the controller
