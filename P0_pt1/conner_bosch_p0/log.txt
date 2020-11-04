@@ -1,1 +1,169 @@
-2020-10-30 10:33:34 INFO  root:42 - Branch Test
+2020-10-30 10:33:34 INFO  root:42 - Branch Test2020-11-03 17:29:30 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 17:29:30 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 17:29:30 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 17:29:30 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 17:29:30 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 17:29:30 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 17:29:30 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 17:29:30 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 17:29:30 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 17:29:30 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 17:29:30 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 17:29:30 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 17:29:30 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 20:53:35 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 20:53:35 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 20:53:35 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 20:53:35 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 20:53:35 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 20:53:35 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 20:53:36 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 20:53:36 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 20:53:36 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 20:53:36 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 20:53:36 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 20:53:36 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 20:53:36 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 20:55:54 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 20:55:54 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 20:55:54 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 20:55:54 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 20:55:54 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 20:55:54 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 20:55:54 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 20:55:54 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 20:55:54 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 20:55:54 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 20:55:54 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 20:55:54 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 20:55:54 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:00:31 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:00:31 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:00:31 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:00:31 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:00:31 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:00:31 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 21:00:31 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:00:31 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:00:31 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:00:31 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:00:31 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:00:31 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:00:31 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:01:01 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:01:01 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:01:01 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:01:01 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:01:01 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:01:01 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:01:01 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:01:01 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 21:01:01 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:01:01 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:01:01 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:01:01 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:01:01 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:02:58 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:02:58 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:02:58 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:02:58 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:02:58 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:02:58 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:02:58 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:02:58 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:02:58 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:02:58 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:02:58 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:02:58 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:02:58 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 21:03:59 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:03:59 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:03:59 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:03:59 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:03:59 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:03:59 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:03:59 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:03:59 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:03:59 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:03:59 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:03:59 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:03:59 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:03:59 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 21:04:36 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:04:36 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:04:36 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:04:36 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:04:36 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:04:36 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:04:36 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:04:36 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:04:36 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:04:36 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:04:36 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:04:36 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:04:36 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 21:06:30 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:06:30 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:06:30 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:06:30 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:06:30 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:06:30 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:06:30 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:06:30 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:06:30 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:06:30 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:06:30 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:06:30 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:06:30 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 21:07:16 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:07:16 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:07:16 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:07:16 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:07:16 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:07:16 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:07:16 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:07:16 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:07:16 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:07:16 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:07:16 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:07:16 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:07:16 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 21:08:43 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:08:43 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:08:43 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:08:43 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:08:43 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:08:43 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:08:43 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:08:43 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:08:43 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:08:43 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:08:43 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:08:43 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:08:43 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 21:10:02 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:10:02 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:10:02 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:10:02 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:10:02 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:10:02 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:10:02 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:10:02 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:10:02 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:10:02 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:10:02 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:10:02 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:10:02 INFO  spellServiceLog:44 - Spell cantrip was not found.
+2020-11-03 21:11:51 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:11:51 WARN  consoleUILog:143 - Error logging user with nameLogin
+2020-11-03 21:11:51 INFO  consoleUILog:37 - Interface booted up
+2020-11-03 21:11:51 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "Create"
+2020-11-03 21:11:51 ERROR consoleUILog:194 - NumberFormatException thrown in level read of promptUserCreate: java.lang.NumberFormatException: For input string: "asdf"
+2020-11-03 21:11:51 INFO  consoleUILog:147 - daveThePlayer Logged in
+2020-11-03 21:11:51 WARN  consoleUILog:143 - Error logging user with namedave_*$@%n
+2020-11-03 21:11:51 ERROR casterServiceLog:77 - Error in getMaxPoints. CasterID: 10Level: 2
+2020-11-03 21:11:51 ERROR casterServiceLog:98 - Error in getMaxSpellLevel. CasterID: 10Level: 2
+2020-11-03 21:11:51 ERROR casterServiceLog:42 - IndexOutOfBoundException in getCaster. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:11:51 ERROR casterServiceLog:56 - IndexOutOfBoundException in getCastersSpells. Caster ID: 10Exception: java.lang.IndexOutOfBoundsException: Index 10 out of bounds for length 2
+2020-11-03 21:11:51 INFO  playerServiceLog:67 - User daveTheGamer was not found/logged in.
+2020-11-03 21:11:51 INFO  spellServiceLog:44 - Spell cantrip was not found.
