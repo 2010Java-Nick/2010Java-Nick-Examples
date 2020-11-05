@@ -2,12 +2,12 @@ package HotelReservationJavalin.controller;
 
 import HotelReservationJavalin.pojos.Guest;
 import HotelReservationJavalin.service.GuestService;
-import HotelReservationJavalin.service.GuestServiceImpl;
+import HotelReservationJavalin.service.GuestServiceFullStack;
 import io.javalin.http.Context;
 
 public class GuestController {
 	
-	GuestService guestService = new GuestServiceImpl();
+	GuestService guestService = new GuestServiceFullStack();
 	
 	public void createGuest(Context ctx) {
 		
