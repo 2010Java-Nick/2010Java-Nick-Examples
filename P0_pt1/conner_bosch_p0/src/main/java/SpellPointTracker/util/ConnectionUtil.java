@@ -14,7 +14,7 @@ public class ConnectionUtil {
 
     public Connection createConnection() {
         try {
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?", "postgres", "password");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SpellPoints?", "postgres", "password");
             return conn;
         } catch (SQLException e) {
             Log.warn("Threw SQL Exception while attempting to get connection: " + e);
