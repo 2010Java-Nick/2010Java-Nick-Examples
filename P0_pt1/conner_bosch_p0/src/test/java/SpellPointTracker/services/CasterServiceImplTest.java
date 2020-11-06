@@ -11,16 +11,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
-//import org.apache.log4j.Logger;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import SpellPointTracker.pojos.Caster;
 
 
 @RunWith(MockitoJUnitRunner.class)
 public class CasterServiceImplTest {
-
-	//private static Logger Log = Logger.getLogger("casterServiceLog");
 	
 	private CasterService casterService;
 	private int level;
@@ -41,20 +38,20 @@ public class CasterServiceImplTest {
 	@Before
 	public void setUp() throws Exception {
 
-	level = 2;
+		level = 2;
 
-	spellIds = new int[]{0, 1, 2};
-	bard = new Caster(0, "Bard", spellIds);
+		spellIds = new int[]{0, 1, 2};
+		bard = new Caster(0, "Bard", spellIds);
 
-	spellIds = new int[]{0, 3, 4, 5};
-	cleric = new Caster(1, "Cleric", spellIds);
+		spellIds = new int[]{0, 3, 4, 5};
+		cleric = new Caster(1, "Cleric", spellIds);
 
-	casters = new ArrayList<>();
-	casters.add(bard);
-	casters.add(cleric);
+		casters = new ArrayList<>();
+		casters.add(bard);
+		casters.add(cleric);
 
-	casterService = new CasterServiceImpl();
-	casterService.setAllCasters(casters);
+		casterService = new CasterServiceImpl();
+		casterService.setAllCasters(casters);
 
 	}
 
