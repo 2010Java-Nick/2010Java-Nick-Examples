@@ -37,6 +37,10 @@ dependencies {
     // https://mvnrepository.com/artifact/io.javalin/javalin
     implementation group: 'io.javalin', name: 'javalin', version: '3.11.2'
 
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.30'
+
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
+
 }
