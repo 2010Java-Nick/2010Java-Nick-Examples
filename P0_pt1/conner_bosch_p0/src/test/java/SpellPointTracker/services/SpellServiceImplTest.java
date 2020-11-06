@@ -11,15 +11,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
-//import org.apache.log4j.Logger;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import SpellPointTracker.pojos.Spell;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SpellServiceImplTest {
-
-	//private static Logger Log = Logger.getLogger("spellServiceLog");
 	
 	private SpellService spellService;
 	private Spell spellOne;

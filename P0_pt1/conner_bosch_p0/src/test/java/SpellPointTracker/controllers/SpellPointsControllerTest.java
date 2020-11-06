@@ -13,16 +13,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
-//import org.apache.log4j.Logger;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import SpellPointTracker.pojos.*;
 import SpellPointTracker.services.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SpellPointsControllerTest {
-
-	//private static Logger Log = Logger.getLogger("controllerLog");
+	
 	@Mock
 	private CasterService casterService;
 	@Mock

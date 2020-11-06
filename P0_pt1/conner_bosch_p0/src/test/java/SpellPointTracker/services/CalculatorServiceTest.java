@@ -11,15 +11,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
-//import org.apache.log4j.Logger;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import SpellPointTracker.pojos.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CalculatorServiceTest {
-
-    //private static Logger Log = Logger.getLogger("calculatorLog");
 
     private CalculatorService calcService;
     private String username;

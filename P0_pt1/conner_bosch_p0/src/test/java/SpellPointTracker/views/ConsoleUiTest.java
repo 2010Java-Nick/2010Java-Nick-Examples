@@ -16,15 +16,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
-//import org.apache.log4j.Logger;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import SpellPointTracker.controllers.SpellPointsController;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ConsoleUiTest {
-
-	//private static Logger Log = Logger.getLogger("consoleUILog");
 
 	@Mock
 	private SpellPointsController control;
@@ -45,8 +42,6 @@ public class ConsoleUiTest {
 	@Before
 	public void setUp() throws Exception {
 		spells.add("cantrip");
-		when(input.ready()).thenReturn(true);
-		when(input.markSupported()).thenReturn(true);
 		when(control.setCurrentPlayer("daveThePlayer", "password1")).thenReturn(true);
 		when(control.createNewPlayer("daveThePlayer", "password1", 2, 0)).thenReturn(true);
 		when(control.castSpell("cantrip")).thenReturn(true);
