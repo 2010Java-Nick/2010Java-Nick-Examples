@@ -17,7 +17,7 @@ import SpellPointTracker.pojos.Player;
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerServiceImplTest {
 
-	private PlayerService playerService;
+	private PlayerServiceImpl playerService;
 	private String username;
 	private String password;
 	private int level;

@@ -12,7 +12,7 @@ public interface PlayerService {
 
     public List<Player> getPlayers();
 
-    public void setPlayers(List<Player> players);
+    //public void setPlayers(List<Player> players);
 
     public Player getPlayer(String username, String password);
 

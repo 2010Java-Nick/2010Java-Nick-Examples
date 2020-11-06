@@ -18,7 +18,7 @@ import SpellPointTracker.pojos.Spell;
 @RunWith(MockitoJUnitRunner.class)
 public class SpellServiceImplTest {
 	
-	private SpellService spellService;
+	private SpellServiceImpl spellService;
 	private Spell spellOne;
 	private Spell spellTwo;
 	private Spell spellThree;

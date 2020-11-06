@@ -19,7 +19,7 @@ import SpellPointTracker.pojos.Caster;
 @RunWith(MockitoJUnitRunner.class)
 public class CasterServiceImplTest {
 	
-	private CasterService casterService;
+	private CasterServiceImpl casterService;
 	private int level;
 	private Caster bard;
 	private Caster cleric;

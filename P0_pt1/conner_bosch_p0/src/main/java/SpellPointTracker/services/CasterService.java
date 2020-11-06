@@ -12,7 +12,7 @@ public interface CasterService {
     
     public List<Caster> getAllCasters();
 
-    public void setAllCasters(List<Caster> casters);
+    //public void setAllCasters(List<Caster> casters);
 
     public Caster getCaster(int casterId);
 
