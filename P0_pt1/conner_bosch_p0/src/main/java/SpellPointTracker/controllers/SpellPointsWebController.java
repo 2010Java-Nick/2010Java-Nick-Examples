@@ -2,8 +2,7 @@ package SpellPointTracker.controllers;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 
 import io.javalin.http.Context;
 
@@ -11,7 +10,7 @@ public class SpellPointsWebController {
 
     private SpellPointsController control;
 
-    private static Logger Log = LogManager.getLogger("webControllerLog");
+    private static Logger Log = Logger.getLogger("webControllerLog");
 
     public SpellPointsWebController(SpellPointsController control){
         this.control = control;
