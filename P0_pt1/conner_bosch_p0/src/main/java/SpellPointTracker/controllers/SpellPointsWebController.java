@@ -10,7 +10,7 @@ public class SpellPointsWebController {
 
     private SpellPointsController control;
 
-    private static Logger Log = Logger.getLogger("webControllerLog");
+    private static Logger Log = Logger.getLogger("controllerLog");
 
     public SpellPointsWebController(SpellPointsController control){
         this.control = control;

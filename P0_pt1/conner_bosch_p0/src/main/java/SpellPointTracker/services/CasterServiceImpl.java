@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class CasterServiceImpl implements CasterService {
 
-    private static Logger Log = Logger.getLogger("casterServiceLog");
+    private static Logger Log = Logger.getLogger("serviceLog");
 
     List<Caster> casterCollection = new ArrayList<Caster>();
     int[] levelToPoints;

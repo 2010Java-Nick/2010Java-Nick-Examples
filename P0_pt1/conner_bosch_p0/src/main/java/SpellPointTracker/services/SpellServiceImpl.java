@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
  */
 public class SpellServiceImpl implements SpellService {
 
-    private static Logger Log = Logger.getLogger("spellServiceLog");
+    private static Logger Log = Logger.getLogger("serviceLog");
 
     List<Spell> spellCollection;
 

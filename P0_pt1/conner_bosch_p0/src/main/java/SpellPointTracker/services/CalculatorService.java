@@ -13,7 +13,7 @@ import SpellPointTracker.pojos.*;
  */
 public class CalculatorService {
 
-    private static Logger Log = Logger.getLogger("calculatorServiceLog");
+    private static Logger Log = Logger.getLogger("calculatorLog");
 
     private Player currentPlayer;
     private List<Spell> castersSpells;

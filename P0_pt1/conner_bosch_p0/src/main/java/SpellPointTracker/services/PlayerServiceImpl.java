@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class PlayerServiceImpl implements PlayerService {
 
-    private static Logger Log = Logger.getLogger("playerServiceLog");
+    private static Logger Log = Logger.getLogger("serviceLog");
 
     List<Player> playerCollection = new ArrayList<Player>();
 
