@@ -2,9 +2,6 @@ package SpellPointTracker.daos;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,46 +10,47 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-class SpellDaoPostgresTest {
+@RunWith(MockitoJUnitRunner.class)
+public class SpellDaoPostgresTest {
 
 	@BeforeClass
-	static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() throws Exception {
 	}
 
 	@AfterClass
-	static void tearDownAfterClass() throws Exception {
+	public static void tearDownAfterClass() throws Exception {
 	}
 
 	@Before
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 	}
 
 	@After
-	void tearDown() throws Exception {
+	public void tearDown() throws Exception {
 	}
 
 	@Test
-	void testCreateSpell() {
+	public void testCreateSpell() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testReadSpell() {
+	public void testReadSpell() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testReadAllSpells() {
+	public void testReadAllSpells() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testUpdateSpell() {
+	public void testUpdateSpell() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testDeleteSpell() {
+	public void testDeleteSpell() {
 		fail("Not yet implemented");
 	}
 

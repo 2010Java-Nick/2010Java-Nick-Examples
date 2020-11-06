@@ -1,9 +1,10 @@
 package SpellPointTracker.daos;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,48 +12,74 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-class PlayerDaoPostgresTest {
+import SpellPointTracker.pojos.Player;
+
+@RunWith(MockitoJUnitRunner.class)
+public class PlayerDaoPostgresTest {
+
+	@Mock
+	private static Connection connection;
+	@Mock
+	private static PreparedStatement stmt;
+
+	private static PlayerDaoPostgres playerDao;
+	private Player player;
 
 	@BeforeClass
-	static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() throws Exception {
+		connection = mock(Connection.class);
+		stmt = mock(PreparedStatement.class);
+		when(connection.prepareStatement(anyString())).thenReturn(stmt);
 	}
 
 	@AfterClass
-	static void tearDownAfterClass() throws Exception {
+	public static void tearDownAfterClass() throws Exception {
 	}
 
 	@Before
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
+		playerDao = new PlayerDaoPostgres(connection);
+		player = new Player(1, "Dave", "theBarbarian", 6, 2, 1);
 	}
 
 	@After
-	void tearDown() throws Exception {
+	public void tearDown() throws Exception {
 	}
 
 	@Test
-	void testCreatePlayer() {
+	public void testCreatePlayerGoodInput() {
+		try {
+		String sql = "INSERT INTO player VALUES " 
+					+"(?, ?, ?, ?, ?, ?);";
+		when(connection.prepareStatement(sql)).thenReturn(stmt);
+		playerDao.createPlayer(player);
+		verify(stmt).executeUpdate();
+		verify(stmt).close();
+		} catch (Exception e) {
+			fail("Exception thrown: " + e);
+		}
+	}
+
+	@Test
+	public void testReadPlayer() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testReadPlayer() {
+	public void testReadAllPlayers() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testReadAllPlayers() {
+	public void testUpdatePlayer() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testUpdatePlayer() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testDeletePlayer() {
+	public void testDeletePlayer() {
 		fail("Not yet implemented");
 	}
 

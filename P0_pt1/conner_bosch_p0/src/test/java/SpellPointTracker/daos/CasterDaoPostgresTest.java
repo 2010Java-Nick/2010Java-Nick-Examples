@@ -2,9 +2,6 @@ package SpellPointTracker.daos;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,46 +10,47 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-class CasterDaoPostgresTest {
+@RunWith(MockitoJUnitRunner.class)
+public class CasterDaoPostgresTest {
 
 	@BeforeClass
-	static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() throws Exception {
 	}
 
 	@AfterClass
-	static void tearDownAfterClass() throws Exception {
+	public static void tearDownAfterClass() throws Exception {
 	}
 
 	@Before
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 	}
 
 	@After
-	void tearDown() throws Exception {
+	public void tearDown() throws Exception {
 	}
 
 	@Test
-	void testCreateCaster() {
+	public void testCreateCaster() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testReadCaster() {
+	public void testReadCaster() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testReadAllCasters() {
+	public void testReadAllCasters() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testUpdateCaster() {
+	public void testUpdateCaster() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testDeleteCaster() {
+	public void testDeleteCaster() {
 		fail("Not yet implemented");
 	}
 
