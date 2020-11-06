@@ -1,4 +1,4 @@
-package HotelReservationJavalin.service;
+package HotelReservationJavalin.Dao;
 
 import HotelReservationJavalin.pojos.Guest;
 

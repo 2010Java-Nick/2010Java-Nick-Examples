@@ -2,6 +2,8 @@ package HotelReservationJavalin.service;
 
 import java.util.List;
 
+import HotelReservationJavalin.Dao.GuestDao;
+import HotelReservationJavalin.Dao.GuestDaoPostgres;
 import HotelReservationJavalin.pojos.Guest;
 import HotelReservationJavalin.pojos.Room.RoomType;
 

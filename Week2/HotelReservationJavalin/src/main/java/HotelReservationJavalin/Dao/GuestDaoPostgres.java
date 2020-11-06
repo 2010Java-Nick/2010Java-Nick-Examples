@@ -1,4 +1,4 @@
-package HotelReservationJavalin.service;
+package HotelReservationJavalin.Dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,6 +11,12 @@ public class GuestDaoPostgres implements GuestDao {
 
 	private Statement statement;
 	
+	private ConnectionUtil connUtil = new ConnectionUtil();
+	
+	public void setConnUtil(ConnectionUtil connUtil) {
+		this.connUtil = connUtil;
+	}
+
 	@Override
 	public void createGuest(Guest guest) {
 		
@@ -25,7 +31,7 @@ public class GuestDaoPostgres implements GuestDao {
 				+ guest.getPayment()
 				+ ")";
 		
-		try (Connection conn = new ConnectionUtil().createConnection()) {
+		try (Connection conn = connUtil.createConnection()) {
 			statement = conn.createStatement();
 			statement.executeUpdate(sql);
 		} catch (SQLException e) {
