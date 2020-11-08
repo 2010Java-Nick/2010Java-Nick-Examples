@@ -17,6 +17,7 @@ public class CalculatorService {
 
     private Player currentPlayer;
     private List<Spell> castersSpells;
+    private int[] spellCosts = new int[] {0, 2, 3, 5, 6, 7, 9, 10, 11, 13};
 
     public Player getCurrentPlayer() {
         return currentPlayer;
@@ -33,11 +34,16 @@ public class CalculatorService {
      * @return List<String> of spells available to cast.
      */
     public List<String> getCastersSpells(int maxLevel) {
+
         try {
             List<String> spells = new ArrayList<>();
             int points = currentPlayer.getCurrentPoints();
+
             for (Spell spell : castersSpells){
-                if (!(spell.getCost() > points) && !(spell.getLevel() > maxLevel)){
+
+                //Spell doesn't cost more than available points and is of a castable level
+                if (!(spellCosts[spell.getLevel()] > points) && !(spell.getLevel() > maxLevel)){
+
                     spells.add(spell.getName());
                 }
             }
@@ -58,10 +64,13 @@ public class CalculatorService {
      * @return True on success
      */
     public boolean castSpell(Spell spell){
+
         try {
             int newPoints = currentPlayer.getCurrentPoints();
-            if (spell.getCost() <= newPoints) {
-                newPoints -= spell.getCost();
+
+            if (spellCosts[spell.getLevel()] <= newPoints) {
+
+                newPoints -= spellCosts[spell.getLevel()];
                 currentPlayer.setCurrentPoints(newPoints);
                 return true;
             }
@@ -77,9 +86,12 @@ public class CalculatorService {
      * Formated like: Player 1: daveTheGamer Level 2 Bard -- Available Spell Points: 20
      */
     public String getStatus(){
+
         try {
             String[] casterNames = new String[]{"Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"};
+
             int type = currentPlayer.getCasterType();
+
             return "Player " + currentPlayer.getId() + ": " + currentPlayer.getUsername() + 
                     " Level " + currentPlayer.getCurrentLevel() +" "+ casterNames[type] + " -- " + 
                     "Available Spell Points: " + currentPlayer.getCurrentPoints();

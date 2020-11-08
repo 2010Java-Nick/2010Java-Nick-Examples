@@ -45,12 +45,12 @@ public class CalculatorServiceTest {
 		password = "password1!";
 		level = 2;
 		casterType = 0;
-        player = new Player(1, username, password, 20, level, casterType);
+        player = new Player(1, username, password, 10, level, casterType);
 		
-		spellOne = new Spell(0, "cantrip", 0, 0);
-        spellTwo = new Spell(1, "magic missle", 1, 4);
-		falseSpell1 = new Spell(2, "should not be found", 3, 4);
-		falseSpell2 = new Spell(2, "should not be found", 1, 22);
+		spellOne = new Spell(0, "cantrip", 0);
+        spellTwo = new Spell(1, "magic missle", 1);
+		falseSpell1 = new Spell(2, "should not be found", 3);
+		falseSpell2 = new Spell(3, "should not be found", 9);
 		spellNames = new ArrayList<>();
 		spellNames.add("cantrip");
 		spellNames.add("magic missle");
@@ -82,14 +82,14 @@ public class CalculatorServiceTest {
         assertTrue("Spell one wasn't cast", calcService.castSpell(spellOne));
         assertTrue("Spell one's points weren't properly deducted", calcService.getCurrentPlayer().getCurrentPoints() == player.getCurrentPoints());
         assertTrue("Spell two wasn't cast", calcService.castSpell(spellTwo));
-        assertTrue("Spell two's points weren't properly deducted", calcService.getCurrentPlayer().getCurrentPoints() == 16);
-        assertFalse("False spell did not fail", calcService.castSpell(falseSpell2));
+        assertTrue("Spell two's points weren't properly deducted", calcService.getCurrentPlayer().getCurrentPoints() == 8);
+        assertFalse("False spell 2 did not fail", calcService.castSpell(falseSpell2));
 
 	}
     
     @Test
 	public void getStatusTest() {
-        String expected = "Player 1: daveTheGamer Level 2 Bard -- Available Spell Points: 20";
+        String expected = "Player 1: daveTheGamer Level 2 Bard -- Available Spell Points: 10";
 		assertTrue("Status|" + calcService.getStatus() + "|does not match expected:" + expected, calcService.getStatus().equals(expected));
     }
     

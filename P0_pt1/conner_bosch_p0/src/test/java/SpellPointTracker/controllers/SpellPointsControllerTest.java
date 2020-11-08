@@ -40,6 +40,7 @@ public class SpellPointsControllerTest {
 	private String status;
 	private Spell spellOne;
 	private Spell spellTwo;
+	private Spell spellThree;
 	private List<Spell> spells;
 	private List<String> spellNames;
 	private int[] spellIds;
@@ -64,15 +65,18 @@ public class SpellPointsControllerTest {
 		status = "Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20 ";
 
 		
-		spellOne = new Spell(0, "cantrip", 0, 0);
-		spellTwo = new Spell(1, "magic missle", 1, 4);
-		spellIds = new int[]{0, 1};
+		spellOne = new Spell(0, "cantrip", 0);
+		spellTwo = new Spell(1, "magic missle", 1);
+		spellThree = new Spell(2, "Wish", 9);
+		spellIds = new int[]{0, 1, 2};
 		spellNames = new ArrayList<>();
 		spellNames.add("cantrip");
 		spellNames.add("magic missle");
+		spellNames.add("Wish");
 		spells = new ArrayList<Spell>();
 		spells.add(spellOne);
 		spells.add(spellTwo);
+		spells.add(spellThree);
 
 
 		when(playerService.getPlayer(username, password)).thenReturn(player);
@@ -88,6 +92,7 @@ public class SpellPointsControllerTest {
 
 		when(spellService.getSpells(spellIds)).thenReturn(spells);
 		when(spellService.getSpell("cantrip")).thenReturn(spellOne);
+		when(spellService.getSpell("Wish")).thenReturn(spellThree);
 
 		control = new SpellPointsController(casterService, playerService, spellService, calcService);
 	}
@@ -114,6 +119,7 @@ public class SpellPointsControllerTest {
 	@Test
 	public void castSpellTest() {
 		assertTrue("Spell was not properly cast", control.castSpell("cantrip"));
+		assertFalse("Spell of too high level was cast", control.castSpell("Wish"));
 		verify(spellService).getSpell("cantrip");
 		verify(calcService).castSpell(spellOne);
 	}
