@@ -41,10 +41,10 @@ public class CasterServiceImplTest {
 		level = 2;
 
 		spellIds = new int[]{0, 1, 2};
-		bard = new Caster(0, "Bard", spellIds);
+		bard = new Caster(0, "Bard", false, spellIds);
 
 		spellIds = new int[]{0, 3, 4, 5};
-		cleric = new Caster(1, "Cleric", spellIds);
+		cleric = new Caster(1, "Cleric", false, spellIds);
 
 		casters = new ArrayList<>();
 		casters.add(bard);

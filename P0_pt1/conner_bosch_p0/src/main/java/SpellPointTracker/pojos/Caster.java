@@ -9,16 +9,18 @@ import java.util.Arrays;
 public class Caster {
     private int id;
     private String name;
+    private boolean halfCaster;
     private int[] spellIds;
 
     public Caster() {
         super();
     }
 
-    public Caster(int id, String name, int[] spellIds) {
+    public Caster(int id, String name, boolean halfCaster, int[] spellIds) {
         this();
         this.id = id;
         this.name = name;
+        this.halfCaster = halfCaster;
         this.spellIds = spellIds;
     }
 
@@ -36,6 +38,14 @@ public class Caster {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean getHalfCaster() {
+        return halfCaster;
+    }
+
+    public void setHalfCaster(boolean halfCaster) {
+        this.halfCaster = halfCaster;
     }
 
     public int[] getSpellIds() {
