@@ -217,7 +217,7 @@ public class SpellDaoPostgresTest {
 			}
 
 			//Prep statement with proper SQL
-			sql = "UPDATE spell SET name = ?, level = ? "
+			sql = "UPDATE spell SET spell_name = ?, spell_level = ? "
 				+ "WHERE spell_id = ?;";
 			try {
 				initStmtHelper(sql);
