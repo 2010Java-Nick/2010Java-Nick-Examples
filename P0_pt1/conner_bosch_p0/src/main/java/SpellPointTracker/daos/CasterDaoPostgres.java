@@ -25,7 +25,7 @@ public class CasterDaoPostgres implements CasterDao {
     }
 
     @Override
-    public Caster updateCaster(int casterId, Caster caster) throws SQLException{
+    public Caster updateCaster(Caster caster) throws SQLException{
         //TODO Implement updateCaster
         return null;
     }

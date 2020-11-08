@@ -13,7 +13,7 @@ public interface CasterDao {
 
     public List<Caster> readAllCasters() throws SQLException;
 
-    public Caster updateCaster(int casterId, Caster caster) throws SQLException;
+    public Caster updateCaster(Caster caster) throws SQLException;
 
     public void deleteCaster(Caster caster) throws SQLException;
     

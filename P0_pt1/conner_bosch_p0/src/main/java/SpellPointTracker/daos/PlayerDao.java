@@ -13,7 +13,7 @@ public interface PlayerDao {
 
     public List<Player> readAllPlayers() throws SQLException;
 
-    public Player updatePlayer (int playerId, Player player) throws SQLException;
+    public void updatePlayer (Player player) throws SQLException;
 
     public void deletePlayer(Player player) throws SQLException;
     

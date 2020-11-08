@@ -25,7 +25,7 @@ public class SpellDaoPostgres implements SpellDao {
     }
 
     @Override
-    public Spell updateSpell(int spellId, Spell spell) throws SQLException{
+    public Spell updateSpell(Spell spell) throws SQLException{
         //TODO Implement updateSpell        
         return null;
     }
