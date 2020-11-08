@@ -1,8 +1,10 @@
 package SpellPointTracker.daos;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -25,10 +27,10 @@ public class SpellDaoPostgres implements SpellDao {
 
     @Override
     public void createSpell(Spell spell) throws SQLException{
-        try {
+        try(Connection conn = connUtil.createConnection()) {
             String sql = "INSERT INTO spell VALUES "
                         +"(?, ?, ?);";
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, spell.getId());
             stmt.setString(2, spell.getName());
             stmt.setInt(3, spell.getLevel());
@@ -42,12 +44,12 @@ public class SpellDaoPostgres implements SpellDao {
 
     @Override
     public Spell readSpell(int spellId) throws SQLException{
-        try {
+        try(Connection conn = connUtil.createConnection()) {
             //Prep SQL for select statement
             String sql = "SELECT * FROM spell "
                         + "WHERE spell_id = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, spellId);
 
             //Return result of SQL query
@@ -67,8 +69,31 @@ public class SpellDaoPostgres implements SpellDao {
 
     @Override
     public List<Spell> readAllSpells() throws SQLException{
-        //TODO Implement readAllSpells
-        return null;
+        List<Spell> spells = new ArrayList<>();
+
+        try(Connection conn = connUtil.createConnection()) {
+            //Prep SQL for select statement
+            String sql = "SELECT * FROM spell;";
+            stmt = conn.prepareStatement(sql);
+
+            //Return result of SQL query
+            ResultSet rs = stmt.executeQuery();
+
+            //Loop through result set
+            while(rs.next()) {
+
+                //Read result into player and add to list
+                Spell spell = new Spell(rs.getInt(1), 
+                                        rs.getString(2),
+                                        rs.getInt(3));
+                spells.add(spell);
+                
+            }
+        } catch (SQLException e) {
+            Log.warn("SpellDaoPostgres.readSpell threw SQLException: " + e);
+            throw e;
+        }
+        return spells;
     }
 
     @Override
