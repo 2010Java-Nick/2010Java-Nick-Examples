@@ -154,7 +154,45 @@ public class SpellDaoPostgresTest {
 
 	@Test
 	public void testReadAllSpells() {
-		fail("Not yet implemented");
+		
+		Integer numSpells = -1;
+
+		//Get current num of spells in Database for verification
+		String sql = "SELECT COUNT(*) FROM spell;";
+		try{
+			testStmt = realConn.prepareStatement(sql);
+			ResultSet rs = testStmt.executeQuery();
+			rs.next();
+			numSpells = rs.getInt(1);
+		} catch (SQLException e) {
+			fail("SQLException thrown in test setup: " + e);
+		}
+
+		//Prep statement with proper SQL
+		sql = "SELECT * FROM spell;";
+		try {
+			initStmtHelper(sql);
+		} catch (SQLException e) {
+			fail("SQLException thrown: " + e.toString());
+		}
+
+		//Test readAllSpells functionality
+		try {
+			List<Spell> allSpells = spellDao.readAllSpells();
+
+			//Verify statement was excuted properly
+			verify(spy).executeQuery();
+
+			//Verify result set returned proper data
+			assertTrue("Returned set is not the same size as expected", numSpells == allSpells.size());
+			for (Spell s : allSpells){
+				assertFalse("Id returned 0 for spell: " + s.getName(), 0 == s.getId());
+				assertFalse("Spell name returned blank for spell number: " + s.getId(), "".equals(s.getName()));
+				assertFalse("Spell level returned 0 for spell: " + s.getName(), 0 == s.getLevel());
+			}
+		} catch (SQLException e) {
+			fail("SQLException thrown in spellDao.readAllSpells: " + e);	
+		}
 	}
 
 	@Test
