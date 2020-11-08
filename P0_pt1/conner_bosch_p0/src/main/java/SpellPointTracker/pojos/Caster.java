@@ -10,13 +10,13 @@ public class Caster {
     private int id;
     private String name;
     private boolean halfCaster;
-    private int[] spellIds;
+    private Integer[] spellIds;
 
     public Caster() {
         super();
     }
 
-    public Caster(int id, String name, boolean halfCaster, int[] spellIds) {
+    public Caster(int id, String name, boolean halfCaster, Integer[] spellIds) {
         this();
         this.id = id;
         this.name = name;
@@ -48,11 +48,11 @@ public class Caster {
         this.halfCaster = halfCaster;
     }
 
-    public int[] getSpellIds() {
+    public Integer[] getSpellIds() {
         return spellIds;
     }
 
-    public void setSpellIds(int[] spellIds) {
+    public void setSpellIds(Integer[] spellIds) {
         this.spellIds = spellIds;
     }
 

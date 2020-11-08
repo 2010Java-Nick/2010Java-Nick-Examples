@@ -43,7 +43,7 @@ public class SpellPointsControllerTest {
 	private Spell spellThree;
 	private List<Spell> spells;
 	private List<String> spellNames;
-	private int[] spellIds;
+	private Integer[] spellIds;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -68,7 +68,7 @@ public class SpellPointsControllerTest {
 		spellOne = new Spell(0, "cantrip", 0);
 		spellTwo = new Spell(1, "magic missle", 1);
 		spellThree = new Spell(2, "Wish", 9);
-		spellIds = new int[]{0, 1, 2};
+		spellIds = new Integer[]{0, 1, 2};
 		spellNames = new ArrayList<>();
 		spellNames.add("cantrip");
 		spellNames.add("magic missle");

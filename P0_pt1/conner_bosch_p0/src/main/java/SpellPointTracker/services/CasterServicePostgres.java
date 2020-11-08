@@ -19,7 +19,7 @@ public class CasterServicePostgres implements CasterService {
     }
 
     @Override
-    public int[] getCastersSpells(int casterId) {
+    public Integer[] getCastersSpells(int casterId) {
         // TODO impliment getCasterSpells
         return null;
     }

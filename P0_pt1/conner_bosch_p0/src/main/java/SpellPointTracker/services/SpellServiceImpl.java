@@ -52,7 +52,7 @@ public class SpellServiceImpl implements SpellService {
      * @return spells that match
      */
     @Override
-    public List<Spell> getSpells(int[] spellIds) {
+    public List<Spell> getSpells(Integer[] spellIds) {
         try {
             List<Spell> returnSpells = new ArrayList<>();
             for (int id : spellIds){

@@ -19,7 +19,7 @@ public class SpellServicePostgres implements SpellService {
     }
 
     @Override
-    public List<Spell> getSpells(int[] spellIds) {
+    public List<Spell> getSpells(Integer[] spellIds) {
         // TODO impliment getSpells
         return null;
     }

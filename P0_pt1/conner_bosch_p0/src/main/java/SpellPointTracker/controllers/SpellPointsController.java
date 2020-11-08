@@ -43,7 +43,7 @@ public class SpellPointsController {
 
         try {
             calcService.setCurrentPlayer(player);
-            int[] spellIds = casterService.getCastersSpells(player.getCasterType());
+            Integer[] spellIds = casterService.getCastersSpells(player.getCasterType());
             List<Spell> spells = spellService.getSpells(spellIds);
             calcService.setCastersSpells(spells);
         } catch (NullPointerException e) {

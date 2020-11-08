@@ -49,7 +49,7 @@ public class CasterServiceImpl implements CasterService {
      * @return int[] spellIds
      */
     @Override
-    public int[] getCastersSpells(int casterId) {
+    public Integer[] getCastersSpells(int casterId) {
         try {
             return casterCollection.get(casterId).getSpellIds();
         } catch (IndexOutOfBoundsException e) {
@@ -106,8 +106,8 @@ public class CasterServiceImpl implements CasterService {
     private void initData(){
         this.levelToPoints = new int[] {0, 4, 6, 14, 17, 27, 32, 38, 44, 57, 64, 73, 73, 73, 83, 83, 94, 94, 10, 114, 123, 133};
         this.levelToSpell = new int[] {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 9, 9};
-        Caster bard = new Caster(0, "Bard", false, new int[]{0, 1, 2});
-        Caster cleric = new Caster(1, "Cleric", false, new int[]{0, 3, 4, 5});
+        Caster bard = new Caster(0, "Bard", false, new Integer[]{0, 1, 2});
+        Caster cleric = new Caster(1, "Cleric", false, new Integer[]{0, 3, 4, 5});
         this.casterCollection.add(bard);
         this.casterCollection.add(cleric);
     } 

@@ -14,6 +14,6 @@ public interface SpellService {
 
     public Spell getSpell(String spellName);
 
-    public List<Spell> getSpells(int[] spellIds);
+    public List<Spell> getSpells(Integer[] spellIds);
     
 }

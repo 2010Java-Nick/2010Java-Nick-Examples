@@ -23,7 +23,7 @@ public class CasterServiceImplTest {
 	private int level;
 	private Caster bard;
 	private Caster cleric;
-	private int[] spellIds;
+	private Integer[] spellIds;
 	private List<Caster> casters;
 
 
@@ -40,10 +40,10 @@ public class CasterServiceImplTest {
 
 		level = 2;
 
-		spellIds = new int[]{0, 1, 2};
+		spellIds = new Integer[]{0, 1, 2};
 		bard = new Caster(0, "Bard", false, spellIds);
 
-		spellIds = new int[]{0, 3, 4, 5};
+		spellIds = new Integer[]{0, 3, 4, 5};
 		cleric = new Caster(1, "Cleric", false, spellIds);
 
 		casters = new ArrayList<>();
@@ -70,7 +70,7 @@ public class CasterServiceImplTest {
 
 	@Test
 	public void getCastersSpellsTest() {
-		int[] retrievedSpellIds = casterService.getCastersSpells(bard.getId());
+		Integer[] retrievedSpellIds = casterService.getCastersSpells(bard.getId());
 		assertTrue("Retrieved spell ID's do not match", retrievedSpellIds.equals(bard.getSpellIds()));
 		
 		retrievedSpellIds = casterService.getCastersSpells(10);

@@ -14,7 +14,7 @@ public interface CasterService {
 
     public Caster getCaster(int casterId);
 
-    public int[] getCastersSpells(int casterId);
+    public Integer[] getCastersSpells(int casterId);
 
     public int getMaxPoints(int casterId, int level);
 
