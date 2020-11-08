@@ -97,9 +97,22 @@ public class SpellDaoPostgres implements SpellDao {
     }
 
     @Override
-    public Spell updateSpell(Spell spell) throws SQLException{
-        //TODO Implement updateSpell        
-        return null;
+    public void updateSpell(Spell spell) throws SQLException{
+        try (Connection conn = connUtil.createConnection()) {
+            String sql = "UPDATE spell SET spell_name = ?, spell_level = ? " 
+                        + "WHERE spell_id = ?;";
+
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, spell.getName());
+            stmt.setInt(2, spell.getLevel());
+            stmt.setInt(3, spell.getId());
+
+            stmt.executeUpdate();
+        
+        } catch (SQLException e) {
+            Log.warn("SpellDaoPostgres.updateSpell threw SQLException: " + e);
+            throw e;
+        }
     }
 
     @Override
