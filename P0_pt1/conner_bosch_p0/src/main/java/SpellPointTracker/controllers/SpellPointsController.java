@@ -96,8 +96,16 @@ public class SpellPointsController {
      */
     public boolean castSpell(String spellName) {
         try {
+            Player player = calcService.getCurrentPlayer();
             Spell spell = spellService.getSpell(spellName);
-            return calcService.castSpell(spell);
+
+            int max = casterService.getMaxSpellLevel(player.getCasterType(), player.getCurrentLevel());
+
+            if(!(spell.getLevel() > max)){
+                return calcService.castSpell(spell);
+            }
+            Log.warn("Cast attempted with spell of too high level, Spell: " + spellName + ". Player: " + player.getUsername());
+            return false;
         } catch (Exception e) {
             Log.error("Exception in castSpell: " + e);
             return false;
