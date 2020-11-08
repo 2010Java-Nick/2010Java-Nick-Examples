@@ -1,6 +1,7 @@
 package SpellPointTracker.daos;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -46,8 +47,30 @@ public class PlayerDaoPostgres implements PlayerDao {
 
     @Override
     public Player readPlayer(int playerId) throws SQLException{
-        //TODO Implement readPlayer
-        return null;
+        try {
+            //Prep SQL for select statement
+            String sql = "SELECT * FROM player "
+                        + "WHERE player_id = ?;";
+
+            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt.setInt(1, playerId);
+
+            //Return result of SQL query
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+
+            //Read result into player
+            Player player = new Player(rs.getInt(1), 
+                                    rs.getString(2),
+                                    rs.getString(3), 
+                                    rs.getInt(4), 
+                                    rs.getInt(5),
+                                    rs.getInt(6));
+            return player;
+        } catch (SQLException e) {
+            Log.warn("PlayerDaoPostgres.readPlayer threw SQLException: " + e);
+            throw e;
+        }
     }
 
     @Override
