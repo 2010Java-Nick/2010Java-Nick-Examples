@@ -1,5 +1,6 @@
 package SpellPointTracker.daos;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,10 +28,10 @@ public class PlayerDaoPostgres implements PlayerDao {
     @Override
     public void createPlayer(Player player) throws SQLException{
 
-        try {
+        try(Connection conn = connUtil.createConnection()) {
             String sql = "INSERT INTO player VALUES "
                         +"(?, ?, ?, ?, ?, ?);";
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, player.getId());
             stmt.setString(2, player.getUsername());
             stmt.setString(3, player.getPassword());
@@ -48,12 +49,12 @@ public class PlayerDaoPostgres implements PlayerDao {
 
     @Override
     public Player readPlayer(int playerId) throws SQLException{
-        try {
+        try(Connection conn = connUtil.createConnection()) {
             //Prep SQL for select statement
             String sql = "SELECT * FROM player "
                         + "WHERE player_id = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, playerId);
 
             //Return result of SQL query
@@ -79,10 +80,10 @@ public class PlayerDaoPostgres implements PlayerDao {
 
         List<Player> players = new ArrayList<>();
 
-        try {
+        try(Connection conn = connUtil.createConnection()) {
             //Prep SQL for select statement
             String sql = "SELECT * FROM player;";
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
 
             //Return result of SQL query
             ResultSet rs = stmt.executeQuery();
@@ -110,12 +111,12 @@ public class PlayerDaoPostgres implements PlayerDao {
     @Override
     public void updatePlayer(Player player) throws SQLException{
 
-        try { //Prepare prepared statement
+        try(Connection conn = connUtil.createConnection()) { //Prepare prepared statement
             String sql  = "UPDATE player SET username = ?, passphrase = ?, " 
             + "current_points = ?, current_level = ?, caster_id = ? "
             + "WHERE player_id = ?;";
 
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, player.getUsername());
             stmt.setString(2, player.getPassword());
             stmt.setInt(3, player.getCurrentPoints());
@@ -133,11 +134,11 @@ public class PlayerDaoPostgres implements PlayerDao {
 
     @Override
     public void deletePlayer(Player player) throws SQLException{
-		try { //Prep statement with proper SQL
+		try(Connection conn = connUtil.createConnection()) { //Prep statement with proper SQL
 		    String sql = "DELETE FROM player "
                     + "WHERE player_id = ?;";
             
-            stmt = connUtil.createConnection().prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, player.getId());
 
             stmt.executeUpdate();
