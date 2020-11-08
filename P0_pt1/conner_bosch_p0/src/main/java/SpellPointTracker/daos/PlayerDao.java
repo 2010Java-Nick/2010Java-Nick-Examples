@@ -1,19 +1,20 @@
 package SpellPointTracker.daos;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import SpellPointTracker.pojos.Player;
 
 public interface PlayerDao {
 
-    public void createPlayer(Player player);
+    public void createPlayer(Player player) throws SQLException;
 
-    public Player readPlayer(int playerId);
+    public Player readPlayer(int playerId) throws SQLException;
 
-    public List<Player> readAllPlayers();
+    public List<Player> readAllPlayers() throws SQLException;
 
-    public Player updatePlayer (int playerId, Player player);
+    public Player updatePlayer (int playerId, Player player) throws SQLException;
 
-    public void deletePlayer(Player player);
+    public void deletePlayer(Player player) throws SQLException;
     
 }
