@@ -266,7 +266,50 @@ public class SpellDaoPostgresTest {
 
 	@Test
 	public void testDeleteSpell() {
-		fail("Not yet implemented");
+		try {
+			//Insert test spell to be read
+			//Prep statement with proper SQL
+			String sql = "INSERT INTO spell VALUES " 
+						+"(?, ?, ?);";
+			try {
+				testStmt = realConn.prepareStatement(sql); 
+				testStmt.setInt(1, spell.getId());
+				testStmt.setString(2, spell.getName());
+				testStmt.setInt(3, spell.getLevel());
+
+				assertTrue("Error in inserting test spell", 1 == testStmt.executeUpdate());
+			} catch (SQLException e) {
+				fail("SQLException thrown in test set up: " + e.toString());
+			}
+
+			//Prep statement with proper SQL
+			sql = "DELETE FROM spell "
+				+ "WHERE spell_id = ?;";
+			try {
+				initStmtHelper(sql);
+			} catch (SQLException e) {
+				fail("SQLException thrown: " + e.toString());
+			}
+
+			//Test deleteSpell functionality
+			try {
+				spellDao.deleteSpell(spell);
+
+				//Ensure proper methods called
+				verify(spy).setInt(1, spell.getId());
+				verify(spy).executeUpdate();
+
+			} catch (SQLException e) {
+				fail("Exception thrown: " + e);
+			} 
+		} finally {
+			//Attempt to delete object that was already deleted (Should throw exception)
+			try {
+				testStmt = realConn.prepareStatement("DELETE FROM spell WHERE spell_id = ?;");
+				testStmt.setInt(1, spell.getId());
+				assertEquals("Object was not deleted properly", 0, testStmt.executeUpdate());
+			} catch (SQLException e) {}
+		}
 	}
 
 	/**
