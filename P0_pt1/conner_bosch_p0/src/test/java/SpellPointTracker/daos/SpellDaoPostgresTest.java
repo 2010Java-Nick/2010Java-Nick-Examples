@@ -52,10 +52,10 @@ public class SpellDaoPostgresTest {
 		realConn = new ConnectionUtil().createConnection();
 
 		//Set Dao with mocked ConnectionUtil
-		//spellDao = new SpellDaoPostgres(connUtil);
+		spellDao = new SpellDaoPostgres(connUtil);
 
 		//Initialize spell test object
-		//spell = new Spell(1010, "big_cast", 9);
+		spell = new Spell(1010, "big_cast", 9);
 
 	}
 
@@ -69,12 +69,87 @@ public class SpellDaoPostgresTest {
 
 	@Test
 	public void testCreateSpell() {
-		fail("Not yet implemented");
+		//Prep statement with proper SQL
+		String sql = "INSERT INTO spell VALUES "
+					+"(?, ?, ?);";
+
+		try {
+			initStmtHelper(sql);
+		} catch (SQLException e) {
+			fail("SQLException thrown in test set up: " + e.toString());
+		}
+
+		//Test createSpell functionality
+		try {
+			spellDao.createSpell(spell);
+
+			//Verify statement was prepared properly
+			verify(spy).setInt(1, spell.getId());
+			verify(spy).setString(2, spell.getName());
+			verify(spy).setInt(3, spell.getLevel());
+
+			verify(spy).executeUpdate();
+
+		} catch (SQLException e) {
+			fail("SQLException thrown in creation process: " + e);
+		} finally {
+			//Removal process, post-test
+			try {
+				testStmt = realConn.prepareStatement("DELETE FROM spell WHERE spell_id = ?;");
+				testStmt.setInt(1, spell.getId());
+				testStmt.executeUpdate();
+			} catch (SQLException e) {
+				fail("TEST ERROR, could not properly remove spell: " + e);
+			}
+		}
 	}
 
 	@Test
 	public void testReadSpell() {
-		fail("Not yet implemented");
+		//Insert test player to be read
+		String sql = "INSERT INTO spell VALUES "
+					+"(?, ?, ?);";
+		try {
+			testStmt = realConn.prepareStatement(sql);
+			testStmt.setInt(1, spell.getId());
+			testStmt.setString(2, spell.getName());
+			testStmt.setInt(3, spell.getLevel());
+			assertTrue("Error in inserting test spell", 1 == testStmt.executeUpdate());
+		} catch (SQLException e) {
+			fail("SQLException thrown in test set up: " + e);
+		}
+
+		//Prep statement with proper SQL
+		sql = "SELECT * FROM spell "
+			+ "WHERE spell_id = ?;";
+		try {
+			initStmtHelper(sql);
+		} catch (SQLException e) {
+			fail("SQLException thrown: " + e);
+		}
+
+		try {
+			Spell resultSpell = spellDao.readSpell(spell.getId());
+
+			//Verify statement was prepared and executed properly
+			verify(spy).setInt(1, spell.getId());
+			verify(spy).executeQuery();
+
+			assertTrue("Object returned does not match expected object", spell.equals(resultSpell));
+		
+		} catch (SQLException e) {
+			fail("SQLException thrown: " + e);
+
+		} finally {
+			//Removal process, post-test
+			try {
+				testStmt = realConn.prepareStatement("DELETE FROM player WHERE player_id = ?;");
+				testStmt.setInt(1, spell.getId());
+				testStmt.executeUpdate();
+			} catch (SQLException e) {
+				fail("TEST ERROR, couldn't properly remove test player!");
+			}
+		}
 	}
 
 	@Test
