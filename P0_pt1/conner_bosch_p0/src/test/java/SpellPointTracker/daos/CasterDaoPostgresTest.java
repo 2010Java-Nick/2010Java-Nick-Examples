@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
@@ -55,7 +56,7 @@ public class CasterDaoPostgresTest {
 		casterDao = new CasterDaoPostgres(connUtil);
 
 		//Initialize spell test object
-		caster = new Caster(1010, "Illithid", new int[] {1, 2});
+		caster = new Caster(1010, "Illithid", false, new int[] {1, 2});
 	}
 
 	@After
@@ -68,7 +69,47 @@ public class CasterDaoPostgresTest {
 
 	@Test
 	public void testCreateCaster() {
-		fail("Not yet implemented");
+		try {
+			//Prep statement with proper SQL
+			String sql = "BEGIN; INSERT INTO caster VALUES "
+						+"(?, ?, ?); "
+						+"CALL insert_caster_spell_list(?, ARRAY?); " 
+						+"COMMIT; ";
+			try {
+				initStmtHelper(sql);
+			} catch (SQLException e) {
+				fail("SQLException thrown in test setup: " + e);
+			}
+
+			//Test createCaster functionality
+			try {
+				casterDao.createCaster(caster);
+
+				//Verify statement was prepared properly
+				verify(spy).setInt(1, caster.getId());
+				verify(spy).setString(2, caster.getName());
+				verify(spy).setBoolean(3, false);
+
+				//Verify statement set caster_spell values properly
+				verify(spy).setInt(4, caster.getId());
+				verify(spy).setString(5, Arrays.toString(caster.getSpellIds()));
+
+				verify(spy).executeUpdate();
+
+			} catch (SQLException e) {
+				fail("SQLException thrown in creation process: " + e);
+			}
+		} finally {
+			//Removal process, post-test
+			try {
+				testStmt = realConn.prepareStatement("DELETE FROM caster WHERE caster_id = ?;");
+				testStmt.setInt(1, caster.getId());
+				testStmt.executeUpdate();
+			} catch (SQLException e) {
+				fail("TEST ERROR, could not properly remove caster: " + e);
+			}
+
+		}
 	}
 
 	@Test
