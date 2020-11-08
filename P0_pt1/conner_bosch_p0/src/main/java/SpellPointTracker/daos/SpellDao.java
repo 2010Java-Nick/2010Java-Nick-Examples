@@ -13,7 +13,7 @@ public interface SpellDao {
 
     public List<Spell> readAllSpells() throws SQLException;
 
-    public Spell updateSpell(Spell spell) throws SQLException;
+    public void updateSpell(Spell spell) throws SQLException;
 
     public void deleteSpell(Spell spell) throws SQLException;
     
