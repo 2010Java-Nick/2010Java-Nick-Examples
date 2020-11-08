@@ -117,7 +117,20 @@ public class SpellDaoPostgres implements SpellDao {
 
     @Override
     public void deleteSpell(Spell spell) throws SQLException{
-        //TODO Implement deleteSpell
+        try (Connection conn = connUtil.createConnection()) {
+
+            String sql = "DELETE FROM spell "
+                        + "WHERE spell_id = ?;";
+
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, spell.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            Log.warn("SpellDaoPostgres.deleteSpell threw SQLException: " + e);
+            throw e;
+        }
     }
     
 }
