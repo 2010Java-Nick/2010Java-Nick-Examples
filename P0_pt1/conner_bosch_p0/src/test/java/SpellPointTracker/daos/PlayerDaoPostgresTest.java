@@ -19,23 +19,23 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import SpellPointTracker.pojos.Player;
 import SpellPointTracker.util.ConnectionUtil;
+import SpellPointTracker.pojos.Player;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerDaoPostgresTest {
 
 	@Mock
-	private static ConnectionUtil connUtil;
+	private ConnectionUtil connUtil;
 	@Mock
-	private static Connection connection;
+	private Connection connection;
 
-	private static Connection realConn;
-	private static PreparedStatement stmt;
-	private static PreparedStatement testStmt;
-	private static PreparedStatement spy;
+	private Connection realConn;
+	private PreparedStatement stmt;
+	private PreparedStatement testStmt;
+	private PreparedStatement spy;
 
-	private static PlayerDaoPostgres playerDao;
+	private PlayerDaoPostgres playerDao;
 	private Player player;
 
 	@BeforeClass
@@ -54,7 +54,7 @@ public class PlayerDaoPostgresTest {
 		//Set Dao with mocked ConnectionUtil
 		playerDao = new PlayerDaoPostgres(connUtil);
 
-		//Reinitialize player test object
+		//Initialize player test object
 		player = new Player(1010, "Dave", "theBarbarian", 6, 2, 1);
 		
 	}
@@ -78,6 +78,7 @@ public class PlayerDaoPostgresTest {
 			fail("SQLException thrown: " + e.toString());
 		}
 
+		//Test createPlayer functionality
 		try {
 			playerDao.createPlayer(player);
 
@@ -181,6 +182,7 @@ public class PlayerDaoPostgresTest {
 			fail("SQLException thrown: " + e.toString());
 		}
 
+		//Test readAllPlayers functionality
 		try {
 			List<Player> allPlayers = playerDao.readAllPlayers();
 
@@ -229,6 +231,7 @@ public class PlayerDaoPostgresTest {
 			fail("SQLException thrown: " + e.toString());
 		}
 
+		//Test updatePlayer functionality
 		try {
 			//Modify values 
 			player.setPassword("smash12");
@@ -242,7 +245,6 @@ public class PlayerDaoPostgresTest {
 			verify(spy).setInt(4, player.getCurrentLevel());
 			verify(spy).setInt(5, player.getCasterType());
 			verify(spy).setInt(6, player.getId());
-
 
 			verify(spy).executeUpdate();
 
@@ -318,7 +320,7 @@ public class PlayerDaoPostgresTest {
 	}
 
 	/**
-	 * Helper method that initializes static variables using the prepared sql string provided
+	 * Helper method that initializes mock and spy variables using the prepared sql string provided
 	 * @param sql -Prepared SQL String
 	 */
 	private void initStmtHelper(String sql) throws SQLException {
