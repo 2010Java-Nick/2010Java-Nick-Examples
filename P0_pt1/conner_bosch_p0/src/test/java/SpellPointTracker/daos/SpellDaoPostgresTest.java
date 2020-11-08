@@ -69,30 +69,32 @@ public class SpellDaoPostgresTest {
 
 	@Test
 	public void testCreateSpell() {
-		//Prep statement with proper SQL
-		String sql = "INSERT INTO spell VALUES "
-					+"(?, ?, ?);";
-
 		try {
-			initStmtHelper(sql);
-		} catch (SQLException e) {
-			fail("SQLException thrown in test set up: " + e.toString());
-		}
+			//Prep statement with proper SQL
+			String sql = "INSERT INTO spell VALUES "
+						+"(?, ?, ?);";
 
-		//Test createSpell functionality
-		try {
-			spellDao.createSpell(spell);
+			try {
+				initStmtHelper(sql);
+			} catch (SQLException e) {
+				fail("SQLException thrown in test set up: " + e.toString());
+			}
 
-			//Verify statement was prepared properly
-			verify(spy).setInt(1, spell.getId());
-			verify(spy).setString(2, spell.getName());
-			verify(spy).setInt(3, spell.getLevel());
+			//Test createSpell functionality
+			try {
+				spellDao.createSpell(spell);
 
-			verify(spy).executeUpdate();
+				//Verify statement was prepared properly
+				verify(spy).setInt(1, spell.getId());
+				verify(spy).setString(2, spell.getName());
+				verify(spy).setInt(3, spell.getLevel());
 
-		} catch (SQLException e) {
-			fail("SQLException thrown in creation process: " + e);
-		} finally {
+				verify(spy).executeUpdate();
+
+			} catch (SQLException e) {
+				fail("SQLException thrown in creation process: " + e);
+			}
+		 } finally {
 			//Removal process, post-test
 			try {
 				testStmt = realConn.prepareStatement("DELETE FROM spell WHERE spell_id = ?;");
@@ -106,48 +108,50 @@ public class SpellDaoPostgresTest {
 
 	@Test
 	public void testReadSpell() {
-		//Insert test player to be read
-		String sql = "INSERT INTO spell VALUES "
-					+"(?, ?, ?);";
 		try {
-			testStmt = realConn.prepareStatement(sql);
-			testStmt.setInt(1, spell.getId());
-			testStmt.setString(2, spell.getName());
-			testStmt.setInt(3, spell.getLevel());
-			assertTrue("Error in inserting test spell", 1 == testStmt.executeUpdate());
-		} catch (SQLException e) {
-			fail("SQLException thrown in test set up: " + e);
-		}
+			//Insert test player to be read
+			String sql = "INSERT INTO spell VALUES "
+						+"(?, ?, ?);";
+			try {
+				testStmt = realConn.prepareStatement(sql);
+				testStmt.setInt(1, spell.getId());
+				testStmt.setString(2, spell.getName());
+				testStmt.setInt(3, spell.getLevel());
+				assertTrue("Error in inserting test spell", 1 == testStmt.executeUpdate());
+			} catch (SQLException e) {
+				fail("SQLException thrown in test set up: " + e);
+			}
 
-		//Prep statement with proper SQL
-		sql = "SELECT * FROM spell "
-			+ "WHERE spell_id = ?;";
-		try {
-			initStmtHelper(sql);
-		} catch (SQLException e) {
-			fail("SQLException thrown: " + e);
-		}
+			//Prep statement with proper SQL
+			sql = "SELECT * FROM spell "
+				+ "WHERE spell_id = ?;";
+			try {
+				initStmtHelper(sql);
+			} catch (SQLException e) {
+				fail("SQLException thrown: " + e);
+			}
 
-		try {
-			Spell resultSpell = spellDao.readSpell(spell.getId());
+			try {
+				Spell resultSpell = spellDao.readSpell(spell.getId());
 
-			//Verify statement was prepared and executed properly
-			verify(spy).setInt(1, spell.getId());
-			verify(spy).executeQuery();
+				//Verify statement was prepared and executed properly
+				verify(spy).setInt(1, spell.getId());
+				verify(spy).executeQuery();
 
-			assertTrue("Object returned does not match expected object", spell.equals(resultSpell));
-		
-		} catch (SQLException e) {
-			fail("SQLException thrown: " + e);
+				assertTrue("Object returned does not match expected object", spell.equals(resultSpell));
+			
+			} catch (SQLException e) {
+				fail("SQLException thrown: " + e);
 
+			} 
 		} finally {
 			//Removal process, post-test
 			try {
-				testStmt = realConn.prepareStatement("DELETE FROM player WHERE player_id = ?;");
+				testStmt = realConn.prepareStatement("DELETE FROM spell WHERE spell_id = ?;");
 				testStmt.setInt(1, spell.getId());
 				testStmt.executeUpdate();
 			} catch (SQLException e) {
-				fail("TEST ERROR, couldn't properly remove test player!");
+				fail("TEST ERROR, couldn't properly remove test spell!");
 			}
 		}
 	}
@@ -197,7 +201,67 @@ public class SpellDaoPostgresTest {
 
 	@Test
 	public void testUpdateSpell() {
-		fail("Not yet implemented");
+		try {
+			//Insert test spell to be read
+				//Prep statement with proper SQL
+			String sql = "INSERT INTO spell VALUES " 
+						+"(?, ?, ?);";
+			try {
+				testStmt = realConn.prepareStatement(sql); 
+				testStmt.setInt(1, spell.getId());
+				testStmt.setString(2, spell.getName());
+				testStmt.setInt(3, spell.getLevel());
+				assertTrue("Error in inserting test spell", 1 == testStmt.executeUpdate());
+			} catch (SQLException e) {
+				fail("SQLException thrown in test set up: " + e.toString());
+			}
+
+			//Prep statement with proper SQL
+			sql = "UPDATE spell SET name = ?, level = ? "
+				+ "WHERE spell_id = ?;";
+			try {
+				initStmtHelper(sql);
+			} catch (SQLException e) {
+				fail("SQLException thrown: " + e.toString());
+			}
+
+			//Test updatePlayer functionality
+			try {
+				//Modify values 
+				spell.setName("Little cast");
+				spell.setLevel(3);
+				spellDao.updateSpell(spell);
+
+				//Verify statement was prepared properly
+				verify(spy).setString(1, spell.getName());
+				verify(spy).setInt(2, spell.getLevel());
+				verify(spy).setInt(3, spell.getId());
+
+				verify(spy).executeUpdate();
+
+				//Pull modified player object from database for comparison
+				testStmt = realConn.prepareStatement("SELECT * FROM spell WHERE spell_id = ?;");
+				testStmt.setInt(1, spell.getId());
+				ResultSet rs = testStmt.executeQuery();
+
+				rs.next();
+				Spell modSpell = new Spell(rs.getInt(1), rs.getString(2), rs.getInt(3));
+
+				assertEquals("Database object does not match as modified", spell, modSpell);
+
+			} catch (SQLException e) {
+				fail("Exception thrown: " + e);
+			} 
+		} finally {
+			//Removal process, post-test
+			try {
+				testStmt = realConn.prepareStatement("DELETE FROM spell WHERE spell_id = ?;");
+				testStmt.setInt(1, spell.getId());
+				testStmt.executeUpdate();
+			} catch (SQLException e) {
+				fail("TEST ERROR, couldn't properly remove test spell!");
+			}
+		}
 	}
 
 	@Test
