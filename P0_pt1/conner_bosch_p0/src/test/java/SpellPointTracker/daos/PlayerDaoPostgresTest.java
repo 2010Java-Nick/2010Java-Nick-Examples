@@ -75,7 +75,7 @@ public class PlayerDaoPostgresTest {
 		try {
 			initStmtHelper(sql);
 		} catch (SQLException e) {
-			fail("SQLException thrown: " + e.toString());
+			fail("SQLException thrown in test set up: " + e.toString());
 		}
 
 		//Test createPlayer functionality
@@ -93,7 +93,7 @@ public class PlayerDaoPostgresTest {
 			verify(spy).executeUpdate();
 
 		} catch (SQLException e) {
-			fail("Exception thrown: " + e);
+			fail("SQLException thrown in creation process:  " + e);
 		} finally {
 			//Removal process, post-test
 			try {
@@ -109,7 +109,6 @@ public class PlayerDaoPostgresTest {
 	@Test
 	public void testReadPlayer() {
 		//Insert test player to be read
-		//Prep statement with proper SQL
 		String sql = "INSERT INTO player VALUES " 
 					+"(?, ?, ?, ?, ?, ?);";
 		try {
@@ -131,7 +130,7 @@ public class PlayerDaoPostgresTest {
 		try {
 			initStmtHelper(sql);
 		} catch (SQLException e) {
-			fail("SQLException thrown: " + e.toString());
+			fail("SQLException thrown: " + e);
 		}
 
 		try {
@@ -144,7 +143,7 @@ public class PlayerDaoPostgresTest {
 			assertTrue("Object returned does not match expected object", player.equals(resultPlayer));
 			
 		} catch (SQLException e) {
-			fail("Exception thrown: " + e);
+			fail("SQLException thrown: " + e);
 
 		} finally {
 			//Removal process, post-test
@@ -171,7 +170,7 @@ public class PlayerDaoPostgresTest {
 			rs.next();
 			numPlayers = rs.getInt(1);
 		} catch (SQLException e) {
-			fail("SQLException thrown in test set up: " + e.toString());
+			fail("SQLException thrown in test setup: " + e);
 		}
 
 		//Prep statement with proper SQL
@@ -198,7 +197,7 @@ public class PlayerDaoPostgresTest {
 				assertFalse("Caster type returned 0 for user: " + p.getUsername(), 0 == p.getCasterType());
 			}
 		} catch (SQLException e) {
-			fail("Exception thrown: " + e);	
+			fail("SQLException thrown in playerDao.readAllPlayers: " + e);	
 		}
 	}
 
