@@ -104,4 +104,15 @@ public class SpellServicePostgres implements SpellService {
     private void initializeAllSpellsList() {
         this.allSpells = this.getAllSpells();
     }
+
+    public void createSpell(int id, String name, int level){
+        
+        Spell spell = new Spell(id, name, level);
+        try {
+            spellDao.createSpell(spell);
+            Log.info("Spell " + name + " was created.");
+        } catch (SQLException e) {
+            Log.warn("Spell " + name + " was not able to be created: " + e);
+        }
+    }
 }

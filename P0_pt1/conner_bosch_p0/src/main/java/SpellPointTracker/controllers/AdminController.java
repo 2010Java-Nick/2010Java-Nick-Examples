@@ -25,6 +25,10 @@ public class AdminController {
         return playerService.getPlayer(id);
     }
 
+    public void createPlayer(int id, String username, String password, int currentPoints, int level, int casterId){
+        playerService.createPlayer(id, username, password, currentPoints, level, casterId);
+    }
+
     public void createCaster(int id, String name, boolean halfCaster, Integer[] spellIds){
         casterService.createCaster(id, name, halfCaster, spellIds);
     }
@@ -43,6 +47,10 @@ public class AdminController {
 
     public void createSpell(String name, int level){
         spellService.createSpell(name, level);
+    }
+
+    public void createSpell(int id, String name, int level){
+        spellService.createSpell(id, name, level);
     }
 
     public void updateSpell(int id, String name, int level){

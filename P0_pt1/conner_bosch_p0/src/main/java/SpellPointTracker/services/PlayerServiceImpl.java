@@ -94,6 +94,11 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
+    public boolean createPlayer(int id, String username, String password, int currentPoints, int level, int casterType) {
+        return false;
+    }
+
+    @Override
     public Player getPlayer(int id) {
         return null;
     }

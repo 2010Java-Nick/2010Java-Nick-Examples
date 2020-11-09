@@ -34,6 +34,19 @@ public class PlayerServicePostgres implements PlayerService {
         }
     }
 
+    public boolean createPlayer(int id, String username, String password, int currentPoints, int level, int casterType) {
+        try {
+            Player player = new Player(id, username, password, currentPoints, level, casterType);
+            playerDao.createPlayer(player);
+            Log.info("Player " + username + " was entered into the database.");
+            return true;
+
+        } catch (SQLException e) {
+            Log.warn("Player " + username + " was not able to be entered into database: " + e);
+            return false;
+        }
+    }
+
     @Override
     public Player getPlayer(String username, String password) {
         List<Player> players = this.getPlayers();

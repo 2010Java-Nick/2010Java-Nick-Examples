@@ -17,6 +17,8 @@ public interface SpellService {
     public List<Spell> getSpells(Integer[] spellIds);
 
     public void createSpell(String name, int level);
+
+    public void createSpell(int id, String name, int level);
     
     public void updateSpell(int id, String name, int level);
 

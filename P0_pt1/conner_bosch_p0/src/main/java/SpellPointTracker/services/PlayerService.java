@@ -18,6 +18,8 @@ public interface PlayerService {
 
     public boolean createPlayer(String username, String password, int currentPoints, int level, int casterType);
 
+    public boolean createPlayer(int id, String username, String password, int currentPoints, int level, int casterType);
+
     public void updatePlayer (int id, String username, String password, int currentPoints, int level, int casterType);
 
     public void deletePlayer(int id);
