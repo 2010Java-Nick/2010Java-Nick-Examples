@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import SpellPointTracker.pojos.Caster;
+import SpellPointTracker.pojos.*;
 import io.javalin.http.Context;
 
 public class SpellPointsWebController {
@@ -179,16 +179,49 @@ public class SpellPointsWebController {
     }
 
     public void updatePlayer(Context ctx){
-        int id = Integer.parseInt(ctx.formParam("id"));
+        try {
+            int id = Integer.parseInt(ctx.formParam("id"));
+            String username = ctx.formParam("username");
+            String password = ctx.formParam("password");
+            int currentPoints = Integer.parseInt(ctx.formParam("points"));
+            int level = Integer.parseInt(ctx.formParam("level"));
+            int casterType = Integer.parseInt("caster");
+            
+            control.updatePlayer(id, username, password, currentPoints, level, casterType);
+            Log.info("Successfully updated user: " + username);
+            ctx.html("Successfully updated user: " + username);
 
-        control.updatePlayer(id, username, password, currentPoints, level, casterType);
+        } catch (NumberFormatException e) {
+            Log.warn("NumFormException in updatePlayer, exception: " + e);
+        }
+
     }
 
     public void deletePlayer(Context ctx){
-        
+        try {
+            int id = Integer.parseInt(ctx.formParam("id"));
+            control.deletePlayer(id);
+            Log.info("Successfully deleted user number: " + id);
+            ctx.html("Successfully deleted user number: " + id);
+
+        } catch (NumberFormatException e) {
+            Log.warn("NumFormException in deletePlayer, exception: " + e);
+            ctx.html("NumFormException in deletePlayer, exception: " + e);
+        }
     }
 
     public void getSpell(Context ctx) {
 
+        String spellName = ctx.formParam("spellName");
+        Spell spell = control.getSpell(spellName);
+
+        if (spell != null) {
+            Log.info("Successfully retrieved spell: " + spell.toString());
+            ctx.html("Successfully retrieved spell: " + spell.toString());
+
+        } else {
+            Log.warn("Error in retrieving spell: " + spellName);
+            ctx.html("Error in retrieving spell: " + spellName);
+        }
     }
 }

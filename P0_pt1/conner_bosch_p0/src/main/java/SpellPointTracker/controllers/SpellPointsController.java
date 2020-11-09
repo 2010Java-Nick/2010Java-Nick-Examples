@@ -151,8 +151,8 @@ public class SpellPointsController {
         playerService.updatePlayer(id, username, password, currentPoints, level, casterType);
     }
 
-    public void deletePlayer(int id, String username, String password, int currentPoints, int level, int casterType){
-        playerService.deletePlayer(id, username, password, currentPoints, level, casterType);
+    public void deletePlayer(int id){
+        playerService.deletePlayer(id);
     }
 
     public Spell getSpell(String spellName) {

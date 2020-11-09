@@ -38,13 +38,13 @@ public class ServerDriver {
             app.post("/data-management/player/:id", ctx -> webControl.promptUserCreate(ctx));
             app.delete("/data-management/player/:id", ctx -> webControl.deletePlayer(ctx));
 
-            app.get("/data-management/casters", ctx -> webAdmin.getCasters(ctx));
-            app.get("/data-management/caster/:id", ctx -> webAdmin.getCaster(ctx));
+            app.get("/data-management/casters", ctx -> webControl.getAllCasters(ctx));
+            app.get("/data-management/caster/:id", ctx -> webControl.getCaster(ctx));
             app.post("/data-management/caster/:id", ctx -> webAdmin.postCaster(ctx));
             app.delete("/data-management/caster/:id", ctx -> webAdmin.deleteCaster(ctx));
 
             app.get("/data-management/spells", ctx -> webAdmin.getSpells(ctx));
-            app.get("/data-management/spell/:id", ctx -> webAdmin.getSpell(ctx));
+            app.get("/data-management/spell/:name", ctx -> webControl.getSpell(ctx));
             app.post("/data-management/spell/:id", ctx -> webAdmin.postSpell(ctx));
             app.delete("/data-management/spell/:id", ctx -> webAdmin.deleteSpell(ctx));
 

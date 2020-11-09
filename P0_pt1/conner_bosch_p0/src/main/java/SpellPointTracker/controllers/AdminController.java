@@ -33,8 +33,12 @@ public class AdminController {
         casterService.updateCaster(id, name, halfCaster, spellIds);
     }
 
-    public void deleteCaster(int id, String name, boolean halfCaster, Integer[] spellIds){
-        casterService.deleteCaster(id, name, halfCaster, spellIds);
+    public List<Spell> getAllSpells(){
+        return spellService.getAllSpells();
+    }
+
+    public void deleteCaster(int id){
+        casterService.deleteCaster(id);
     }
 
     public void createSpell(String name, int level){
@@ -45,8 +49,8 @@ public class AdminController {
         spellService.updateSpell(id, name, level);
     }
 
-    public void deleteSpell(int id, String name, int level){
-        spellService.deleteSpell(id, name, level);
+    public void deleteSpell(int id){
+        spellService.deleteSpell(id);
     }
 
 }
