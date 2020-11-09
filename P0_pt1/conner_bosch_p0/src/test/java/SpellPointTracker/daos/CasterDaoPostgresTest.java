@@ -395,8 +395,9 @@ public class CasterDaoPostgresTest {
 			}
 
 			//Prep statements with proper SQL
+			sql = "DELETE FROM caster " 
+				 +"WHERE caster_id = ?;";
 			try {
-				sql = "SELECT spell_id FROM caster_spell WHERE caster_id = ?;";
 				initStmtHelper(sql);
 			} catch (SQLException e) {
 				fail("SQLException thrown: " + e);
@@ -404,19 +405,22 @@ public class CasterDaoPostgresTest {
 
 			//Test deleteCaster functionality
 			try {
+				casterDao.deleteCaster(caster);
+
+				//Ensure proper methods are called
+				verify(spy1).setInt(1, caster.getId());
+				verify(spy1).executeUpdate();
 
 			} catch (SQLException e) {
-				fail("SQLException thrown from testing updateCaster: " + e);
+				fail("SQLException thrown from testing deleteCaster: " + e);
 			}
 		} finally {
-			//Removal process, post-test
+			//Attempt to delete object that was already deleted (Should throw exception)
 			try {
 				testStmt = realConn.prepareStatement("DELETE FROM caster WHERE caster_id = ?;");
 				testStmt.setInt(1, caster.getId());
-				testStmt.executeUpdate();
-			} catch (SQLException e) {
-				fail("TEST ERROR, could not properly remove caster: " + e);
-			}
+				assertEquals("Object was not deleted properly", 0, testStmt.executeUpdate());
+			} catch (SQLException e) {}
 		}
 	}
 
