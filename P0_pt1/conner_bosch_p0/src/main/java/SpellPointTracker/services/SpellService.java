@@ -18,7 +18,7 @@ public interface SpellService {
 
     public void createSpell(String name, int level);
     
-    public void updateSpell(Spell spell);
+    public void updateSpell(int id, String name, int level);
 
-    public void deleteSpell(Spell spell);
+    public void deleteSpell(int id, String name, int level);
 }

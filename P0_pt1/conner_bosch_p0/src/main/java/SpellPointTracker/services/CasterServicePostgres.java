@@ -118,18 +118,38 @@ public class CasterServicePostgres implements CasterService {
     }
 
     @Override
-    public void updateCaster(Caster caster){
-        try {
-            casterDao.updateCaster(caster);
-            Log.info("Caster was updated: " + caster.toString());
+    public void updateCaster(int id, String name, boolean halfCaster, Integer[] spellIds){
 
-        } catch (SQLException e) {
-            Log.warn("Caster was not able to be updated: " + caster.toString());
+        Caster caster = new Caster(id, name, halfCaster, spellIds);
+        Caster currentCaster = this.getCaster(id);
+
+        if(!caster.getSpellIds().equals(currentCaster.getSpellIds())){
+            try{
+                casterDao.updateCasterSpells(id, spellIds);
+                Log.info("Caster spell ids were updated: " + caster.getName());
+            } catch (SQLException e) {
+                Log.warn("Caster " + caster.getName() + " spells were not able to be updated: " + e);
+            }
+        }
+
+        currentCaster.setSpellIds(caster.getSpellIds()); 
+        
+        if(!currentCaster.equals(caster)){
+            try {
+                casterDao.updateCaster(caster);
+                Log.info("Caster was updated: " + caster.toString());
+
+            } catch (SQLException e) {
+                Log.warn("Caster " + caster.getName() + " was not able to be updated: " + e);
+            }
         }
     }
 
     @Override
-    public void deleteCaster(Caster caster){
+    public void deleteCaster(int id, String name, boolean halfCaster, Integer[] spellIds){
+
+        Caster caster = new Caster(id, name, halfCaster, spellIds);
+
         try {
             casterDao.deleteCaster(caster);
             Log.info("Caster " + caster.toString() + " was deleted from database.");

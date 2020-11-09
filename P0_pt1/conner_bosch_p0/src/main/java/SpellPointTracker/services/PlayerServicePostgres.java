@@ -62,7 +62,10 @@ public class PlayerServicePostgres implements PlayerService {
     }
 
     @Override
-    public void updatePlayer (Player player){
+    public void updatePlayer (int id, String username, String password, int currentPoints, int level, int casterType){
+        
+        Player player = new Player(id, username, password, currentPoints, level, casterType);
+
         try {
             playerDao.updatePlayer(player);
             Log.info("Player " + player.getUsername() + " was updated with new info.");
@@ -73,7 +76,10 @@ public class PlayerServicePostgres implements PlayerService {
     }
 
     @Override
-    public void deletePlayer(Player player){
+    public void deletePlayer(int id, String username, String password, int currentPoints, int level, int casterType){
+        
+        Player player = new Player(id, username, password, currentPoints, level, casterType);
+
         try {
             playerDao.deletePlayer(player);
             Log.info("Player " + player.getUsername() + " was deleted.");

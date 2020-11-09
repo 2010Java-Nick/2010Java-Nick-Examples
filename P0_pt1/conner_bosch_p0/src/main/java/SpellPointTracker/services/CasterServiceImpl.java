@@ -124,12 +124,12 @@ public class CasterServiceImpl implements CasterService {
     }
 
     @Override
-    public void deleteCaster(Caster caster) {
+    public void deleteCaster(int id, String name, boolean halfCaster, Integer[] spellIds) {
 
     }
 
     @Override
-    public void updateCaster(Caster caster) {
+    public void updateCaster(int id, String name, boolean halfCaster, Integer[] spellIds) {
 
     }
 }

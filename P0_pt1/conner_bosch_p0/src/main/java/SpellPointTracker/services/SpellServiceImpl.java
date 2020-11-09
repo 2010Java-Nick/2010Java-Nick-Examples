@@ -98,10 +98,10 @@ public class SpellServiceImpl implements SpellService {
     }
 
     @Override
-    public void deleteSpell(Spell spell) {
+    public void deleteSpell(int id, String name, int level) {
     }
 
     @Override
-    public void updateSpell(Spell spell) {
+    public void updateSpell(int id, String name, int level) {
     }
 }

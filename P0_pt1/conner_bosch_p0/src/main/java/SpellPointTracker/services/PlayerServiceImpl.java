@@ -86,10 +86,10 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void deletePlayer(Player player) {
+    public void deletePlayer(int id, String username, String password, int currentPoints, int level, int casterType) {
     }
 
     @Override
-    public void updatePlayer(Player player) {
+    public void updatePlayer(int id, String username, String password, int currentPoints, int level, int casterType) {
     }
 }

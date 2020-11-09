@@ -22,7 +22,7 @@ public interface CasterService {
 
     public void createCaster(int id, String name, boolean halfCaster, Integer[] spellIds);
 
-    public void updateCaster(Caster caster);
+    public void updateCaster(int id, String name, boolean halfCaster, Integer[] spellIds);
 
-    public void deleteCaster(Caster caster);
+    public void deleteCaster(int id, String name, boolean halfCaster, Integer[] spellIdsr);
 }
