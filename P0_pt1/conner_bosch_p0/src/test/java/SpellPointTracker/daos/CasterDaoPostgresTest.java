@@ -176,7 +176,47 @@ public class CasterDaoPostgresTest {
 
 	@Test
 	public void testReadAllCasters() {
-		fail("Not yet implemented");
+		
+		Integer numCasters = -1;
+
+		//Get current num of casters in Database for verification
+		String sql = "SELECT COUNT(*) FROM caster;";
+		try {
+			testStmt = realConn.prepareStatement(sql);
+			ResultSet rs = testStmt.executeQuery();
+			rs.next();
+			numCasters = rs.getInt(1);
+		} catch (SQLException e) {
+			fail("SQLException thrown in test setup: " + e);
+		}
+
+		//Prep statement with proper SQL
+		sql = "SELECT c.caster_id, c.caster_name, c.half_caster, cs.spell_id FROM caster c "
+			+ "INNER JOIN caster_spell cs " 
+			+ "ON c.caster_id = cs.caster_id ";
+		try {
+			initStmtHelper(sql);
+		} catch (SQLException e) {
+			fail("SQLException thrown: " + e);
+		}
+		
+		//Test readAllCasters functionality
+		try {
+			List<Caster> allCasters = casterDao.readAllCasters();
+
+			//Verify statement was excuted properly
+			verify(spy).executeQuery();
+
+			//Verify result set returned proper data
+			assertTrue("Returned set is not the same size as expected", numCasters == allCasters.size());
+			for (Caster c : allCasters) {
+				assertFalse("Id returned 0 for caster: " + c.getName(), 0 == c.getId());
+				assertFalse("Caster name returned blank for caster number: " + c.getId(), "".equals(c.getName()));
+				assertFalse("Caster spell list returned empty for caster: " + c.getName(), 0 == c.getSpellIds().length);
+			}
+		} catch (SQLException e) {
+			fail("SQLException thrown in casterDao.readAllCasters: " + e);
+		}
 	}
 
 	@Test
