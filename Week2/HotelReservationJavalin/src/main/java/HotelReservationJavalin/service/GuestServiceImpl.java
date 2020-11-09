@@ -1,10 +1,10 @@
-package HotelReservation.service;
+package HotelReservationJavalin.service;
 
 import java.util.List;
 
-import HotelReservation.pojos.Guest;
-import HotelReservation.pojos.Room;
-import HotelReservation.pojos.Room.RoomType;
+import HotelReservationJavalin.pojos.Guest;
+import HotelReservationJavalin.pojos.Room;
+import HotelReservationJavalin.pojos.Room.RoomType;
 
 public class GuestServiceImpl implements GuestService {
 
@@ -25,10 +25,10 @@ public class GuestServiceImpl implements GuestService {
 	}
 
 	@Override
-	public Guest createGuest(String name, String phoneNumber, double payment, Room room) {
-		Guest newGuest = new Guest(name, room, phoneNumber, payment);
-		guestCache.addToCache(newGuest);
-		return newGuest;
+	public Guest createGuest(Guest guest) {
+		System.out.println("Creating " + guest + " object");
+		guestCache.addToCache(guest);
+		return guest;
 	}
 
 	@Override
@@ -64,6 +64,12 @@ public class GuestServiceImpl implements GuestService {
 		 * (guest) -> { return guest.getRoom().getRoomType().equals(roomType); }
 		 */
 				guest -> guest.getRoom().getRoomType().equals(roomType));
+	}
+
+	@Override
+	public void updateGuest(int guestId, Guest guest) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

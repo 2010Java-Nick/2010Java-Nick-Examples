@@ -1,4 +1,4 @@
-package HotelReservation.service;
+package HotelReservationJavalin.service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import HotelReservation.pojos.Guest;
 
 public class CustomCacheServiceSimpleInMemory <T> implements CustomCacheService<T> {
 	
@@ -29,6 +27,7 @@ public class CustomCacheServiceSimpleInMemory <T> implements CustomCacheService<
 
 	@Override
 	public void addToCache(T obj) {
+		System.out.println("Adding object " + obj + " to cache");
 		cache.add(obj);
 	}
 
@@ -40,7 +39,6 @@ public class CustomCacheServiceSimpleInMemory <T> implements CustomCacheService<
 
 	@Override
 	public T retrieveItem(T obj) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -65,7 +63,7 @@ public class CustomCacheServiceSimpleInMemory <T> implements CustomCacheService<
 	@Override
 	public List<T> retrieveAllItems() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<T>(cache);
 	}
 
 	@Override
