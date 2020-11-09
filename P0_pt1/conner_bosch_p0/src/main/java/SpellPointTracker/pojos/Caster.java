@@ -82,6 +82,9 @@ public class Caster {
                 return false;
         } else if (!name.equals(other.name))
             return false;
+        if (halfCaster != other.halfCaster) {
+            return false;
+        }
         if (!Arrays.equals(spellIds, other.spellIds))
             return false;
         return true;
