@@ -15,6 +15,8 @@ public interface CasterDao {
 
     public void updateCaster(Caster caster) throws SQLException;
 
+    public void updateCasterSpells(int casterId, Integer[] spellIds) throws SQLException;
+
     public void deleteCaster(Caster caster) throws SQLException;
     
 }
