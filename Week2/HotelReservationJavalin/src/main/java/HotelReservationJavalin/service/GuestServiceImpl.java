@@ -66,4 +66,10 @@ public class GuestServiceImpl implements GuestService {
 				guest -> guest.getRoom().getRoomType().equals(roomType));
 	}
 
+	@Override
+	public void updateGuest(int guestId, Guest guest) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

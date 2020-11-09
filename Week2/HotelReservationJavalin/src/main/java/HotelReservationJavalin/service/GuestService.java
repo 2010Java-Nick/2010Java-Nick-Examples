@@ -5,6 +5,7 @@ import java.util.List;
 import HotelReservationJavalin.pojos.Guest;
 import HotelReservationJavalin.pojos.Room;
 import HotelReservationJavalin.pojos.Room.RoomType;
+import HotelReservationJavalin.util.GuestUpdateException;
 
 public interface GuestService {
 	
@@ -17,5 +18,7 @@ public interface GuestService {
 	public List<Guest> getAllGuests();
 	
 	public List<Guest> getAllGuestsByRoomType(RoomType roomType);
+	
+	public void updateGuest(int guestId, Guest guest) throws GuestUpdateException;
 
 }

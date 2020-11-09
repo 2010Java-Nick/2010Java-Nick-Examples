@@ -6,6 +6,7 @@ import HotelReservationJavalin.Dao.GuestDao;
 import HotelReservationJavalin.Dao.GuestDaoPostgres;
 import HotelReservationJavalin.pojos.Guest;
 import HotelReservationJavalin.pojos.Room.RoomType;
+import HotelReservationJavalin.util.GuestUpdateException;
 
 public class GuestServiceFullStack implements GuestService {
 	
@@ -39,6 +40,11 @@ public class GuestServiceFullStack implements GuestService {
 	public List<Guest> getAllGuestsByRoomType(RoomType roomType) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void updateGuest(int guestId, Guest guest) throws GuestUpdateException{
+		guestDao.updateGuest(guestId, guest);
 	}
 
 }

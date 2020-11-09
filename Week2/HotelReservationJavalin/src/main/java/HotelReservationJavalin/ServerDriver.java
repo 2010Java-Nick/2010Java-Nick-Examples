@@ -11,6 +11,7 @@ public class ServerDriver {
 		Javalin app = Javalin.create().start(9090); //sets up and starts our server
 		app.get("/hello", ctx -> ctx.html("Hello World"));
 		app.post("/createGuest", ctx -> guestController.createGuest(ctx));
+		app.put("/updateGuest", ctx -> guestController.updateGuest(ctx));
 	}
 
 }
