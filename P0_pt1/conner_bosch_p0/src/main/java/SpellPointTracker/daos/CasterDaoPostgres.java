@@ -221,6 +221,19 @@ public class CasterDaoPostgres implements CasterDao {
 
     @Override
     public void deleteCaster(Caster caster) throws SQLException{
-        //TODO Implement deleteCaster
+        try (Connection conn = connUtil.createConnection()) {
+
+            String sql = "DELETE FROM caster " 
+                        +"WHERE caster_id = ?;";
+
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, caster.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            Log.warn("CasterDaoPostgres.deleteCaster threw SQLException: " + e);
+            throw e;
+        }
     } 
 }
