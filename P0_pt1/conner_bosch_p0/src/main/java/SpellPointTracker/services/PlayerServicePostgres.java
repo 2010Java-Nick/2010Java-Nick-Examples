@@ -90,9 +90,10 @@ public class PlayerServicePostgres implements PlayerService {
     }
 
     @Override
-    public void deletePlayer(int id, String username, String password, int currentPoints, int level, int casterType){
+    public void deletePlayer(int id){
         
-        Player player = new Player(id, username, password, currentPoints, level, casterType);
+        Player player = new Player();
+        player.setId(id);
 
         try {
             playerDao.deletePlayer(player);

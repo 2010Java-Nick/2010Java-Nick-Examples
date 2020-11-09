@@ -98,7 +98,7 @@ public class SpellServiceImpl implements SpellService {
     }
 
     @Override
-    public void deleteSpell(int id, String name, int level) {
+    public void deleteSpell(int id) {
     }
 
     @Override

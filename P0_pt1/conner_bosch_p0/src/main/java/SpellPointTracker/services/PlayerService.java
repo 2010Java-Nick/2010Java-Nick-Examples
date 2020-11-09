@@ -20,5 +20,5 @@ public interface PlayerService {
 
     public void updatePlayer (int id, String username, String password, int currentPoints, int level, int casterType);
 
-    public void deletePlayer(int id, String username, String password, int currentPoints, int level, int casterType);
+    public void deletePlayer(int id);
 }

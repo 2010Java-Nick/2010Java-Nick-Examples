@@ -146,9 +146,10 @@ public class CasterServicePostgres implements CasterService {
     }
 
     @Override
-    public void deleteCaster(int id, String name, boolean halfCaster, Integer[] spellIds){
+    public void deleteCaster(int id){
 
-        Caster caster = new Caster(id, name, halfCaster, spellIds);
+        Caster caster = new Caster();
+        caster.setId(id);
 
         try {
             casterDao.deleteCaster(caster);

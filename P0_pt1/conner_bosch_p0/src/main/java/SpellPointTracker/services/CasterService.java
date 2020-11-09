@@ -24,5 +24,5 @@ public interface CasterService {
 
     public void updateCaster(int id, String name, boolean halfCaster, Integer[] spellIds);
 
-    public void deleteCaster(int id, String name, boolean halfCaster, Integer[] spellIdsr);
+    public void deleteCaster(int id);
 }

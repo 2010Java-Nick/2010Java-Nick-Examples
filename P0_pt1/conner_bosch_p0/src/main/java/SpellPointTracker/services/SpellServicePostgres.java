@@ -76,9 +76,10 @@ public class SpellServicePostgres implements SpellService {
     }
 
     @Override
-    public void updateSpell(int id, String name, int level){
+    public void updateSpell(int id){
 
-        Spell spell = new Spell(id, name, level);
+        Spell spell = new Spell();
+        spell.setId(id);
         try {
             spellDao.updateSpell(spell);
             Log.info("Spell was updated " + spell.toString());
