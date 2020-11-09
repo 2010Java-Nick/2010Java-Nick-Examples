@@ -13,8 +13,9 @@ public class ServerDriver {
     private static CasterService casterService = new CasterServicePostgres(connUtil);
     private static PlayerService playerService = new PlayerServicePostgres(connUtil);
     private static SpellService spellService = new SpellServicePostgres(connUtil);
+    private static AdminController admin = new AdminController(casterService, playerService, spellService);
     private static SpellPointsController control = new SpellPointsController(casterService, playerService, spellService, calcService);
-    private static SpellPointsWebController webControl = new SpellPointsWebController(control);
+    private static SpellPointsWebController webControl = new SpellPointsWebController(control, admin);
     
     private static Javalin app;
     private static Scanner scan = new Scanner(System.in);;
