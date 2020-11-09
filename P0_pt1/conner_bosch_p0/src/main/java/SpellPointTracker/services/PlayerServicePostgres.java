@@ -49,6 +49,20 @@ public class PlayerServicePostgres implements PlayerService {
     }
 
     @Override
+    public Player getPlayer(int id) {
+        List<Player> players = this.getPlayers();
+
+        for (Player p : players) {
+            if (p.getId() == id){
+                Log.info("Player " + p.getUsername() + " successfully retrieved.");
+                return p;
+            }
+        }
+        Log.warn("Player with id: " + id + " not found.");
+        return null;
+    }
+
+    @Override
     public List<Player> getPlayers() {
         try {
             List<Player> players = playerDao.readAllPlayers();

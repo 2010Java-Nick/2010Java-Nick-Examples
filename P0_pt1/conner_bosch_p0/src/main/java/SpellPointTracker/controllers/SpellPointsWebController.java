@@ -4,18 +4,17 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import SpellPointTracker.pojos.Caster;
 import io.javalin.http.Context;
 
 public class SpellPointsWebController {
 
     private SpellPointsController control;
-    private AdminController admin;
 
     private static Logger Log = Logger.getLogger("controllerLog");
 
-    public SpellPointsWebController(SpellPointsController control, AdminController admin){
+    public SpellPointsWebController(SpellPointsController control){
         this.control = control;
-        this.admin = admin;
     }
 
     /**
@@ -143,5 +142,53 @@ public class SpellPointsWebController {
             Log.error("Error while resting: " + e);
             ctx.html("Error while resting");
         }
+    }
+
+    public void getStatus(Context ctx){
+        Log.info("Reponding to getStatus request");
+
+        try {
+            String status = control.getStatus();
+            Log.info("Current status: " + status);
+            ctx.html("Current status: " + status);
+        } catch (Exception e) {
+            Log.error("Error while retrieving status: " + e);
+            ctx.html("Error while retrieving status");
+        }
+    }
+
+    public void getAllCasters(Context ctx) {
+        List<Caster> caster = control.getAllCasters();
+        String html = "Casters: ";
+
+        for(Caster c : caster) {
+            html += c.toString() + ", ";
+        }
+        ctx.html(html);
+    }
+
+    public void getCaster(Context ctx) {
+        try {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            Caster caster = control.getCaster(id);
+            ctx.html(caster.toString());
+            
+        } catch (NumberFormatException e) {
+            Log.warn("NumFormException in getCaster, input: " + ctx.pathParam("id") + " Exception: " + e);
+        }
+    }
+
+    public void updatePlayer(Context ctx){
+        int id = Integer.parseInt(ctx.formParam("id"));
+
+        control.updatePlayer(id, username, password, currentPoints, level, casterType);
+    }
+
+    public void deletePlayer(Context ctx){
+        
+    }
+
+    public void getSpell(Context ctx) {
+
     }
 }

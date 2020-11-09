@@ -1,11 +1,11 @@
 package SpellPointTracker.services;
 
-import SpellPointTracker.pojos.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+
+import SpellPointTracker.pojos.Player;
 
 /**
  * A class that holds the different players as well as the information for
@@ -92,4 +92,10 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public void updatePlayer(int id, String username, String password, int currentPoints, int level, int casterType) {
     }
+
+    @Override
+    public Player getPlayer(int id) {
+        return null;
+    }
+
 }

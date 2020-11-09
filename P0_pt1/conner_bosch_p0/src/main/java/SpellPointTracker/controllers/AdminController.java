@@ -21,6 +21,10 @@ public class AdminController {
         return playerService.getPlayers();
     }
 
+    public Player getPlayer(int id){
+        return playerService.getPlayer(id);
+    }
+
     public void createCaster(int id, String name, boolean halfCaster, Integer[] spellIds){
         casterService.createCaster(id, name, halfCaster, spellIds);
     }
