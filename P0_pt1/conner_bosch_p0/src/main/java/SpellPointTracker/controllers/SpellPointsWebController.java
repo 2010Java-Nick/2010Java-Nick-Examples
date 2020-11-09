@@ -9,11 +9,13 @@ import io.javalin.http.Context;
 public class SpellPointsWebController {
 
     private SpellPointsController control;
+    private AdminController admin;
 
     private static Logger Log = Logger.getLogger("controllerLog");
 
-    public SpellPointsWebController(SpellPointsController control){
+    public SpellPointsWebController(SpellPointsController control, AdminController admin){
         this.control = control;
+        this.admin = admin;
     }
 
     /**
