@@ -15,5 +15,10 @@ public interface SpellService {
     public Spell getSpell(String spellName);
 
     public List<Spell> getSpells(Integer[] spellIds);
+
+    public void createSpell(String name, int level);
     
+    public void updateSpell(Spell spell);
+
+    public void deleteSpell(Spell spell);
 }

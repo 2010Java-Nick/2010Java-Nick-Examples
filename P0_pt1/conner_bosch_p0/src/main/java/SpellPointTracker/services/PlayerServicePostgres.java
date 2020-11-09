@@ -61,6 +61,7 @@ public class PlayerServicePostgres implements PlayerService {
         }
     }
 
+    @Override
     public void updatePlayer (Player player){
         try {
             playerDao.updatePlayer(player);
@@ -71,6 +72,7 @@ public class PlayerServicePostgres implements PlayerService {
         }
     }
 
+    @Override
     public void deletePlayer(Player player){
         try {
             playerDao.deletePlayer(player);

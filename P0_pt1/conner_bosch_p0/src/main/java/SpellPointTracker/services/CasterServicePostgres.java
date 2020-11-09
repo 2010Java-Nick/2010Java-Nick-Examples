@@ -102,6 +102,7 @@ public class CasterServicePostgres implements CasterService {
         }
     }
     
+    @Override
     public void createCaster(int id, String name, boolean halfCaster, Integer[] spellIds){
 
         Caster caster = new Caster(id, name, halfCaster, spellIds);
@@ -116,6 +117,7 @@ public class CasterServicePostgres implements CasterService {
         }
     }
 
+    @Override
     public void updateCaster(Caster caster){
         try {
             casterDao.updateCaster(caster);
@@ -126,6 +128,7 @@ public class CasterServicePostgres implements CasterService {
         }
     }
 
+    @Override
     public void deleteCaster(Caster caster){
         try {
             casterDao.deleteCaster(caster);

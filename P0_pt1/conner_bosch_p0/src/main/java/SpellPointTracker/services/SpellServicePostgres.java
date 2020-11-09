@@ -61,8 +61,9 @@ public class SpellServicePostgres implements SpellService {
         }
         Log.info("Returned " + returnSpells.size() + " specific spells.");
         return returnSpells;
-}
+    }   
 
+    @Override
     public void createSpell(String name, int level){
         
         Spell spell = new Spell(0, name, level);
@@ -74,6 +75,7 @@ public class SpellServicePostgres implements SpellService {
         }
     }
 
+    @Override
     public void updateSpell(Spell spell){
         try {
             spellDao.updateSpell(spell);
@@ -84,6 +86,7 @@ public class SpellServicePostgres implements SpellService {
         }
     }
 
+    @Override
     public void deleteSpell(Spell spell){
         try {
             spellDao.deleteSpell(spell);
