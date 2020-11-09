@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import SpellPointTracker.daos.SpellDao;
 import SpellPointTracker.daos.SpellDaoPostgres;
 import SpellPointTracker.pojos.Spell;
 import SpellPointTracker.util.ConnectionUtil;
