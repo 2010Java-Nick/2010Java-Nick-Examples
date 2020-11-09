@@ -112,4 +112,10 @@ public class Player {
             return false;
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Player " + id + ": " + username + ", Level " + currentLevel + ", Type: " + casterType
+                + ", current points = " + currentPoints;
+    }
 }

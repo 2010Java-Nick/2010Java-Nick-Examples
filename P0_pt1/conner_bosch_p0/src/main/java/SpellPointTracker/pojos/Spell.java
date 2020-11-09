@@ -73,4 +73,9 @@ public class Spell {
             return false;
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Spell " + id + ": " + name + ", Level " + level;
+    }
 }

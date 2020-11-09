@@ -87,4 +87,10 @@ public class Caster {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Caster " + id + ": " + name + ", half=" + halfCaster + ", spellIds= "
+                + Arrays.toString(spellIds);
+    }
+
 }
