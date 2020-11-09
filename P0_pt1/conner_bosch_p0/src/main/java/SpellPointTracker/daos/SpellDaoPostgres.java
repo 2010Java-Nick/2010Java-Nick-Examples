@@ -28,12 +28,21 @@ public class SpellDaoPostgres implements SpellDao {
     @Override
     public void createSpell(Spell spell) throws SQLException{
         try(Connection conn = connUtil.createConnection()) {
-            String sql = "INSERT INTO spell VALUES "
-                        +"(?, ?, ?);";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, spell.getId());
-            stmt.setString(2, spell.getName());
-            stmt.setInt(3, spell.getLevel());
+            if (spell.getId() > 0) {
+                String sql = "INSERT INTO spell VALUES "
+                            +"(?, ?, ?);";
+                stmt = conn.prepareStatement(sql);
+                stmt.setInt(1, spell.getId());
+                stmt.setString(2, spell.getName());
+                stmt.setInt(3, spell.getLevel());
+
+            } else {
+                String sql = "INSERT INTO spell (spell_name, spell_level) VALUES "
+                            +"(?, ?);";
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(2, spell.getName());
+                stmt.setInt(3, spell.getLevel());
+            }
 
             stmt.executeUpdate();
         } catch (SQLException e) {

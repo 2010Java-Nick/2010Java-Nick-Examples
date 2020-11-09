@@ -30,15 +30,27 @@ public class PlayerDaoPostgres implements PlayerDao {
 
         try(Connection conn = connUtil.createConnection()) {
 
-            String sql = "INSERT INTO player VALUES "
-                        +"(?, ?, ?, ?, ?, ?);";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, player.getId());
-            stmt.setString(2, player.getUsername());
-            stmt.setString(3, player.getPassword());
-            stmt.setInt(4, player.getCurrentPoints());
-            stmt.setInt(5, player.getCurrentLevel());
-            stmt.setInt(6, player.getCasterType());
+            if (player.getId() > 0) {
+                String sql = "INSERT INTO player VALUES "
+                            +"(?, ?, ?, ?, ?, ?);";
+                stmt = conn.prepareStatement(sql);
+                stmt.setInt(1, player.getId());
+                stmt.setString(2, player.getUsername());
+                stmt.setString(3, player.getPassword());
+                stmt.setInt(4, player.getCurrentPoints());
+                stmt.setInt(5, player.getCurrentLevel());
+                stmt.setInt(6, player.getCasterType());
+            } else {
+                String sql = "INSERT INTO player (username, passphrase, current_points, current_level, caster_id) VALUES "
+                            +"(?, ?, ?, ?, ?);";
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, player.getUsername());
+                stmt.setString(2, player.getPassword());
+                stmt.setInt(3, player.getCurrentPoints());
+                stmt.setInt(4, player.getCurrentLevel());
+                stmt.setInt(5, player.getCasterType());
+            }
+
 
             stmt.executeUpdate();
 
