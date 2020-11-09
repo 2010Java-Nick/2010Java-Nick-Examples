@@ -4,13 +4,15 @@ import java.util.Scanner;
 
 import SpellPointTracker.controllers.*;
 import SpellPointTracker.services.*;
+import SpellPointTracker.util.ConnectionUtil;
 import io.javalin.Javalin;
 
 public class ServerDriver {
+    private static ConnectionUtil connUtil = new ConnectionUtil();
     private static CalculatorService calcService = new CalculatorService();
-    private static CasterService casterService = new CasterServiceImpl();
-    private static PlayerService playerService = new PlayerServiceImpl();
-    private static SpellService spellService = new SpellServiceImpl();
+    private static CasterService casterService = new CasterServicePostgres(connUtil);
+    private static PlayerService playerService = new PlayerServicePostgres(connUtil);
+    private static SpellService spellService = new SpellServicePostgres(connUtil);
     private static SpellPointsController control = new SpellPointsController(casterService, playerService, spellService, calcService);
     private static SpellPointsWebController webControl = new SpellPointsWebController(control);
     
