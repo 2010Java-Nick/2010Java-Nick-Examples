@@ -22,7 +22,7 @@ public class WebAdminController {
         String html = "Players: ";
 
         for(Player p : players) {
-            html += p.toString() + ", ";
+            html += "<p>" + p.toString() + ",</p> ";
         }
         ctx.html(html);
     }
@@ -31,19 +31,44 @@ public class WebAdminController {
         try {
             int id = Integer.parseInt(ctx.pathParam("id"));
             Player player = admin.getPlayer(id);
+            if (player == null) {
+                ctx.html("Player " + id + " was not found");
+                Log.info("Player " + id + " was not found");
+            }
             ctx.html(player.toString());
 
         } catch (NumberFormatException e) {
             Log.warn("NumFormException in getPlayer, input: " + ctx.pathParam("id") + " Exception: " + e);
+            ctx.html("Input must be a number.");
+        }
+    }
+
+    public void createPlayer(Context ctx) {
+        try {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            String username = ctx.formParam("username");
+            String password = ctx.formParam("password");
+            int currentPoints = Integer.parseInt(ctx.formParam("points"));
+            int level = Integer.parseInt(ctx.formParam("level"));
+            int casterId  = Integer.parseInt(ctx.formParam("caster_id"));
+
+            admin.createPlayer(id, username, password, currentPoints, level, casterId);
+
+            Log.info("Player " + username + " was successfully created.");
+            ctx.html("Player " + username + " was successfully created.");
+
+        } catch (NumberFormatException e) {
+            Log.warn("NumFormException in createPlayer input. Exception: " + e);
+            ctx.html("Input must be a number.");
         }
     }
 
     public void postCaster(Context ctx){
         try {
         int id = Integer.parseInt(ctx.pathParam("id"));
-        String name = ctx.pathParam("name");
-        boolean halfCaster = Boolean.parseBoolean(ctx.pathParam("half_caster"));
-        String[] spells = ctx.pathParam("spell_ids").split(", ");
+        String name = ctx.formParam("name");
+        boolean halfCaster = Boolean.parseBoolean(ctx.formParam("half_caster"));
+        String[] spells = ctx.formParam("spell_ids").replace("[", "").replace("]", "").split(", ");
         Integer[] spellIds = new Integer[spells.length];
         
         for (int i = 0; i < spells.length; i++){
@@ -78,7 +103,7 @@ public class WebAdminController {
         String allSpells = "";
 
         for (Spell s : spells) {
-            allSpells += s.getName() + ", ";
+            allSpells += "<p>" + s + ", </p>";
         }
 
         if (!allSpells.equals("")){
@@ -95,24 +120,70 @@ public class WebAdminController {
             String name = ctx.formParam("name");
             int level = Integer.parseInt(ctx.formParam("level"));
             admin.createSpell(name, level);
-            Log.info("Retrieved spell "+ name +" successfully");
-            ctx.html("Retrieved spell "+ name +" successfully");
+            Log.info("Created spell "+ name +" successfully");
+            ctx.html("Created spell "+ name +" successfully");
         } catch (NumberFormatException e) {
-            Log.warn("Error in retrieving spell: " + e);
-            ctx.html("Error in retrieving spell: " + e);
+            Log.warn("Error in creating spell: " + e);
+            ctx.html("Error in creating spell: " + e);
         }
 
     }
 
     public void deleteSpell(Context ctx){
         try {
-            int id = Integer.parseInt("id");
+            int id = Integer.parseInt(ctx.pathParam("id"));
             admin.deleteSpell(id);
             Log.info("Deleted spell "+ id +" successfully");
             ctx.html("Deleted spell "+ id +" successfully");
         } catch (NumberFormatException e) {
             Log.warn("Error in deleteing spell: " + e);
             ctx.html("Error in deleteing spell: " + e);
+        }
+    }
+
+    public void updateCaster(Context ctx){
+
+        int id = -1;
+
+        try {
+            id = Integer.parseInt(ctx.pathParam("id"));
+            String name = ctx.formParam("name");
+            boolean halfCaster = Boolean.parseBoolean(ctx.formParam("half_caster"));
+            
+            String[] spells = ctx.formParam("spell_ids").replace("[", "").replace("]", "").split(", ");
+            Integer[] spellIds = new Integer[spells.length];
+            
+            for (int i = 0; i < spells.length; i++){
+                spellIds[i] = Integer.parseInt(spells[i]); 
+            }
+
+            admin.updateCaster(id, name, halfCaster, spellIds);
+
+            Log.info("Updated caster "+ name +" successfully");
+            ctx.html("Updated caster "+ name +" successfully");
+
+        } catch (NumberFormatException e) {
+            Log.warn("Error in updating caster: " + id + " Exception: " + e);
+            ctx.html("Error in updating caster: " + id + " Exception: " + e);
+        }
+    }
+
+    public void updateSpell(Context ctx) {
+
+        int id = -1;
+
+        try {
+            id = Integer.parseInt(ctx.pathParam("id"));
+            String name = ctx.formParam("name");
+            int level = Integer.parseInt(ctx.formParam("level"));
+
+            admin.updateSpell(id, name, level);
+
+            Log.info("Updated spell "+ name +" successfully");
+            ctx.html("Updated spell "+ name +" successfully");
+        } catch (NumberFormatException e) {
+            Log.warn("Error in updating spell: " + id + " Exception: " + e);
+            ctx.html("Error in updating spell: " + id + " Exception: " + e);
         }
     }
 }
