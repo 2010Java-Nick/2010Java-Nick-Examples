@@ -138,4 +138,24 @@ public class SpellPointsController {
             return "";
         }
     }
+
+    public List<Caster> getAllCasters() {
+        return casterService.getAllCasters();
+    }
+
+    public Caster getCaster(int casterId) {
+        return casterService.getCaster(casterId);
+    }
+
+    public void updatePlayer(int id, String username, String password, int currentPoints, int level, int casterType){
+        playerService.updatePlayer(id, username, password, currentPoints, level, casterType);
+    }
+
+    public void deletePlayer(int id, String username, String password, int currentPoints, int level, int casterType){
+        playerService.deletePlayer(id, username, password, currentPoints, level, casterType);
+    }
+
+    public Spell getSpell(String spellName) {
+        return spellService.getSpell(spellName);
+    }
 }
