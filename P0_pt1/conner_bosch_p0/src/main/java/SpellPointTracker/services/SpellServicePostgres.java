@@ -76,10 +76,9 @@ public class SpellServicePostgres implements SpellService {
     }
 
     @Override
-    public void updateSpell(int id){
+    public void updateSpell(int id, String name, int level){
 
-        Spell spell = new Spell();
-        spell.setId(id);
+        Spell spell = new Spell(id, name, level);
         try {
             spellDao.updateSpell(spell);
             Log.info("Spell was updated " + spell.toString());
@@ -90,9 +89,10 @@ public class SpellServicePostgres implements SpellService {
     }
 
     @Override
-    public void deleteSpell(int id, String name, int level){
+    public void deleteSpell(int id){
 
-        Spell spell = new Spell(id, name, level);
+        Spell spell = new Spell();
+        spell.setId(id);
         try {
             spellDao.deleteSpell(spell);
             Log.info("Spell was deleted: " + spell.toString());
