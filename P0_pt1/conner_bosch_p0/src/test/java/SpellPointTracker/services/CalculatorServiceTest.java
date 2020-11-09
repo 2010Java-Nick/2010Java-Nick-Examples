@@ -30,6 +30,8 @@ public class CalculatorServiceTest {
     private Spell falseSpell2;
 	private List<Spell> spells;
 	private List<String> spellNames;
+	private List<Caster> casters;
+	private Caster caster;
 
     @BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -56,11 +58,13 @@ public class CalculatorServiceTest {
 		spellNames.add("magic missle");
 		spells = new ArrayList<Spell>();
 		spells.add(spellOne);
-        spells.add(spellTwo);
+		spells.add(spellTwo);
+		casters = new ArrayList<>();
+		caster = new Caster(0, "Bard", false, new Integer[]{0, 1});
+		casters.add(caster);
         
         calcService = new CalculatorService();
         calcService.setCurrentPlayer(player);
-        calcService.setCastersSpells(spells);
 	}
 
 	@After
@@ -70,8 +74,7 @@ public class CalculatorServiceTest {
 	public void getCasterSpellsTest(){
 		spells.add(falseSpell1);
 		spells.add(falseSpell2);
-		calcService.setCastersSpells(spells);
-		List<String> newSpells = calcService.getCastersSpells(1);
+		List<String> newSpells = calcService.getCastersSpells(1, spells);
 		
 		assertTrue("Incorrect number of spells returned", newSpells.size() == 2);
 		assertTrue("First spell doesn't match", newSpells.get(0).equals(spellOne.getName()));
@@ -90,7 +93,7 @@ public class CalculatorServiceTest {
     @Test
 	public void getStatusTest() {
         String expected = "Player 1: daveTheGamer Level 2 Bard -- Available Spell Points: 10";
-		assertTrue("Status|" + calcService.getStatus() + "|does not match expected:" + expected, calcService.getStatus().equals(expected));
+		assertTrue("Status|" + calcService.getStatus(casters) + "|does not match expected:" + expected, calcService.getStatus(casters).equals(expected));
     }
     
     @Test

@@ -44,6 +44,8 @@ public class SpellPointsControllerTest {
 	private List<Spell> spells;
 	private List<String> spellNames;
 	private Integer[] spellIds;
+	private List<Caster> casters;
+	private Caster caster;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -77,7 +79,9 @@ public class SpellPointsControllerTest {
 		spells.add(spellOne);
 		spells.add(spellTwo);
 		spells.add(spellThree);
-
+		casters = new ArrayList<>();
+		caster = new Caster(0, "Bard", false, spellIds);
+		casters.add(caster);
 
 		when(playerService.getPlayer(username, password)).thenReturn(player);
 		when(playerService.createPlayer(username, password, points ,level, casterType)).thenReturn(true);
@@ -85,12 +89,11 @@ public class SpellPointsControllerTest {
 		when(calcService.getCurrentPlayer()).thenReturn(player);
 		when(calcService.setCurrentPlayer(player)).thenReturn(true);
 		when(calcService.castSpell(spellOne)).thenReturn(true);
-		when(calcService.getStatus()).thenReturn("Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20 ");
+		when(calcService.getStatus(casters)).thenReturn("Player 1: daveTheGamer Level 2 Bard%nAvailable Spell Points: 20 ");
 
-		when(casterService.getCastersSpells(player.getCasterType())).thenReturn(spellIds);
 		when(casterService.getMaxPoints(0, level)).thenReturn(6);
+		when(casterService.getAllCasters()).thenReturn(casters);
 
-		when(spellService.getSpells(spellIds)).thenReturn(spells);
 		when(spellService.getSpell("cantrip")).thenReturn(spellOne);
 		when(spellService.getSpell("Wish")).thenReturn(spellThree);
 
@@ -106,8 +109,6 @@ public class SpellPointsControllerTest {
 		assertTrue("setCurrentPlayer returned False", control.setCurrentPlayer(username, password));
 		verify(playerService).getPlayer(username, password);
 		verify(calcService).setCurrentPlayer(player);
-		verify(casterService).getCastersSpells(player.getCasterType());
-		verify(spellService).getSpells(spellIds);
 	}
 
 	@Test
@@ -136,6 +137,6 @@ public class SpellPointsControllerTest {
 	public void getStatusTest(){
 		String testStatus = control.getStatus();
 		assertTrue("Status returned does not match expected", status.equals(testStatus));
-		verify(calcService).getStatus();
+		verify(calcService).getStatus(casters);
 	}
 }

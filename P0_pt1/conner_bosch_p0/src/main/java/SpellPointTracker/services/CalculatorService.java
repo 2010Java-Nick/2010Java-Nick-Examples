@@ -16,7 +16,6 @@ public class CalculatorService {
     private static Logger Log = Logger.getLogger("calculatorLog");
 
     private Player currentPlayer;
-    private List<Spell> castersSpells;
     private int[] spellCosts = new int[] {0, 2, 3, 5, 6, 7, 9, 10, 11, 13};
 
     public Player getCurrentPlayer() {
@@ -33,7 +32,7 @@ public class CalculatorService {
      * This is determined by the currentPlayer's casterType, currentLevel, and currentPoints
      * @return List<String> of spells available to cast.
      */
-    public List<String> getCastersSpells(int maxLevel) {
+    public List<String> getCastersSpells(int maxLevel, List<Spell> castersSpells) {
 
         try {
             List<String> spells = new ArrayList<>();
@@ -52,10 +51,6 @@ public class CalculatorService {
             Log.error("Exception in getCastersSpells: " + e);
             return null;
         }
-    }
-
-    public void setCastersSpells(List<Spell> spells){
-        this.castersSpells = spells;
     }
 
     /**
@@ -85,15 +80,18 @@ public class CalculatorService {
      * @return a string of information pertaining to the currentPlayer
      * Formated like: Player 1: daveTheGamer Level 2 Bard -- Available Spell Points: 20
      */
-    public String getStatus(){
+    public String getStatus(List<Caster> allCasters){
 
         try {
-            String[] casterNames = new String[]{"Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"};
-
-            int type = currentPlayer.getCasterType();
+            String casterName = "";
+            for (Caster c : allCasters){
+                if(c.getId() == currentPlayer.getCasterType()){
+                    casterName = c.getName();
+                }
+            }
 
             return "Player " + currentPlayer.getId() + ": " + currentPlayer.getUsername() + 
-                    " Level " + currentPlayer.getCurrentLevel() +" "+ casterNames[type] + " -- " + 
+                    " Level " + currentPlayer.getCurrentLevel() +" "+ casterName + " -- " + 
                     "Available Spell Points: " + currentPlayer.getCurrentPoints();
         } catch (Exception e) {
             Log.error("Exception in getStatus: " + e);
