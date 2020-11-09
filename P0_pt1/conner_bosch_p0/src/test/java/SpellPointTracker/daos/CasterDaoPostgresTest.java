@@ -194,8 +194,9 @@ public class CasterDaoPostgresTest {
 
 		//Prep statement with proper SQL
 		sql = "SELECT c.caster_id, c.caster_name, c.half_caster, cs.spell_id FROM caster c "
-			+ "INNER JOIN caster_spell cs " 
-			+ "ON c.caster_id = cs.caster_id ";
+			+ "LEFT JOIN caster_spell cs " 
+			+ "ON c.caster_id = cs.caster_id " 
+			+ "ORDER BY c.caster_id;";
 		try {
 			initStmtHelper(sql);
 		} catch (SQLException e) {
