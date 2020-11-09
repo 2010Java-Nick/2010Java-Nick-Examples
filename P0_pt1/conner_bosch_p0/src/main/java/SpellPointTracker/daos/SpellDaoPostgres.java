@@ -40,8 +40,8 @@ public class SpellDaoPostgres implements SpellDao {
                 String sql = "INSERT INTO spell (spell_name, spell_level) VALUES "
                             +"(?, ?);";
                 stmt = conn.prepareStatement(sql);
-                stmt.setString(2, spell.getName());
-                stmt.setInt(3, spell.getLevel());
+                stmt.setString(1, spell.getName());
+                stmt.setInt(2, spell.getLevel());
             }
 
             stmt.executeUpdate();
