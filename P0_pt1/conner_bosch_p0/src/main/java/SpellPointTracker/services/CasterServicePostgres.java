@@ -20,8 +20,8 @@ public class CasterServicePostgres implements CasterService {
     public CasterServicePostgres(ConnectionUtil connectionUtil) {
         super();
         casterDao = new CasterDaoPostgres(connectionUtil);
-        this.levelToPoints = new int[] {0, 4, 6, 14, 17, 27, 32, 38, 44, 57, 64, 73, 73, 73, 83, 83, 94, 94, 10, 114, 123, 133};
-        this.levelToSpell = new int[] {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 9, 9};
+        this.levelToPoints = new int[] {4, 4, 6, 14, 17, 27, 32, 38, 44, 57, 64, 73, 73, 73, 83, 83, 94, 94, 10, 114, 123, 133};
+        this.levelToSpell = new int[] {1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 9, 9};
     }
 
     @Override
