@@ -103,8 +103,9 @@ public class CasterDaoPostgres implements CasterDao {
         try(Connection conn = connUtil.createConnection()) {
             //Prep SQL for select statement
             String sql = "SELECT c.caster_id, c.caster_name, c.half_caster, cs.spell_id FROM caster c "
-                        + "INNER JOIN caster_spell cs " 
-                        + "ON c.caster_id = cs.caster_id ";
+                        + "LEFT JOIN caster_spell cs " 
+                        + "ON c.caster_id = cs.caster_id " 
+                        + "ORDER BY c.caster_id;";
             stmt = conn.prepareStatement(sql);
 
             //Return result of SQL query
@@ -113,11 +114,11 @@ public class CasterDaoPostgres implements CasterDao {
             int currentCasterId = -1;
             String casterName = "";
             boolean casterHalf = false;
-            List<Integer> ids = new LinkedList<>();
 
             //Loop through result set
-            while(rs.next()) {
-
+            rs.next();
+            do {
+                List<Integer> ids = new LinkedList<>();
                 //Read caster info from first row of that caster
                 currentCasterId = rs.getInt(1);
                 casterName = rs.getString(2);
@@ -133,7 +134,8 @@ public class CasterDaoPostgres implements CasterDao {
 
                 //Add completed caster to all casters list
                 casters.add(new Caster(currentCasterId, casterName, casterHalf, spellIds));
-            }
+
+            } while (!rs.isAfterLast());
         } catch (SQLException e) {
             Log.warn("CasterDaoPostgres.readAllCasters threw SQLException: " + e);
             throw e;
