@@ -90,7 +90,7 @@ public class SpellDaoPostgres implements SpellDao {
                 
             }
         } catch (SQLException e) {
-            Log.warn("SpellDaoPostgres.readSpell threw SQLException: " + e);
+            Log.warn("SpellDaoPostgres.readAllSpells threw SQLException: " + e);
             throw e;
         }
         return spells;

@@ -77,7 +77,7 @@ public class SpellDaoPostgresTest {
 			try {
 				initStmtHelper(sql);
 			} catch (SQLException e) {
-				fail("SQLException thrown in test set up: " + e.toString());
+				fail("SQLException thrown in test setup: " + e);
 			}
 
 			//Test createSpell functionality
@@ -119,7 +119,7 @@ public class SpellDaoPostgresTest {
 				testStmt.setInt(3, spell.getLevel());
 				assertTrue("Error in inserting test spell", 1 == testStmt.executeUpdate());
 			} catch (SQLException e) {
-				fail("SQLException thrown in test set up: " + e);
+				fail("SQLException thrown in test setup: " + e);
 			}
 
 			//Prep statement with proper SQL
@@ -177,7 +177,7 @@ public class SpellDaoPostgresTest {
 		try {
 			initStmtHelper(sql);
 		} catch (SQLException e) {
-			fail("SQLException thrown: " + e.toString());
+			fail("SQLException thrown: " + e);
 		}
 
 		//Test readAllSpells functionality
@@ -213,7 +213,7 @@ public class SpellDaoPostgresTest {
 				testStmt.setInt(3, spell.getLevel());
 				assertTrue("Error in inserting test spell", 1 == testStmt.executeUpdate());
 			} catch (SQLException e) {
-				fail("SQLException thrown in test set up: " + e.toString());
+				fail("SQLException thrown in test set up: " + e);
 			}
 
 			//Prep statement with proper SQL
@@ -222,7 +222,7 @@ public class SpellDaoPostgresTest {
 			try {
 				initStmtHelper(sql);
 			} catch (SQLException e) {
-				fail("SQLException thrown: " + e.toString());
+				fail("SQLException thrown: " + e);
 			}
 
 			//Test updatePlayer functionality
@@ -250,8 +250,9 @@ public class SpellDaoPostgresTest {
 				assertEquals("Database object does not match as modified", spell, modSpell);
 
 			} catch (SQLException e) {
-				fail("Exception thrown: " + e);
+				fail("SQLException thrown from testing updateSpell: " + e);
 			} 
+
 		} finally {
 			//Removal process, post-test
 			try {
@@ -300,7 +301,7 @@ public class SpellDaoPostgresTest {
 				verify(spy).executeUpdate();
 
 			} catch (SQLException e) {
-				fail("Exception thrown: " + e);
+				fail("SQLException thrown from testing deleteSpell: " + e);
 			} 
 		} finally {
 			//Attempt to delete object that was already deleted (Should throw exception)
