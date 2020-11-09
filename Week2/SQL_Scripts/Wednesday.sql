@@ -195,7 +195,7 @@ DELETE FROM invoice WHERE invoiceid = invId;
 $$ LANGUAGE SQL
 
 
-CREATE PROCEDURE  insrtRecord(fname integer, custId interger) AS $$
+CREATE PROCEDURE  insrtRecord(fname integer, custId integer) AS $$
 BEGIN;
     INSERT INTO customer
         (customerid , firstname)
