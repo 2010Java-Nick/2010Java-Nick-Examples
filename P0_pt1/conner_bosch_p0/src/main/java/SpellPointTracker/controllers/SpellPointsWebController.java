@@ -111,7 +111,7 @@ public class SpellPointsWebController {
     public void castSpell(Context ctx){
         Log.info("Responding castSpell request");
 
-        String spell = ctx.formParam("spell");
+        String spell = ctx.pathParam("spell");
         
         try {
             if (control.castSpell(spell)) {
@@ -162,7 +162,7 @@ public class SpellPointsWebController {
         String html = "Casters: ";
 
         for(Caster c : caster) {
-            html += c.toString() + ", ";
+            html += "<p>" + c.toString() + ", </p>";
         }
         ctx.html(html);
     }
@@ -175,17 +175,18 @@ public class SpellPointsWebController {
             
         } catch (NumberFormatException e) {
             Log.warn("NumFormException in getCaster, input: " + ctx.pathParam("id") + " Exception: " + e);
+            ctx.html("NumFormException in getCaster, exception: " + e);
         }
     }
 
     public void updatePlayer(Context ctx){
         try {
-            int id = Integer.parseInt(ctx.formParam("id"));
+            int id = Integer.parseInt(ctx.pathParam("id"));
             String username = ctx.formParam("username");
             String password = ctx.formParam("password");
             int currentPoints = Integer.parseInt(ctx.formParam("points"));
             int level = Integer.parseInt(ctx.formParam("level"));
-            int casterType = Integer.parseInt("caster");
+            int casterType = Integer.parseInt(ctx.formParam("caster_id"));
             
             control.updatePlayer(id, username, password, currentPoints, level, casterType);
             Log.info("Successfully updated user: " + username);
@@ -193,13 +194,14 @@ public class SpellPointsWebController {
 
         } catch (NumberFormatException e) {
             Log.warn("NumFormException in updatePlayer, exception: " + e);
+            ctx.html("NumFormException in updatePlayer, exception: " + e);
         }
 
     }
 
     public void deletePlayer(Context ctx){
         try {
-            int id = Integer.parseInt(ctx.formParam("id"));
+            int id = Integer.parseInt(ctx.pathParam("id"));
             control.deletePlayer(id);
             Log.info("Successfully deleted user number: " + id);
             ctx.html("Successfully deleted user number: " + id);
@@ -212,7 +214,7 @@ public class SpellPointsWebController {
 
     public void getSpell(Context ctx) {
 
-        String spellName = ctx.formParam("spellName");
+        String spellName = ctx.pathParam("name");
         Spell spell = control.getSpell(spellName);
 
         if (spell != null) {
