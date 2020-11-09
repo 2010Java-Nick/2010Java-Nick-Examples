@@ -113,5 +113,6 @@ public class WebAdminController {
         } catch (NumberFormatException e) {
             Log.warn("Error in deleteing spell: " + e);
             ctx.html("Error in deleteing spell: " + e);
+        }
     }
 }

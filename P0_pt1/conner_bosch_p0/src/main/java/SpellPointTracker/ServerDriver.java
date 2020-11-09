@@ -28,7 +28,7 @@ public class ServerDriver {
             app.post("/game-management/user/login", ctx -> webControl.promptLogin(ctx));
             app.post("/game-management/user/create", ctx -> webControl.promptUserCreate(ctx));
             app.get("/game-management/user/spells/available", ctx -> webControl.getSpells(ctx));
-            app.post("/game-management/user/spell/cast", ctx -> webControl.castSpell(ctx));
+            app.post("/game-management/user/spell/cast/:name", ctx -> webControl.castSpell(ctx));
             app.get("game-management/user/rest", ctx -> webControl.rest(ctx));
             app.get("game-management/user/status", ctx -> webControl.getStatus(ctx));
 
@@ -45,7 +45,7 @@ public class ServerDriver {
 
             app.get("/data-management/spells", ctx -> webAdmin.getSpells(ctx));
             app.get("/data-management/spell/:name", ctx -> webControl.getSpell(ctx));
-            app.post("/data-management/spell/:id", ctx -> webAdmin.postSpell(ctx));
+            app.post("/data-management/spell", ctx -> webAdmin.postSpell(ctx));
             app.delete("/data-management/spell/:id", ctx -> webAdmin.deleteSpell(ctx));
 
             String input = "";
