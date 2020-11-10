@@ -1,0 +1,79 @@
+# Week 3 Http Topics
+
+- [HTTP](https://tools.ietf.org/html/rfc7231)
+  - Request vs Response
+  - [Verbs:](https://tools.ietf.org/html/rfc7231#section-4)
+    - Get vs Post
+  - URI
+  - Body
+
+- [HTML](https://www.w3schools.com/html/)
+  - HTML5
+  - [Forms:](https://www.w3schools.com/html/html_forms.asp)
+    - Action
+    - Inputs
+    - Submit
+    - validation
+  - Elements:
+    - Attributes
+    - Id
+    - Class
+  - Attributes
+  - Head tags: meta, title, link
+  - Body tags: div, a, p, h1-h6
+  - Style & Script tags
+  - Semantic Tags
+- [DOM - Document Object Model](https://www.w3schools.com/whatis/whatis_htmldom.asp)
+
+- [CSS](https://www.w3schools.com/css/)
+  - CSS3
+  - Cascade priority:
+    - external
+    - internal
+    - in-line
+  - [Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
+  - Id vs Class vs Tag
+  - Responsive web design
+
+- [JavaScript](https://www.w3schools.com/js/)
+  - [EcmaScript 6](https://www.ecma-international.org/ecma-262/6.0/)
+  - Variables:
+    - Scopes
+    - var, let, const
+    - hoisting
+  - Objects, arrays, functions
+  - JSON stringify & parse
+  - [DOM API](https://www.w3schools.com/js/js_htmldom.asp)
+  - [Prototypical Inheritance](https://javascript.info/prototype-inheritance)
+  - Callbacks & closures
+  - Events:
+    - Bubbling vs Capturing
+    - Event.stopPropagation()
+    - Listeners
+  - Template literals
+  - Lambda arrow notation
+  - setInterval, setTimeout
+  - [Class Syntax](https://www.w3schools.com/js/js_classes.asp)
+  - [AJAX: Asynchronous JavaScript & XML](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX)
+    - [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)
+  - [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+- [XML](https://www.w3.org/XML/)
+  - Valid vs. Well Formed
+  - Schema
+    - XSD
+    - DTD
+  - [JAX-P](https://docs.oracle.com/javase/tutorial/jaxp/index.html)
+    - DOM
+    - SAX
+
+- [OWASP Topic - Cross-Site Scripting XSS](https://owasp.org/www-community/attacks/xss/)
+- [Intro to Azure Blob Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
+- [SOA - Service Oriented Architecture](https://dzone.com/articles/service-oriented-architecture-a-dead-simple-explan)
+- [REST](https://dzone.com/articles/introduction-to-rest-api-restful-web-services)
+    - resources
+    - constraints
+    - content negotiation
+    - exposing/consuming REST API endpoints
+    - [JSON (Jackson)](https://www.baeldung.com/jackson-object-mapper-tutorial)
+    - [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html)
