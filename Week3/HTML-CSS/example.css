@@ -1,0 +1,28 @@
+h1 {
+    color:blue;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: end;
+    border-width: 10px;
+    border-color: thistle;
+    border-style: groove;
+}
+
+h1:hover {
+    color: tomato;
+}
+
+#specialH1 {
+    color: purple;
+}
+
+.link {
+    color: darkblue;
+}
+
+.fancy {
+    font-family: fantasy;
+}
+
+.large {
+    font-size: xx-large;
+}
