@@ -95,5 +95,11 @@ public class GuestDaoPostgresTest {
 		assertTrue(rs.next());
 		
 	}
+	
+	@Test
+	public void getAllGuests() {
+		guestDao = new GuestDaoPostgres();
+		System.out.println(guestDao.readAllGuests());
+	}
 
 }

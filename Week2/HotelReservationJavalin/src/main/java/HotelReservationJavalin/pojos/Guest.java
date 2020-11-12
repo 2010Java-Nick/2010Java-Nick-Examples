@@ -24,6 +24,17 @@ public class Guest {
 		this.phoneNumber = phoneNumber;
 		this.payment = payment;
 	}
+	
+	public Guest(int guestId, String name, Room room, String phoneNumber, double payment) {
+		super();
+		this.guestId = guestId;
+		this.name = name;
+		this.room = room;
+		this.phoneNumber = phoneNumber;
+		this.payment = payment;
+	}
+
+
 
 	public Guest() {
 		this("default guest", new Room(), "xxx-xxxx", 0.0);
