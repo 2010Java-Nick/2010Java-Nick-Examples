@@ -27,7 +27,7 @@ public class GuestDaoPostgres implements GuestDao {
 	public void createGuest(Guest guest) {
 
 		String sql = "insert into guest (guest_first_name, guest_last_name, phone_number, payment) " + "values('"
-				+ guest.getName().split(" ")[0] + "', '" + guest.getName().split(" ")[1] + "', '"
+				+ guest.getName().split(" ")[0] + "', '" + guest.getName().substring(guest.getName().split(" ")[0].length()) + "', '"
 				+ guest.getPhoneNumber() + "', " + guest.getPayment() + ")";
 
 		try (Connection conn = connUtil.createConnection()) {

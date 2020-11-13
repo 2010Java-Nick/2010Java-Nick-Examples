@@ -32,8 +32,7 @@ public class GuestServiceFullStack implements GuestService {
 
 	@Override
 	public List<Guest> getAllGuests() {
-		// TODO Auto-generated method stub
-		return null;
+		return guestDao.readAllGuests();
 	}
 
 	@Override

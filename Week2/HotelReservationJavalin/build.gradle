@@ -39,5 +39,11 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.mockito/mockito-all
 	testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
 	
+	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	
+	compile "com.fasterxml.jackson.core:jackson-databind:2.10.3"
+	
+	
 	
 }
