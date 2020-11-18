@@ -3,7 +3,7 @@ window.onload = function () {
     //AJAX - Asynchronous JavaScript and XML
     //Initialize xhr object
     let xhr = new XMLHttpRequest();
-    const url = "http://localhost:9091/guest";
+    const url = "guest";
     //sets up ready state handler
     xhr.onreadystatechange = function () {
         console.log(xhr.readyState);
