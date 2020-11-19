@@ -23,13 +23,16 @@ public class GuestDaoHibernate implements GuestDao{
 		sess.save(guest);
 		tx.commit();
 		sess.close();
-		
 	}
 
 	@Override
 	public Guest readGuest(int guestId) {
 		// TODO Auto-generated method stub
-		return null;
+		Guest g;
+		Session sess = sessionFactory.openSession();
+		g = sess.get(Guest.class, guestId);
+		sess.close();
+		return g;
 	}
 
 	@Override

@@ -20,5 +20,7 @@ public interface GuestService {
 	public List<Guest> getAllGuestsByRoomType(RoomType roomType);
 	
 	public void updateGuest(int guestId, Guest guest) throws GuestUpdateException;
+	
+	public Guest getGuestById(int guestId);
 
 }

@@ -1,12 +1,17 @@
 package HotelReservationJavalin.pojos;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "guest")
@@ -23,7 +28,11 @@ public class Guest {
 	@Column(name = "guest_last_name")
 	private String lastName;
 	
-	@Transient
+	//Lazy fetching will only grab the room object if we use it
+	//Instead grabs a proxy
+	//could cause a LazyInitializationException, if proxy accessed for first time outside a session
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+	@JoinColumn(foreignKey = @ForeignKey(name = "guest_room_id_fkey"), name = "room")
 	private Room room;
 	
 	@Column(name = "phone_number")

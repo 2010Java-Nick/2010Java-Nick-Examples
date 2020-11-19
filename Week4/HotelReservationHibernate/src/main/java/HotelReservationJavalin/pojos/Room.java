@@ -1,4 +1,15 @@
 package HotelReservationJavalin.pojos;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 /*
  * Object o;
  * if(Math.random() > .5)
@@ -8,6 +19,8 @@ package HotelReservationJavalin.pojos;
  * o.toString(); <-- runtime polymorphism, JVM does not no which impl. of toString() will be run
  * until the program is executed, OVERRIDING
  */
+@Entity
+@Table(name = "room")
 public class Room {
 	
 	public enum RoomType {
@@ -17,28 +30,54 @@ public class Room {
 		LUXURY_SUITE
 	}
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "room_id")
+	private int roomId;
+	
+	@Column(name="num_beds")
 	private int beds;
 	
+	@Column(name = "smoking")
 	private boolean smoking;
 	
+	@Transient
+	//@Enumerated(EnumType.STRING)
 	private RoomType roomType;
 	
+	@Column(name = "roomservice")
 	private boolean roomService;
 	
+	@Column(name = "room_number")
 	private int roomNumber;
 
 	public Room() {
 		//super(); called implicitly
 	}
 
-	public Room(int beds, boolean smoking, RoomType roomType, boolean roomService, int roomNumber) {
-		//super(); calls super() implicitly
+	public Room(int roomId, int beds, boolean smoking, RoomType roomType, boolean roomService, int roomNumber) {
+		super();
+		this.roomId = roomId;
 		this.beds = beds;
 		this.smoking = smoking;
 		this.roomType = roomType;
 		this.roomService = roomService;
 		this.roomNumber = roomNumber;
 	}
+
+
+
+	public int getRoomId() {
+		return roomId;
+	}
+
+
+
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
+	}
+
+
 
 	public int getBeds() {
 		return beds;

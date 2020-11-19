@@ -11,6 +11,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import HotelReservationJavalin.pojos.Guest;
+import HotelReservationJavalin.pojos.Room;
 
 public class SessionFactoryUtil {
 	
@@ -38,11 +39,15 @@ public class SessionFactoryUtil {
 			settings.put("hibernate.connection.password", System.getenv("HOTEL_PASSWORD"));
 			settings.put("hibernate.connection.driver_class", "org.postgresql.Driver");
 			settings.put("hibernate.connection.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+			settings.put("hibernate.show_sql", "true");
+			settings.put("hibernate.format_sql", "true");
+			
 			
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings).build();
 			
 			Metadata metadata = new MetadataSources(standardRegistry)
 						.addAnnotatedClass(Guest.class)
+						.addAnnotatedClass(Room.class)
 						.getMetadataBuilder()
 						.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
 			

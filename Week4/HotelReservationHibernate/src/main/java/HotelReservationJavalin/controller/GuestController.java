@@ -4,6 +4,7 @@ import java.util.List;
 
 import HotelReservationJavalin.pojos.Guest;
 import HotelReservationJavalin.service.GuestService;
+import HotelReservationJavalin.service.GuestServiceHibernate;
 import HotelReservationJavalin.util.GuestUpdateException;
 import io.javalin.http.Context;
 import io.javalin.http.util.JsonEscapeUtil;
@@ -11,8 +12,7 @@ import io.javalin.plugin.json.JavalinJson;
 
 public class GuestController {
 
-	//TODO: replace service with new implementation
-	GuestService guestService;// = new GuestServiceFullStack();
+	GuestService guestService = new GuestServiceHibernate();
 
 	public void createGuest(Context ctx) {
 
@@ -33,7 +33,9 @@ public class GuestController {
 	}
 
 	public void getGuest(Context ctx) {
-		// TODO
+		String guestId = ctx.pathParam("id");
+		Guest guest = guestService.getGuestById(Integer.parseInt(guestId));
+		ctx.json(guest);
 	}
 
 	public void getAllGuests(Context ctx) {
