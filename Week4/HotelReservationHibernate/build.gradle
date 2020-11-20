@@ -62,6 +62,7 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
 	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.24.Final'
 	
-	
+	// https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc
+	compile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '8.4.0.jre8'	
 	
 }

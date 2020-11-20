@@ -1,6 +1,5 @@
 package HotelReservationJavalin.pojos;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,8 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "hotel")
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "hotelId")
 public class Hotel {
 	
 	@Column(name = "max_capacity")
