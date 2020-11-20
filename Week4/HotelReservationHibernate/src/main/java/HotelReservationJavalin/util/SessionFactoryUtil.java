@@ -6,11 +6,11 @@ import java.util.Map;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import HotelReservationJavalin.pojos.Guest;
+import HotelReservationJavalin.pojos.Hotel;
 import HotelReservationJavalin.pojos.Room;
 
 public class SessionFactoryUtil {
@@ -48,8 +48,9 @@ public class SessionFactoryUtil {
 			Metadata metadata = new MetadataSources(standardRegistry)
 						.addAnnotatedClass(Guest.class)
 						.addAnnotatedClass(Room.class)
+						.addAnnotatedClass(Hotel.class)
 						.getMetadataBuilder()
-						.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
+						.build();
 			
 			sessionFactory = metadata.getSessionFactoryBuilder().build();
 			

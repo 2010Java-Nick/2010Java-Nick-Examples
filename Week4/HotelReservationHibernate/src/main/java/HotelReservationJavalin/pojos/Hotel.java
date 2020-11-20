@@ -1,17 +1,37 @@
 package HotelReservationJavalin.pojos;
 
 import java.util.Arrays;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "hotel")
 public class Hotel {
 	
+	@Column(name = "max_capacity")
 	private final int MAX_CAPACITY;
 	
+	@Column(name = "current_capacity")
 	private int currentCapacity;
 	
-	private Room[] rooms;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "hotel")
+	private List<Room> rooms;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "hotel_id")
 	private int hotelId;
 	
+	@Column(name = "hotel_name")
 	private String hotelName;
 	
 	public boolean hasCapacity() {
@@ -25,7 +45,7 @@ public class Hotel {
 
 
 
-	public Hotel(int mAX_CAPACITY, int currentCapacity, Room[] rooms, int hotelId, String hotelName) {
+	public Hotel(int mAX_CAPACITY, int currentCapacity, List<Room> rooms, int hotelId, String hotelName) {
 		super();
 		MAX_CAPACITY = mAX_CAPACITY;
 		this.currentCapacity = currentCapacity;
@@ -42,11 +62,11 @@ public class Hotel {
 		this.currentCapacity = currentCapacity;
 	}
 
-	public Room[] getRooms() {
+	public List<Room> getRooms() {
 		return rooms;
 	}
 
-	public void setRooms(Room[] rooms) {
+	public void setRooms(List<Room> rooms) {
 		this.rooms = rooms;
 	}
 
@@ -70,10 +90,11 @@ public class Hotel {
 		return MAX_CAPACITY;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Hotel [MAX_CAPACITY=" + MAX_CAPACITY + ", currentCapacity=" + currentCapacity + ", rooms="
-				+ Arrays.toString(rooms) + ", hotelId=" + hotelId + ", hotelName=" + hotelName + "]";
+		return "Hotel [MAX_CAPACITY=" + MAX_CAPACITY + ", currentCapacity=" + currentCapacity + ", rooms=" + rooms
+				+ ", hotelId=" + hotelId + ", hotelName=" + hotelName + "]";
 	}
 
 	@Override
@@ -84,7 +105,7 @@ public class Hotel {
 		result = prime * result + currentCapacity;
 		result = prime * result + hotelId;
 		result = prime * result + ((hotelName == null) ? 0 : hotelName.hashCode());
-		result = prime * result + Arrays.hashCode(rooms);
+		result = prime * result + ((rooms == null) ? 0 : rooms.hashCode());
 		return result;
 	}
 
@@ -108,9 +129,12 @@ public class Hotel {
 				return false;
 		} else if (!hotelName.equals(other.hotelName))
 			return false;
-		if (!Arrays.equals(rooms, other.rooms))
+		if (rooms == null) {
+			if (other.rooms != null)
+				return false;
+		} else if (!rooms.equals(other.rooms))
 			return false;
 		return true;
 	}
-	
+
 }

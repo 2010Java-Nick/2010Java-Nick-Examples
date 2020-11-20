@@ -24,7 +24,7 @@ public class GuestController {
 
 		Double payment = Double.parseDouble(ctx.formParam("payment"));
 
-		Guest guest = new Guest(name, null, phoneNumber, payment);
+		Guest guest = new Guest(0, name, null, null, phoneNumber, payment);
 
 		guestService.createGuest(guest);
 
@@ -59,7 +59,7 @@ public class GuestController {
 
 		Double payment = Double.parseDouble(ctx.formParam("payment"));
 
-		Guest guest = new Guest(name, null, phoneNumber, payment);
+		Guest guest = new Guest(0, name, null, null, phoneNumber, payment);
 		
 		try {
 			guestService.updateGuest(Integer.parseInt(ctx.formParam("id")), guest);

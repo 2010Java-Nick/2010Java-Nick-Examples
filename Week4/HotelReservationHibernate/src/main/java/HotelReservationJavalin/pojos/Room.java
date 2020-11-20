@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -50,12 +52,17 @@ public class Room {
 	
 	@Column(name = "room_number")
 	private int roomNumber;
+	
+	@ManyToOne
+	@JoinColumn(name = "hotel_id")
+	private Hotel hotel;
 
 	public Room() {
 		//super(); called implicitly
 	}
 
-	public Room(int roomId, int beds, boolean smoking, RoomType roomType, boolean roomService, int roomNumber) {
+	public Room(int roomId, int beds, boolean smoking, RoomType roomType, boolean roomService, int roomNumber,
+			Hotel hotel) {
 		super();
 		this.roomId = roomId;
 		this.beds = beds;
@@ -63,9 +70,16 @@ public class Room {
 		this.roomType = roomType;
 		this.roomService = roomService;
 		this.roomNumber = roomNumber;
+		this.hotel = hotel;
 	}
 
+	public Hotel getHotel() {
+		return hotel;
+	}
 
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
 
 	public int getRoomId() {
 		return roomId;
@@ -120,16 +134,12 @@ public class Room {
 	}
 
 	@Override
-	public String toString() {
-		return "Room [beds=" + beds + ", smoking=" + smoking + ", roomType=" + roomType + ", roomService=" + roomService
-				+ ", roomNumber=" + roomNumber + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + beds;
+		result = prime * result + ((hotel == null) ? 0 : hotel.hashCode());
+		result = prime * result + roomId;
 		result = prime * result + roomNumber;
 		result = prime * result + (roomService ? 1231 : 1237);
 		result = prime * result + ((roomType == null) ? 0 : roomType.hashCode());
@@ -148,6 +158,13 @@ public class Room {
 		Room other = (Room) obj;
 		if (beds != other.beds)
 			return false;
+		if (hotel == null) {
+			if (other.hotel != null)
+				return false;
+		} else if (!hotel.equals(other.hotel))
+			return false;
+		if (roomId != other.roomId)
+			return false;
 		if (roomNumber != other.roomNumber)
 			return false;
 		if (roomService != other.roomService)
@@ -158,5 +175,11 @@ public class Room {
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Room [roomId=" + roomId + ", beds=" + beds + ", smoking=" + smoking + ", roomType=" + roomType
+				+ ", roomService=" + roomService + ", roomNumber=" + roomNumber + ", hotel=" + hotel + "]";
+	}
+
 }

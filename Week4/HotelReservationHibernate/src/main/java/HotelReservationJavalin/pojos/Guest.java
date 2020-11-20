@@ -1,17 +1,14 @@
 package HotelReservationJavalin.pojos;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "guest")
@@ -31,8 +28,8 @@ public class Guest {
 	//Lazy fetching will only grab the room object if we use it
 	//Instead grabs a proxy
 	//could cause a LazyInitializationException, if proxy accessed for first time outside a session
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinColumn(foreignKey = @ForeignKey(name = "guest_room_id_fkey"), name = "room")
+	@ManyToOne
+	@JoinColumn(name = "room_id")
 	private Room room;
 	
 	@Column(name = "phone_number")
@@ -40,6 +37,14 @@ public class Guest {
 	
 	@Column(name = "payment")
 	private double payment;
+
+	public int getGuestId() {
+		return guestId;
+	}
+
+	public void setGuestId(int guestId) {
+		this.guestId = guestId;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -55,14 +60,6 @@ public class Guest {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public void setGuestId(int guestId) {
-		this.guestId = guestId;
-	}
-
-	public int getGuestId() {
-		return guestId;
 	}
 
 	public Room getRoom() {
@@ -92,14 +89,6 @@ public class Guest {
 	public Guest() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public Guest(String firstName, String lastName, String phoneNumber, double payment) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-		this.payment = payment;
 	}
 
 	public Guest(int guestId, String firstName, String lastName, Room room, String phoneNumber, double payment) {
@@ -168,5 +157,5 @@ public class Guest {
 			return false;
 		return true;
 	}
-	
+
 }

@@ -62,8 +62,6 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
 	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.24.Final'
 	
-	// https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api
-	compile group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: '3.0.0'
 	
 	
 }
