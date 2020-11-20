@@ -15,7 +15,7 @@ public class ServerDriver {
 		Javalin app = Javalin.create( config -> {
 				config.addStaticFiles("/public");
 		}).start(9091); //sets up and starts our server
-		app.get("/hello", ctx -> ctx.html("Hello World, thanks Jenkins"));
+		app.get("/hello", ctx -> ctx.html("Hello World, thanks Jenkins, Hello Slack"));
 		app.post(GUEST_PATH, ctx -> guestController.createGuest(ctx));
 		app.put(GUEST_PATH, ctx -> guestController.updateGuest(ctx));
 		app.get(GUEST_PATH, ctx -> guestController.getAllGuests(ctx));
