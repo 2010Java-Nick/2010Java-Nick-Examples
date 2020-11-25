@@ -1,0 +1,10 @@
+TypeScript: superset of JavaScript
+    - has all the features of JavaScript
+    - has it's own additional features
+    - transpiling: compiling and translating
+    - transpiled TS can run on a JS interpreter
+    Feature:
+        - static typing
+        - more OOP: Classes(different), Interfaces, enums, generics, access modifiers
+        - decoratores (similar to annotations)
+        - and more...
