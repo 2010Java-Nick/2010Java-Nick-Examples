@@ -10,6 +10,8 @@ export class TitleComponent implements OnInit {
 
   public title: string = `Guest List View`;
 
+  public subtitle: string = 'Look at our guests'
+
   constructor() { }
 
   ngOnInit(): void {

@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "HotelUINg"
+  "defaultProject": "HotelUINg",
+  "cli": {
+    "analytics": "93ca891a-8ff8-4dc4-b79d-089b0c3fa608"
+  }
 }
