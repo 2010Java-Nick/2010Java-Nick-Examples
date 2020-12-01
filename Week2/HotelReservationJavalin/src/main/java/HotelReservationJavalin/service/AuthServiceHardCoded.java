@@ -53,7 +53,6 @@ public class AuthServiceHardCoded implements AuthService {
 			
 			hash = sb.toString();
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
