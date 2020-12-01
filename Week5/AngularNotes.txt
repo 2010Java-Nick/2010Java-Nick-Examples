@@ -1,0 +1,15 @@
+~2010 > Google debutes AngularJS
+    - one of first large scale UI frameworks
+    - build off of JS
+    - hugely popular
+2016 > Google debute Angular
+    - large scale UI framework
+    - build off of TS (new to most developers)
+    - slowly builds interest in the community
+early 2017 > Angular 2 releases
+    - entirely new engine
+    - introduced cli
+fall 2017 > Angular 4 releases
+    - huge update
+    - claimed to be non-breaking update (broke most everything)
+    - usually, when people say Angular now, they are referring to Angular 4+
