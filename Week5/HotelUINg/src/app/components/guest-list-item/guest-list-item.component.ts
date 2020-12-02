@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Guest } from 'src/app/models/guest';
 
 @Component({
@@ -8,7 +8,8 @@ import { Guest } from 'src/app/models/guest';
 })
 export class GuestListItemComponent implements OnInit {
 
-  guest: Guest = {firstName: `Acacia `, lastName: `Holliday`, roomNumber: 456, phone: `5555555`};
+  @Input()
+  guest!: Guest;
 
   constructor() { }
 

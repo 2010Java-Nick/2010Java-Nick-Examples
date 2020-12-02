@@ -6,9 +6,6 @@
         <th>Phone</th>
     </thead>
     <tbody *ngFor="let guest of guestList">
-        <tr class="app-guest-list-item"></tr>
-        <tr class="app-guest-list-item"></tr>
-        <tr class="app-guest-list-item"></tr>
-        <tr class="app-guest-list-item"></tr>
+        <tr class="app-guest-list-item" [guest]="guest"></tr>
     </tbody>
 </table>

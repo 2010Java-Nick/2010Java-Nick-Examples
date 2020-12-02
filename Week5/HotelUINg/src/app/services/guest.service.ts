@@ -13,6 +13,7 @@ export class GuestService {
     this.guestList = new Array<Guest>();
     this.guestList.push({firstName: `Acacia`, lastName: `Holliday`, roomNumber: 456, phone: `5555555`});
     this.guestList.push({firstName: `Michael`, lastName: `McAuliffe`, roomNumber: 789, phone: `5555555`});
+    this.guestList.push({firstName: `Chris`, lastName: `Breniser`, roomNumber: 123, phone: `5555555`});
 
    }
 
