@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Guest } from 'src/app/models/guest';
 import { GuestService } from 'src/app/services/guest.service';
 
@@ -17,7 +18,9 @@ export class GuestListComponent implements OnInit {
   constructor(private guestService: GuestService) { }
 
   ngOnInit(): void {
-    this.guestList = this.guestService.getGuestList();
+    this.guestService.getGuestList().subscribe(
+      (result) => { this.guestList = result }
+    );
   }
 
 }

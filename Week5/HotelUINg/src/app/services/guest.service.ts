@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Guest } from '../models/guest';
 
 @Injectable({
@@ -6,20 +8,17 @@ import { Guest } from '../models/guest';
 })
 export class GuestService {
 
-  private guestList: Guest[];
+  private readonly GUEST_URL = "http://localhost:9091/guest";
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
 
     this.guestList = new Array<Guest>();
-    this.guestList.push({firstName: `Acacia`, lastName: `Holliday`, roomNumber: 456, phone: `5555555`});
-    this.guestList.push({firstName: `Michael`, lastName: `McAuliffe`, roomNumber: 789, phone: `5555555`});
-    this.guestList.push({firstName: `Chris`, lastName: `Breniser`, roomNumber: 123, phone: `5555555`});
 
    }
 
-  public getGuestList(): Guest[] {
+  public getGuestList(): Observable<Guest[]> {
 
-    return this.guestList;
+    return this.httpClient.get<Guest[]>(this.GUEST_URL);
 
   }
 

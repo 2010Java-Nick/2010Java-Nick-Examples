@@ -1,4 +1,6 @@
     <td>{{guest.firstName}}</td>
     <td>{{guest.lastName}}</td>
-    <td>{{guest.roomNumber}}</td>
-    <td>{{guest.phone}}</td>
+    <td>
+        <span *ngIf="guest.room">{{guest.room.roomNumber}}</span>
+    </td>
+    <td>{{guest.phoneNumber}}</td>
