@@ -11,11 +11,15 @@ import { GuestService } from 'src/app/services/guest.service';
 })
 export class GuestListComponent implements OnInit {
 
-  searchValue = `ha`;
+  searchValue = `1`;
 
   tableStyle = {color: `blue`};
 
   guestList: Guest[] = new Array();
+
+  searchValueInput(searchValue: string) {
+    this.searchValue = searchValue;
+  }
 
   constructor(private guestService: GuestService) { }
 

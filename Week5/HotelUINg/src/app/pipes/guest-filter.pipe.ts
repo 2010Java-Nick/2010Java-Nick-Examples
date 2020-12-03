@@ -2,11 +2,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Guest } from '../models/guest';
 
 @Pipe({
-  name: 'guestFilter' // used like "guestList | guestFilter(someValue)"
+  name: 'guestFilter' // used like "guestList | guestFilter: someValue"
 })
 export class GuestFilterPipe implements PipeTransform {
 
-  transform(value: string, ...guestList: Guest[]): Guest[] {
+  transform(guestList: Guest[], value: string): Guest[] {
 
     let filteredGuestList = guestList.filter(
       (guest) => {if (guest.firstName.startsWith(value) || guest.lastName.startsWith(value)
