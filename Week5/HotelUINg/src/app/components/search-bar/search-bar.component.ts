@@ -17,6 +17,11 @@ export class SearchBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  clearSearch() {
+    this.searchInput = ``;
+    this.updateSearchBar();
+  }
+
   updateSearchBar() {
     console.log("ran update Search Bar")
     this.searchValue.emit(this.searchInput);

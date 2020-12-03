@@ -1,1 +1,8 @@
-<input type="text" placeholder="search here" id="search-field" [(ngModel)]="searchInput" (onInput)="updateSearchBar"/>
+<input 
+type="text" 
+placeholder="search here" 
+id="search-field" 
+[(ngModel)]="searchInput" 
+(keyup)="updateSearchBar()"/>
+
+<button (click)="clearSearch()">Clear Search</button>

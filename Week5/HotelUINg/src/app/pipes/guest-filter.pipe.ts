@@ -9,8 +9,11 @@ export class GuestFilterPipe implements PipeTransform {
   transform(guestList: Guest[], value: string): Guest[] {
 
     let filteredGuestList = guestList.filter(
-      (guest) => {if (guest.firstName.startsWith(value) || guest.lastName.startsWith(value)
-        || guest.phoneNumber.startsWith(value) || guest.roomNumber.toString().startsWith(value))
+      (guest) => {
+        if (guest.firstName.startsWith(value) || 
+        guest.lastName.startsWith(value) || 
+        guest.phoneNumber.startsWith(value) || 
+        guest.roomNumber.toString().startsWith(value))
         return true;
         else return false;
       }
@@ -22,7 +25,10 @@ export class GuestFilterPipe implements PipeTransform {
       }).reduce<boolean>(previous, next) => {return previous || next})}
     ); */
 
-    return filteredGuestList;
+    return guestList.filter((guest) => (guest.firstName.startsWith(value) || 
+    guest.lastName.startsWith(value) || 
+    guest.phoneNumber.startsWith(value) || 
+    guest.roomNumber.toString().startsWith(value)));
   }
 
 }
