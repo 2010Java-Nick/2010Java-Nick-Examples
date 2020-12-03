@@ -5,7 +5,7 @@
         <th>Room Number</th>
         <th>Phone</th>
     </thead>
-    <tbody *ngFor="let guest of guestList">
+    <tbody *ngFor="let guest of guestList | guestFilter: searchValue">
         <tr class="app-guest-list-item" [guest]="guest"></tr>
     </tbody>
 </table>

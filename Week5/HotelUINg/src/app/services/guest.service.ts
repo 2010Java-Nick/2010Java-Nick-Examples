@@ -12,8 +12,6 @@ export class GuestService {
 
   constructor(private httpClient: HttpClient) {
 
-    this.guestList = new Array<Guest>();
-
    }
 
   public getGuestList(): Observable<Guest[]> {

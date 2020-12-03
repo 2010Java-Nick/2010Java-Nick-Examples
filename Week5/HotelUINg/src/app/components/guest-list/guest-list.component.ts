@@ -11,6 +11,8 @@ import { GuestService } from 'src/app/services/guest.service';
 })
 export class GuestListComponent implements OnInit {
 
+  searchValue = `ha`;
+
   tableStyle = {color: `blue`};
 
   guestList: Guest[] = new Array();

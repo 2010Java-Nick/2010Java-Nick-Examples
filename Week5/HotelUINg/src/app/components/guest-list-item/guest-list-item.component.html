@@ -1,6 +1,6 @@
     <td>{{guest.firstName}}</td>
     <td>{{guest.lastName}}</td>
     <td>
-        <span *ngIf="guest.room">{{guest.room.roomNumber}}</span>
+        <span *ngIf="guest.roomNumber != -1">{{guest.roomNumber}}</span>
     </td>
     <td>{{guest.phoneNumber}}</td>
