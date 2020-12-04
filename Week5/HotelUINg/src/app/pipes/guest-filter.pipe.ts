@@ -27,7 +27,7 @@ export class GuestFilterPipe implements PipeTransform {
 
     return guestList.filter((guest) => (guest.firstName.startsWith(value) || 
     guest.lastName.startsWith(value) || 
-    guest.phoneNumber.startsWith(value) || 
+    guest.phoneNumber. startsWith(value) || 
     guest.roomNumber.toString().startsWith(value)));
   }
 
