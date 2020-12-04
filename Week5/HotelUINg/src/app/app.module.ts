@@ -10,6 +10,7 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
 import { GuestListItemComponent } from './components/guest-list-item/guest-list-item.component';
 import { GuestFilterPipe } from './pipes/guest-filter.pipe';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     GuestListComponent,
     GuestListItemComponent,
     GuestFilterPipe,
-    SearchBarComponent
+    SearchBarComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
