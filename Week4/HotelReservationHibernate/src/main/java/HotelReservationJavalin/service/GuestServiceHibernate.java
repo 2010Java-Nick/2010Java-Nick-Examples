@@ -10,7 +10,7 @@ import HotelReservationJavalin.util.GuestUpdateException;
 
 public class GuestServiceHibernate implements GuestService {
 	
-	GuestDao guestDao = new GuestDaoHibernate();
+	GuestDaoHibernate guestDao = new GuestDaoHibernate();
 
 	@Override
 	public Guest createGuest(Guest guest) {
@@ -33,7 +33,7 @@ public class GuestServiceHibernate implements GuestService {
 	@Override
 	public List<Guest> getAllGuests() {
 		// TODO Auto-generated method stub
-		return guestDao.readAllGuests();
+		return null;
 	}
 
 	@Override

@@ -4,30 +4,44 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 
+import javax.persistence.*;
+@Entity
+@Table(name = "booking")
 public class Booking {
-
-	private static int bookingCount;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "booking_id")
 	private int bookingId;
 	
+	@ManyToMany //put @ManytoMany(mappedBy = "guests") above bookings variable on guest pojo;
+	@JoinTable(name= "guest_booking", 
+	joinColumns = {
+					@JoinColumn(name = "booking_id")},
+	inverseJoinColumns = {
+					@JoinColumn(name = "guest_id")})
 	private Guest[] guests;
 	
+	@Column(name = "check_in")
 	private LocalDate checkIn;
 	
+	@Column(name = "check_out")
 	private LocalDate checkout;
 	
+	@ManyToOne
+	@JoinColumn(name = "hotel_id")
 	private Hotel hotel;
 	
+	@ManyToOne
+	@JoinColumn(name = "room_id")
 	private Room room;
 
 	public Booking() {
-		this(new Guest[1], LocalDate.now(), LocalDate.now().plus(5, ChronoUnit.DAYS), new Hotel(), new Room());
+		this(0, new Guest[1], LocalDate.now(), LocalDate.now().plus(5, ChronoUnit.DAYS), new Hotel(), new Room());
 	}
 
-	public Booking(Guest[] guests, LocalDate checkIn, LocalDate checkout, Hotel hotel, Room room) {
+	public Booking(int bookingId, Guest[] guests, LocalDate checkIn, LocalDate checkout, Hotel hotel, Room room) {
 		super();
-		Booking.bookingCount++;
-		this.bookingId = Booking.bookingCount;
+		this.bookingId = bookingId;
 		this.guests = guests;
 		this.checkIn = checkIn;
 		this.checkout = checkout;
@@ -79,9 +93,6 @@ public class Booking {
 		this.room = room;
 	}
 
-	public static int getBookingCount() {
-		return bookingCount;
-	}
 
 	@Override
 	public String toString() {
