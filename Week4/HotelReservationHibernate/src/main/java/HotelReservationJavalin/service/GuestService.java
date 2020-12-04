@@ -22,5 +22,7 @@ public interface GuestService {
 	public void updateGuest(int guestId, Guest guest) throws GuestUpdateException;
 	
 	public Guest getGuestById(int guestId);
+	
+	public Room getRoomByGuest(int guestId);
 
 }

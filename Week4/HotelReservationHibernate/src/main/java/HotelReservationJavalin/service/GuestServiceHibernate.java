@@ -5,6 +5,7 @@ import java.util.List;
 import HotelReservationJavalin.Dao.GuestDao;
 import HotelReservationJavalin.Dao.GuestDaoHibernate;
 import HotelReservationJavalin.pojos.Guest;
+import HotelReservationJavalin.pojos.Room;
 import HotelReservationJavalin.pojos.Room.RoomType;
 import HotelReservationJavalin.util.GuestUpdateException;
 
@@ -51,6 +52,12 @@ public class GuestServiceHibernate implements GuestService {
 	@Override
 	public Guest getGuestById(int guestId) {
 		return guestDao.readGuest(guestId);
+	}
+
+	@Override
+	public Room getRoomByGuest(int guestId) {
+		return guestDao.getRoomDetailsByGuest(guestId);
+		
 	}
 
 }

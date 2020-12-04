@@ -3,6 +3,7 @@ package HotelReservationJavalin.Dao;
 import java.util.List;
 
 import HotelReservationJavalin.pojos.Guest;
+import HotelReservationJavalin.pojos.Room;
 import HotelReservationJavalin.util.GuestUpdateException;
 
 public interface GuestDao {
@@ -16,5 +17,7 @@ public interface GuestDao {
 	public Guest updateGuest(int guestId, Guest guest) throws GuestUpdateException;
 	
 	public void deleteGuest(Guest guest);
+	
+	public Room getRoomDetailsByGuest(int guestId); 
 
 }

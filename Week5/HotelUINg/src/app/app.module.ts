@@ -11,6 +11,8 @@ import { GuestListItemComponent } from './components/guest-list-item/guest-list-
 import { GuestFilterPipe } from './pipes/guest-filter.pipe';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { RoomDetailsComponent } from './components/room-details/room-details.component';
+import { RoomDisplayComponent } from './components/room-display/room-display.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     GuestListItemComponent,
     GuestFilterPipe,
     SearchBarComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    RoomDetailsComponent,
+   RoomDisplayComponent
   ],
   imports: [
     BrowserModule,

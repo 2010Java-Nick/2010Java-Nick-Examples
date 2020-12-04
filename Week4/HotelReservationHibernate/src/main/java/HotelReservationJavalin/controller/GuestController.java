@@ -3,6 +3,7 @@ package HotelReservationJavalin.controller;
 import java.util.List;
 
 import HotelReservationJavalin.pojos.Guest;
+import HotelReservationJavalin.pojos.Room;
 import HotelReservationJavalin.service.GuestService;
 import HotelReservationJavalin.service.GuestServiceHibernate;
 import HotelReservationJavalin.util.GuestUpdateException;
@@ -13,6 +14,17 @@ import io.javalin.plugin.json.JavalinJson;
 public class GuestController {
 
 	GuestService guestService = new GuestServiceHibernate();
+	
+	public void getRoomDetailsByGuestId(Context ctx) {
+		
+		int guestId = Integer.parseInt(ctx.formParam("id"));
+		
+		Room room = guestService.getRoomByGuest(guestId);
+		
+		ctx.json(room);
+		
+	}
+	
 
 	public void createGuest(Context ctx) {
 

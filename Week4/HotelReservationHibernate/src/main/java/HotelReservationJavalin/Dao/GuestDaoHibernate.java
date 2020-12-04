@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import HotelReservationJavalin.pojos.Guest;
+import HotelReservationJavalin.pojos.Room;
 import HotelReservationJavalin.util.GuestUpdateException;
 import HotelReservationJavalin.util.SessionFactoryUtil;
 
@@ -51,6 +52,16 @@ public class GuestDaoHibernate implements GuestDao{
 	public void deleteGuest(Guest guest) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Room getRoomDetailsByGuest(int guestId) {
+		Room room;
+		Session sess = sessionFactory.openSession();
+		room = sess.get(Guest.class, guestId).getRoom();
+		sess.close();
+		
+		return room;
 	}
 
 }
