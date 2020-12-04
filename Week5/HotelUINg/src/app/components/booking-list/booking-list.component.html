@@ -1,0 +1,13 @@
+<app-search-bar (searchValue)="searchValueInput($event)"></app-search-bar>
+<table [ngStyle]="tableStyle">
+    <thead>
+        <th>Guest Names</th>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>Hotel Name</th>
+        <th>Room Number</th>
+    </thead>
+    <tbody *ngFor="let booking of bookingList | bookingFilter: searchValue">
+        <tr class="app-booking-list-item" [booking]="booking"></tr>
+    </tbody>
+</table>
