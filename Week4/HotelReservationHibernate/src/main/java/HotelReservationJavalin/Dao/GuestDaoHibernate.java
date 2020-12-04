@@ -7,6 +7,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.HibernateError;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -54,10 +56,26 @@ public class GuestDaoHibernate implements GuestDao{
 	}
 
 	@Override
-	public Guest updateGuest(int guestId, Guest guest) throws GuestUpdateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public void updateGuest(int guestId, String firstName, String lastName, String phoneNumber, double payment){
+	      Session session = sessionFactory.openSession();
+	      Transaction tx = null;
+	      try{
+	         tx = session.beginTransaction();
+	         Guest guest = 
+	                    (Guest)session.get(Guest.class, guestId); 
+	         guest.setFirstName(firstName);
+	         guest.setLastName(lastName);
+	         guest.setPhoneNumber(phoneNumber);
+	         guest.setPayment(payment);
+	         session.update(guest); 
+	         tx.commit();
+	      }catch (HibernateException e) {
+	         if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+	      }finally {
+	         session.close(); 
+	      }
+	   }
 
 	@Override
 	public void deleteGuest(Guest guest) {

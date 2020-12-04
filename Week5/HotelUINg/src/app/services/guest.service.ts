@@ -20,4 +20,10 @@ export class GuestService {
 
   }
 
+  public updateGuest(guest: Guest): Observable<Guest> {
+
+    return this.httpClient.put<Guest>(this.GUEST_URL, guest);
+    
+  }
+
 }

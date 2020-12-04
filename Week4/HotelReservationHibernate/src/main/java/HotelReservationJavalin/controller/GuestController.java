@@ -62,22 +62,25 @@ public class GuestController {
 	public void updateGuest(Context ctx) {
 		
 		System.out.println("Responding to put guest request");
+		
+		int guestId = Integer.parseInt(ctx.formParam("guestId"));
 
-		String name = ctx.formParam("name");
+		String firstName = ctx.formParam("firstname");
+		
+		String lastName = ctx.formParam("lastname");
 
 		String phoneNumber = ctx.formParam("phoneNumber");
 
 		Double payment = Double.parseDouble(ctx.formParam("payment"));
 
-		Guest guest = new Guest(0, name, null, null, phoneNumber, payment);
+		Guest guest = new Guest(firstName, lastName, phoneNumber, payment);
 		
 		try {
-			guestService.updateGuest(Integer.parseInt(ctx.formParam("id")), guest);
+			guestService.updateGuest(guestId, firstName, lastName, phoneNumber, payment);
+			ctx.json(guest);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (GuestUpdateException e) {
-			ctx.status(500);
 		}
 	}
 

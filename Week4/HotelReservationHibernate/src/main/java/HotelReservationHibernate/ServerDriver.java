@@ -23,6 +23,7 @@ public class ServerDriver {
 		app.get(GET_GUEST_PATH, ctx -> guestController.getGuest(ctx));
 		app.post(LOGIN_PATH, ctx -> authController.login(ctx));
 		app.get(LOGIN_PATH, ctx -> authController.checkUser(ctx));
+//		app.put(GUEST_PATH, ctx -> guestController.updateGuest(ctx));
 	}
 
 }

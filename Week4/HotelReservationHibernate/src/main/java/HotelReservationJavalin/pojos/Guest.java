@@ -106,6 +106,21 @@ public class Guest {
 		this.phoneNumber = phoneNumber;
 		this.payment = payment;
 	}
+	
+
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param phoneNumber
+	 * @param payment
+	 */
+	public Guest(String firstName, String lastName, String phoneNumber, double payment) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.payment = payment;
+	}
 
 	@Override
 	public String toString() {

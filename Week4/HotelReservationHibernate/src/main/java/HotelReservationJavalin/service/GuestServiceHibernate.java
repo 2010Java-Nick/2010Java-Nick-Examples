@@ -43,8 +43,8 @@ public class GuestServiceHibernate implements GuestService {
 	}
 
 	@Override
-	public void updateGuest(int guestId, Guest guest) throws GuestUpdateException {
-		// TODO Auto-generated method stub
+	public void updateGuest(int guestId, String firstName, String lastName, String phoneNumber, double payment) {
+		guestDao.updateGuest(guestId, firstName, lastName, phoneNumber, payment);
 
 	}
 	

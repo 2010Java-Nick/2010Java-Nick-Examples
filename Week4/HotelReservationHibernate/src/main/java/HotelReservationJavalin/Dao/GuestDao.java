@@ -13,7 +13,7 @@ public interface GuestDao {
 	
 	public List<Guest> readAllGuests();
 	
-	public Guest updateGuest(int guestId, Guest guest) throws GuestUpdateException;
+	public void updateGuest(int guestId, String firstName, String lastName, String phoneNumber, double payment);
 	
 	public void deleteGuest(Guest guest);
 
