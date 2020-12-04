@@ -2,6 +2,10 @@ package HotelReservationJavalin.Dao;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,8 +41,16 @@ public class GuestDaoHibernate implements GuestDao{
 
 	@Override
 	public List<Guest> readAllGuests() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Guest> guestList = null;
+		Session sess = sessionFactory.openSession();
+		CriteriaBuilder cb = sess.getCriteriaBuilder();
+		CriteriaQuery<Guest> cq = cb.createQuery(Guest.class);
+		Root<Guest> rootEntry = cq.from(Guest.class);
+		CriteriaQuery<Guest> all = cq.select(rootEntry);
+		TypedQuery<Guest> allQuery = sess.createQuery(all);
+		guestList = allQuery.getResultList();
+		sess.close();
+		return guestList;
 	}
 
 	@Override

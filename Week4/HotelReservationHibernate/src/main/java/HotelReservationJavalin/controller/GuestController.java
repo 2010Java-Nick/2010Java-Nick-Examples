@@ -1,14 +1,14 @@
 package HotelReservationJavalin.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import HotelReservationHibernate.Dto.GuestDto;
 import HotelReservationJavalin.pojos.Guest;
 import HotelReservationJavalin.service.GuestService;
 import HotelReservationJavalin.service.GuestServiceHibernate;
 import HotelReservationJavalin.util.GuestUpdateException;
 import io.javalin.http.Context;
-import io.javalin.http.util.JsonEscapeUtil;
-import io.javalin.plugin.json.JavalinJson;
 
 public class GuestController {
 
@@ -33,12 +33,14 @@ public class GuestController {
 	}
 
 	public void getGuest(Context ctx) {
+		System.out.println("Inside get individual guest");
 		String guestId = ctx.pathParam("id");
 		Guest guest = guestService.getGuestById(Integer.parseInt(guestId));
-		ctx.json(guest);
+		ctx.json(new GuestDto(guest));
 	}
 
 	public void getAllGuests(Context ctx) {
+		System.out.println("Inside get all guests");
 		List<Guest> guestList = guestService.getAllGuests();
 		/*
 		 * JSONArray array = new JSONArray(); for (Guest guest : guestList) { JSONObject
@@ -46,7 +48,15 @@ public class GuestController {
 		 * json.put("phoneNumber", guest.getPhoneNumber()); json.put("payment",
 		 * guest.getPayment()); array.add(json); }
 		 */
-		ctx.json(guestList);
+		//System.out.println(guestList);
+		
+		List<GuestDto> guestDtoList = new ArrayList<>();
+		
+		for (Guest guest : guestList) {
+			guestDtoList.add(new GuestDto(guest));
+		}
+		
+		ctx.json(guestDtoList);
 	}
 
 	public void updateGuest(Context ctx) {

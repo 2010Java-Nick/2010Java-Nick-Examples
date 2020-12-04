@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 /*
  * Object o;
  * if(Math.random() > .5)
@@ -23,6 +26,9 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "room")
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "roomId")
 public class Room {
 	
 	public enum RoomType {

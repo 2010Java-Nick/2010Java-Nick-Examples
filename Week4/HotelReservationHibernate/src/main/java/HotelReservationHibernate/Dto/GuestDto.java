@@ -1,48 +1,47 @@
-package HotelReservationJavalin.pojos;
+package HotelReservationHibernate.Dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import HotelReservationJavalin.pojos.Guest;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
-
-@Entity
-@Table(name = "guest")
-@JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "guestId")
-public class Guest {
+public class GuestDto {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "guest_id")
 	private int guestId;
 	
-	@Column(name = "guest_first_name")
 	private String firstName;
 	
-	@Column(name = "guest_last_name")
 	private String lastName;
 	
-	//Lazy fetching will only grab the room object if we use it
-	//Instead grabs a proxy
-	//could cause a LazyInitializationException, if proxy accessed for first time outside a session
-	@ManyToOne
-	@JoinColumn(name = "room_id")
-	private Room room;
+	private int roomNumber;
 	
-	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	@Column(name = "payment")
 	private double payment;
+
+	public GuestDto(Guest guest) {
+		this(guest.getGuestId(), 
+				guest.getFirstName(), 
+				guest.getLastName(), 
+				-1,
+				guest.getPhoneNumber(),
+				guest.getPayment());
+		if (guest.getRoom() != null) {
+			this.roomNumber = guest.getRoom().getRoomNumber();
+		}
+	}
+	
+	public GuestDto() {
+		super();
+	}
+
+	public GuestDto(int guestId, String firstName, String lastName, int roomNumber, String phoneNumber,
+			double payment) {
+		super();
+		this.guestId = guestId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.roomNumber = roomNumber;
+		this.phoneNumber = phoneNumber;
+		this.payment = payment;
+	}
 
 	public int getGuestId() {
 		return guestId;
@@ -68,12 +67,12 @@ public class Guest {
 		this.lastName = lastName;
 	}
 
-	public Room getRoom() {
-		return room;
+	public int getRoomNumber() {
+		return roomNumber;
 	}
 
-	public void setRoom(Room room) {
-		this.room = room;
+	public void setRoomNumber(int roomNumber) {
+		this.roomNumber = roomNumber;
 	}
 
 	public String getPhoneNumber() {
@@ -92,25 +91,10 @@ public class Guest {
 		this.payment = payment;
 	}
 
-	public Guest() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Guest(int guestId, String firstName, String lastName, Room room, String phoneNumber, double payment) {
-		super();
-		this.guestId = guestId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.room = room;
-		this.phoneNumber = phoneNumber;
-		this.payment = payment;
-	}
-
 	@Override
 	public String toString() {
-		return "Guest [guestId=" + guestId + ", firstName=" + firstName + ", lastName=" + lastName + ", room=" + room
-				+ ", phoneNumber=" + phoneNumber + ", payment=" + payment + "]";
+		return "GuestDto [guestId=" + guestId + ", firstName=" + firstName + ", lastName=" + lastName + ", roomNumber="
+				+ roomNumber + ", phoneNumber=" + phoneNumber + ", payment=" + payment + "]";
 	}
 
 	@Override
@@ -124,7 +108,7 @@ public class Guest {
 		temp = Double.doubleToLongBits(payment);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-		result = prime * result + ((room == null) ? 0 : room.hashCode());
+		result = prime * result + roomNumber;
 		return result;
 	}
 
@@ -136,7 +120,7 @@ public class Guest {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Guest other = (Guest) obj;
+		GuestDto other = (GuestDto) obj;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
@@ -156,12 +140,9 @@ public class Guest {
 				return false;
 		} else if (!phoneNumber.equals(other.phoneNumber))
 			return false;
-		if (room == null) {
-			if (other.room != null)
-				return false;
-		} else if (!room.equals(other.room))
+		if (roomNumber != other.roomNumber)
 			return false;
 		return true;
 	}
-
+	
 }
