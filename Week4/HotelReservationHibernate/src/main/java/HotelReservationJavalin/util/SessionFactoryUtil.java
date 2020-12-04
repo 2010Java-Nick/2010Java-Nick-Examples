@@ -34,9 +34,9 @@ public class SessionFactoryUtil {
 		if (sessionFactory == null) {
 			
 			Map<String, String> settings = new HashMap<>();
-			settings.put("hibernate.connection.url", System.getenv("HOTEL_URL"));
-			settings.put("hibernate.connection.username", System.getenv("HOTEL_USERNAME"));
-			settings.put("hibernate.connection.password", System.getenv("HOTEL_PASSWORD"));
+			settings.put("hibernate.connection.url", "jdbc:postgresql://localhost:5433/HotelReservation?");
+			settings.put("hibernate.connection.username", "postgres");
+			settings.put("hibernate.connection.password", "password");
 			settings.put("hibernate.connection.driver_class", "org.postgresql.Driver");
 			settings.put("hibernate.connection.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 			//settings.put("hibernate.connection.driver_class", "com.microsoft.sqlserver.jdbc.SQLServerDriver");

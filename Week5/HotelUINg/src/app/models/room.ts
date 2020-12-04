@@ -3,8 +3,9 @@ export interface Room {
     roomId: number;
     roomNumber: number;
     beds: number;
-    roomType?: string;
+    roomType: string;
     roomService: boolean;
-    smoking: boolean
-
+    smoking: boolean;
+    hotelName: string;
+    
 }
