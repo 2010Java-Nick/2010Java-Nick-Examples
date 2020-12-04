@@ -12,7 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class BookingsDaoHibernate {
+public class BookingDaoHibernate  implements BookingDao{
 
 
 		SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactoryUtil().getSessionFactory();
@@ -41,7 +41,7 @@ public class BookingsDaoHibernate {
 
 	
 	
-	public BookingsDaoHibernate() {
+	public BookingDaoHibernate() {
 		// TODO Auto-generated constructor stub
 	}
 
