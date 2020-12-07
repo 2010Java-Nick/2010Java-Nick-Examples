@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitleComponent implements OnInit {
 
-  public title: string = `Guest List View`;
+  public title: string = `Room List View`;
 
-  public subtitle: string = 'Look at our guests'
+  public subtitle: string = 'Look at our Rooms'
 
   constructor() { }
 

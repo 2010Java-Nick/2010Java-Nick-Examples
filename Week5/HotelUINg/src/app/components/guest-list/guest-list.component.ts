@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Guest } from 'src/app/models/guest';
 import { GuestService } from 'src/app/services/guest.service';
 
