@@ -109,7 +109,7 @@ public class Guest {
 
 	@Override
 	public String toString() {
-		return "Guest [guestId=" + guestId + ", firstName=" + firstName + ", lastName=" + lastName + ", room=" + room
+		return "Guest [guestId=" + guestId + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", phoneNumber=" + phoneNumber + ", payment=" + payment + "]";
 	}
 

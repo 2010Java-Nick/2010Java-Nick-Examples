@@ -3,6 +3,7 @@ package HotelReservationSpring.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import HotelReservationSpring.dao.GuestDao;
@@ -12,10 +13,17 @@ import HotelReservationSpring.util.GuestUpdateException;
 
 @Service
 public class GuestServiceHibernate implements GuestService {
-	
-	//Spring finds a GuestDao from the IOC container and places it here in this class
-	@Autowired
+
+	// Spring finds a GuestDao from the IOC container and places it here in this
+	// class
+	// @Autowired
 	GuestDao guestDao;
+
+	@Autowired
+	@Qualifier(value = "guestDao")
+	public void setGuestDao(GuestDao guestDao) {
+		this.guestDao = guestDao;
+	}
 
 	@Override
 	public Guest createGuest(Guest guest) {
@@ -38,6 +46,9 @@ public class GuestServiceHibernate implements GuestService {
 	@Override
 	public List<Guest> getAllGuests() {
 		// TODO Auto-generated method stub
+		if (false) {
+			throw new RuntimeException("Test exception log");
+		}
 		return guestDao.readAllGuests();
 	}
 
@@ -52,7 +63,7 @@ public class GuestServiceHibernate implements GuestService {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	@Override
 	public Guest getGuestById(int guestId) {
 		return guestDao.readGuest(guestId);
