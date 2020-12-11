@@ -41,13 +41,14 @@ public class GuestDaoHibernate implements GuestDao {//, BeanNameAware{
 	}
 	
 	@Override
-	public void createGuest(Guest guest) {
+	public Guest createGuest(Guest guest) {
 		
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
 		sess.save(guest);
 		tx.commit();
 		sess.close();
+		return guest;
 	}
 
 	@Override

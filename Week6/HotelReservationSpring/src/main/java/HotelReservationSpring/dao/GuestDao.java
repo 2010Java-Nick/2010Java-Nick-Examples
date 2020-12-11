@@ -7,7 +7,7 @@ import HotelReservationSpring.util.GuestUpdateException;
 
 public interface GuestDao {
 	
-	public void createGuest(Guest guest);
+	public Guest createGuest(Guest guest);
 	
 	public Guest readGuest(int guestId);
 	

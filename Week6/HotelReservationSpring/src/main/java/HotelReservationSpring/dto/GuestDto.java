@@ -1,6 +1,7 @@
 package HotelReservationSpring.dto;
 
 import HotelReservationSpring.pojos.Guest;
+import HotelReservationSpring.pojos.Room;
 
 public class GuestDto {
 	
@@ -12,19 +13,29 @@ public class GuestDto {
 	
 	private int roomNumber;
 	
+	private int roomId;
+	
 	private String phoneNumber;
 	
 	private double payment;
+	
+	public Guest toGuest() {
+		Room room = new Room();
+		room.setRoomId(this.roomId);
+		return new Guest(this.guestId, this.firstName, this.lastName, room, this.getPhoneNumber(), this.getPayment());
+	}
 
 	public GuestDto(Guest guest) {
 		this(guest.getGuestId(), 
 				guest.getFirstName(), 
 				guest.getLastName(), 
 				-1,
+				-1,
 				guest.getPhoneNumber(),
 				guest.getPayment());
 		if (guest.getRoom() != null) {
 			this.roomNumber = guest.getRoom().getRoomNumber();
+			this.roomId = guest.getRoom().getRoomId();
 		}
 	}
 	
@@ -32,17 +43,18 @@ public class GuestDto {
 		super();
 	}
 
-	public GuestDto(int guestId, String firstName, String lastName, int roomNumber, String phoneNumber,
+	public GuestDto(int guestId, String firstName, String lastName, int roomNumber, int roomId, String phoneNumber,
 			double payment) {
 		super();
 		this.guestId = guestId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.roomNumber = roomNumber;
+		this.roomId = roomId;
 		this.phoneNumber = phoneNumber;
 		this.payment = payment;
 	}
-
+	
 	public int getGuestId() {
 		return guestId;
 	}
@@ -69,6 +81,14 @@ public class GuestDto {
 
 	public int getRoomNumber() {
 		return roomNumber;
+	}
+	
+	public int getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
 
 	public void setRoomNumber(int roomNumber) {

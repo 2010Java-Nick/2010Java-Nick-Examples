@@ -12,4 +12,8 @@ public class RoomService {
     public List<Room> getAllRooms(){
         return getRooms.readAllRooms();
     }
+    
+    public Room getRoomById(int roomId) {
+    	return null;
+    }
 }

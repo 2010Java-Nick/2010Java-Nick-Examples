@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import HotelReservationSpring.dao.GuestDao;
 import HotelReservationSpring.pojos.Guest;
+import HotelReservationSpring.pojos.Room;
 import HotelReservationSpring.pojos.Room.RoomType;
 import HotelReservationSpring.util.GuestUpdateException;
 
@@ -18,17 +19,36 @@ public class GuestServiceHibernate implements GuestService {
 	// class
 	// @Autowired
 	GuestDao guestDao;
+	
+	RoomService roomService;
 
 	@Autowired
 	@Qualifier(value = "guestDao")
 	public void setGuestDao(GuestDao guestDao) {
 		this.guestDao = guestDao;
 	}
+	
+	@Autowired
+	public void setRoomService(RoomService roomService) {
+		this.roomService = roomService;
+	}
 
 	@Override
 	public Guest createGuest(Guest guest) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Room room = null;
+		
+		
+		if (guest.getRoom() != null) {
+			room = roomService.getRoomById(guest.getRoom().getRoomId());
+		}
+		
+		
+		if (room != null) {
+			guest.setRoom(room);
+		}
+		
+		return guestDao.createGuest(guest);
 	}
 
 	@Override
