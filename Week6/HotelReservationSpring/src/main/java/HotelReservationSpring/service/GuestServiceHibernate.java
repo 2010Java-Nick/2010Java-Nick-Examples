@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import HotelReservationSpring.dao.GuestDao;
 import HotelReservationSpring.pojos.Guest;
@@ -34,6 +35,7 @@ public class GuestServiceHibernate implements GuestService {
 	}
 
 	@Override
+	@Transactional() //[P2OFFLIMITS]
 	public Guest createGuest(Guest guest) {
 		
 		Room room = null;
