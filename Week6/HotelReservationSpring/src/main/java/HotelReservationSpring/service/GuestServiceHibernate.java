@@ -29,10 +29,10 @@ public class GuestServiceHibernate implements GuestService {
 		this.guestDao = guestDao;
 	}
 	
-	@Autowired
-	public void setRoomService(RoomService roomService) {
-		this.roomService = roomService;
-	}
+	/*
+	 * @Autowired public void setRoomService(RoomService roomService) {
+	 * this.roomService = roomService; }
+	 */
 
 	@Override
 	@Transactional() //[P2OFFLIMITS]
@@ -41,9 +41,10 @@ public class GuestServiceHibernate implements GuestService {
 		Room room = null;
 		
 		
-		if (guest.getRoom() != null) {
-			room = roomService.getRoomById(guest.getRoom().getRoomId());
-		}
+		/*
+		 * if (guest.getRoom() != null) { room =
+		 * roomService.getRoomById(guest.getRoom().getRoomId()); }
+		 */
 		
 		
 		if (room != null) {
