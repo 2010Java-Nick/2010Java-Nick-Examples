@@ -2,7 +2,10 @@ package HotelReservationSpring.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,7 +20,7 @@ import HotelReservationSpring.pojos.Guest;
 import HotelReservationSpring.service.GuestService;
 
 @Controller
-public class GuestController {
+public class GuestController implements ApplicationContextAware {
 
 	GuestService guestService;
 	
@@ -55,6 +58,11 @@ public class GuestController {
 	public void updateGuest() {
 		
 
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		System.out.println("----------------------------Working-----------------------------------");
 	}
 
 }
