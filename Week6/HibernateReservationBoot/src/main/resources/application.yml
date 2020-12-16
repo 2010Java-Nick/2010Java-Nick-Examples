@@ -1,13 +1,7 @@
 spring:
   application:    name: hotel-reservation
-  datasource:
-    url: ${HOTEL_URL}
-    username: ${HOTEL_USERNAME}
-    password: ${HOTEL_PASSWORD}
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        show-sql: true
-        format-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 server:  port: 9091

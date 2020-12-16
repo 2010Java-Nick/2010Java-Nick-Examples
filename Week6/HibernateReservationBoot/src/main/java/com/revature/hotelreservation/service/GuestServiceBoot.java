@@ -11,26 +11,26 @@ import com.revature.hotelreservation.pojo.Guest;
 @Service
 public class GuestServiceBoot implements GuestService {
 	
-	//private GuestRepository guestRepo;
+	private GuestRepository guestRepo;
 	
 	@Autowired
 	public void setGuestRepo(GuestRepository guestRepo) {
-		//this.guestRepo = guestRepo;
+		this.guestRepo = guestRepo;
 	}
 
 	@Override
 	public Guest getGuestById(int id) {
-		return null;//guestRepo.getOne(id);
+		return guestRepo.getOne(id);
 	}
 	
 	public List<Guest> getGuestsByLastName(String lastName) {
-		return null; //guestRepo.findGuestsByLastName(lastName);
+		return guestRepo.findGuestsByLastName(lastName);
 	}
 
 	@Override
 	public List<Guest> getAllGuests() {
 		// TODO Auto-generated method stub
-		return null; //guestRepo.findAll();
+		return guestRepo.findAll();
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class GuestServiceBoot implements GuestService {
 
 	@Override
 	public Guest updateGuest(Guest guest, int guestId) {
-		Guest newGuest = null; //= guestRepo.save(guest);
+		Guest newGuest = guestRepo.save(guest);
 		return newGuest;
 	}
 
