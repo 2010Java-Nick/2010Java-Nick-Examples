@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: hotel-service
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+server:
+  port: 10001
