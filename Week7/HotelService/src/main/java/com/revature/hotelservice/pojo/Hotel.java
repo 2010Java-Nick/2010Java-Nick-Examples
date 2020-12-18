@@ -39,7 +39,7 @@ public class Hotel {
 	@Column(name = "current_capacity")
 	private int currentCapacity;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "hotel")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "hotelId")
 	private List<Room> rooms;
 	
 	@Column(name = "hotel_name")

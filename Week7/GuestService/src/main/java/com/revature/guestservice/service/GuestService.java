@@ -2,11 +2,12 @@ package com.revature.guestservice.service;
 
 import java.util.List;
 
+import com.revature.guestservice.dto.GuestDto;
 import com.revature.guestservice.pojo.Guest;
 
 public interface GuestService {
 	
-	public Guest getGuestById(int id);
+	public GuestDto getGuestById(int id);
 	
 	public List<Guest> getAllGuests();
 	

@@ -9,5 +9,6 @@ spring:
     consul:
       host: localhost
       port: 8500
+  jackson:    serialization:      fail-on-empty-beans: false
 server:
-  port: 10001
+  port: 10002

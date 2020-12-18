@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.hotelservice.pojo.Hotel;
 import com.revature.hotelservice.service.HotelService;
 
-@RestController(value = "/hotel")
+@RestController
 public class HotelController {
 	
 	private HotelService hotelService;
@@ -24,28 +24,28 @@ public class HotelController {
 		this.hotelService = hotelService;
 	}
 	
-	@GetMapping(path = "/{hotelId}")
+	@GetMapping("/hotel/{hotelId}")
 	public Hotel getHotel(@PathVariable(name = "hotelId") int hotelId) {
 		return hotelService.getHotelById(hotelId);
 	}
 	
-	@GetMapping
+	@GetMapping("/hotel")
 	public List<Hotel> getAllHotels() {
 		return hotelService.getAllHotels();
 	}
 	
-	@PostMapping
+	@PostMapping("/hotel")
 	public Hotel createHotel(@RequestBody Hotel hotel) {
 		return hotelService.makeHotel(hotel);
 	}
 	
-	@DeleteMapping("/{hotelId}")
+	@DeleteMapping("/hotel/{hotelId}")
 	public String deleteHotel(@PathVariable("hotelId")int hotelId) {
 		hotelService.removeHotel(hotelId);
 		return "Hotel successfully deleted";
 	}
 	
-	@PutMapping("/{hotelId}")
+	@PutMapping("/hotel/{hotelId}")
 	public String updateHotel(@PathVariable("hotelId")int hotelId, @RequestBody Hotel hotel) {
 		hotelService.updateHotel(hotelId, hotel);
 		return "Hotel successfully updated";

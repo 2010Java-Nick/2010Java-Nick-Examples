@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.guestservice.dto.GuestDto;
+import com.revature.guestservice.dto.RoomDto;
 import com.revature.guestservice.pojo.Guest;
 import com.revature.guestservice.repo.GuestRepo;
 
@@ -13,14 +15,25 @@ public class GuestServiceImpl implements GuestService {
 
 	private GuestRepo guestRepo;
 	
+	private RoomService roomService;
+	
 	@Autowired
 	public void setGuestRepo(GuestRepo guestRepo) {
 		this.guestRepo = guestRepo;
 	}
+	
+	@Autowired
+	public void setRoomService(RoomService roomService) {
+		this.roomService = roomService;
+	}
+
+
 
 	@Override
-	public Guest getGuestById(int id) {
-		return guestRepo.getOne(id);
+	public GuestDto getGuestById(int id) {
+		Guest guest =  guestRepo.findById(id).get();
+		RoomDto room = roomService.getRoomById(guest.getRoomId());
+		return new GuestDto(guest, room);
 	}
 
 	@Override

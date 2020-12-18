@@ -5,5 +5,8 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
 server:
   port: 10001

@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.guestservice.dto.GuestDto;
 import com.revature.guestservice.pojo.Guest;
 import com.revature.guestservice.service.GuestService;
 
-@RestController(value = "/guest")
+@RestController
 public class GuestController {
 
 	private GuestService guestService;
@@ -25,28 +26,28 @@ public class GuestController {
 	}
 
 
-	@GetMapping(path = "/{guestId}")
-	public Guest getGuest(@PathVariable(name = "guestId")int guestId) {
+	@GetMapping("/guest/{guestId}")
+	public GuestDto getGuest(@PathVariable(name = "guestId")int guestId) {
 		return guestService.getGuestById(guestId);
 	}
 	
-	@GetMapping
+	@GetMapping("/guest")
 	public List<Guest> getAllGuests(){
 		return guestService.getAllGuests();
 	}
 	
-	@PostMapping
+	@PostMapping("/guest")
 	public Guest createGuest(@RequestBody Guest guest) {
 		return guestService.makeGuest(guest);
 	}
 	
-	@DeleteMapping("/{guestId}")
+	@DeleteMapping("/guest/{guestId}")
 	public String deleteGuest(@PathVariable("guestId")int guestId) {
 		guestService.removeGuest(guestId);
 		return "Guest successfully deleted";
 	}
 	
-	@PutMapping("/{guestId}")
+	@PutMapping("/guest/{guestId}")
 	public String updateGuest(@PathVariable("guestId")int guestId, @RequestBody Guest guest) {
 		guestService.updateGuest(guestId, guest);
 		return "Guest successfully updated";
