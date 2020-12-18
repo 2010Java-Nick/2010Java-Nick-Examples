@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div *ngIf="!loggedIn; else landingPage" style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <app-login (loginAttempt)=onAttempt($event)></app-login>
+</div>
+<ng-template #landingPage>
+  <div style="text-align:center">
+    <app-landing></app-landing>
+  </div>
+</ng-template>

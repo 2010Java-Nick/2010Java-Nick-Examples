@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      default-filters:
+      - PrefixPath=/
+      routes:
+      #===============
+      - id: guest-service
+        uri: lb://guest-service
+        predicates:
+        - Path=/guest/**
+        filters:
+      #===============
+      - id: hotel-service
+        uri: lb://hotel-service
+        predicates:
+        - Path=/hotel/**
+        filters:
+      - id: room-service
+        uri: lb://hotel-service
+        predicates:
+        - Path=/room/**
+        filters:
+server:
+  port: 8080
